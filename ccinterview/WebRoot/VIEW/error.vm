@@ -1,0 +1,13 @@
+
+<div class="row">
+	<div class="col-lg-12">
+		<div class="form-group">
+			<div class="input-group">
+				<input type="text" class="form-control"
+					placeholder="请输入公司名称或行业名称进行查询"> <span
+					class="input-group-btn">
+					<button class="btn btn-default" type="button">搜索面试信息</button> </span>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,64 @@
+<script>
+    function submitForm(){
+        $('#regEmailForm').submit(function(){
+            var email=$('#inputEmail').val();
+            var myRegExp = /[a-z0-9-]{1,30}@[a-z0-9-]{1,65}.[a-z]{3}/;
+            if(!myRegExp.test(email)){
+                $('#alertArea').show();
+                return false;
+            }
+            return true;
+        });
+    }
+</script>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">面试官信息注册</div>
+            <div class="panel-body">
+            	#if($result.isSuccess)
+            		<div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">面试官信息注册</div>
+                            <div class="panel-body">
+                                <div class="alert alert-dismissable alert-warning">
+                                    <h4>感谢您的注册!</h4>
+                                    <p>我们已经记录您的注册信息，请到您的邮箱中完成注册，如果不能正常收到邮件，请检查是否被误分到垃圾邮件中！</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            	#else
+        		<div class="row">
+                    <div class="col-lg-12">
+		                <div class="alert alert-dismissable alert-warning">
+		                    <h4>感谢您的注册!</h4>
+		                    <p>请使用您的公司邮箱进行注册，注册后我们会给您发送邮件，并完善其余信息！</p>
+		                </div>
+		                <div class="alert alert-dismissable alert-danger" style="display: none;" id="alertArea">
+		                    <a href="#" class="alert-link">请输入合法的邮箱格式，到您的邮箱中接收我们的邮件，完成注册！</a>
+		                </div>
+		                <form class="form-horizontal" id="regEmailForm" action="reg_interviewer_mail.htm">
+		                    <fieldset>
+		                        <div class="form-group">
+		                            <div class="col-lg-10">
+		                                <input type="text" class="form-control" id="inputEmail" name="mail"
+		                                       placeholder="请输入您的公司邮箱">
+		                            </div>
+		                            <div class="col-lg-2">
+		                                <button type="submit" class="btn btn-primary col-lg-11" style="float: right">
+		                                    注册信息
+		                                </button>
+		                            </div>
+		                        </div>
+		                    </fieldset>
+		                </form>
+                	</div>
+                </div>	
+                #end
+            </div>
+        </div>
+    </div>
+</div>

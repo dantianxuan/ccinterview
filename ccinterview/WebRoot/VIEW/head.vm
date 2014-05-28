@@ -1,0 +1,44 @@
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="index.htm" class="navbar-brand">面试官</a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="inteviewer/interviewer_self.htm">我是面试官</a>
+                </li>
+                <li>
+                    <a href="#">面霸面帝</a>
+                </li>
+
+                <li>
+                    <a href="#">亮荐专区</a>
+                </li>
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" >
+                       <img src="$path/resources/image/alipay.jpg" style="width:30px;height: 30px;margin-bottom:6px; float:left" class="img-rounded"/>
+                        <div  style="float: left;margin-top:4px;font-size: 18px;">欢迎您：大大猫</span><span class="caret"></span></div>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#dropdown1" data-toggle="tab">个人信息</a></li>
+                        <li><a href="#dropdown1" data-toggle="tab">我的面试</a></li>
+                        <li><a href="#dropdown1" data-toggle="tab">简历修改</a></li>
+                        <li><a href="#dropdown2" data-toggle="tab">账户信息</a></li>
+                        <li><a href="#dropdown2" data-toggle="tab">站内信</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
