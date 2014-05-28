@@ -20,11 +20,11 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/index.htm")
 public class IndexController {
 
-	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView handleRequest(HttpServletRequest httpservletrequest,
-			HttpServletResponse httpservletresponse, ModelMap modelMap)
-			throws Exception {
-		ModelAndView view = new ModelAndView("content/index");
-		return view;
-	}
+    @RequestMapping(method = RequestMethod.GET)
+    public ModelAndView handleRequest(HttpServletRequest httpservletrequest,
+                                      HttpServletResponse httpservletresponse, ModelMap modelMap)
+                                                                                                 throws Exception {
+        ModelAndView view = new ModelAndView("content/index");
+        return view;
+    }
 }

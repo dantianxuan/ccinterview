@@ -5,6 +5,7 @@
 package com.interviewer.service;
 
 import com.interviewer.model.RegMail;
+
 /**
  * 
  * @author jinsaichen
@@ -13,6 +14,6 @@ import com.interviewer.model.RegMail;
  */
 public interface RegMailService {
 
-	public void insertRegMail(RegMail regMail);
+    public void insertRegMail(RegMail regMail);
 
 }

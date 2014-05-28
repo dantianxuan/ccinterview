@@ -19,31 +19,31 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class RegJobseekerController {
 
-	/**
-	 * 注册面试官init页面
-	 * 
-	 * @return
-	 * @throws Exception
-	 */
-	@RequestMapping(value = "/jobseeker/reg_jobseeker.htm", method = RequestMethod.GET)
-	public ModelAndView handleRequest(HttpServletRequest httpservletrequest,
-			HttpServletResponse httpservletresponse, ModelMap modelMap)
-			throws Exception {
-		ModelAndView view = new ModelAndView("jobseeker/reg_jobseeker");
-		return view;
-	}
+    /**
+     * 注册面试官init页面
+     * 
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/jobseeker/reg_jobseeker.htm", method = RequestMethod.GET)
+    public ModelAndView handleRequest(HttpServletRequest httpservletrequest,
+                                      HttpServletResponse httpservletresponse, ModelMap modelMap)
+                                                                                                 throws Exception {
+        ModelAndView view = new ModelAndView("jobseeker/reg_jobseeker");
+        return view;
+    }
 
-	/**
-	 * 注册面试官init页面
-	 * 
-	 * @return
-	 * @throws Exception
-	 */
-	@RequestMapping(value = "/jobseeker/reg_jobseeker_submit.htm", method = RequestMethod.GET)
-	public ModelAndView registMail(HttpServletRequest httpservletrequest,
-			String mail, ModelMap modelMap) throws Exception {
-		ModelAndView view = new ModelAndView("jobseeker/reg_jobseeker");
-		return view;
-	}
+    /**
+     * 注册面试官init页面
+     * 
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/jobseeker/reg_jobseeker_submit.htm", method = RequestMethod.GET)
+    public ModelAndView registMail(HttpServletRequest httpservletrequest, String mail,
+                                   ModelMap modelMap) throws Exception {
+        ModelAndView view = new ModelAndView("jobseeker/reg_jobseeker");
+        return view;
+    }
 
 }

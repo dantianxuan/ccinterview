@@ -22,24 +22,22 @@ import com.interviewer.util.LogUtil;
  */
 public class CommonInterceptor extends HandlerInterceptorAdapter {
 
-	private Logger logger = Logger
-			.getLogger(InterviewerAuthorityInterceptor.class);
+    private Logger logger = Logger.getLogger(InterviewerAuthorityInterceptor.class);
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public boolean preHandle(HttpServletRequest request,
-			HttpServletResponse response, Object handler) throws Exception {
-		LogUtil.info(logger, "接受请求");
-		request.getParameterMap().put(CcConstrant.TIME_TOKEN, new Date());
-		return true;
-	}
+    @SuppressWarnings("unchecked")
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
+                             Object handler) throws Exception {
+        LogUtil.info(logger, "接受请求");
+        request.getParameterMap().put(CcConstrant.TIME_TOKEN, new Date());
+        return true;
+    }
 
-	@Override
-	public void afterCompletion(HttpServletRequest request,
-			HttpServletResponse response, Object handler, Exception ex)
-			throws Exception {
-		LogUtil.info(logger, "接受请求");
-		request.getParameterMap().put(CcConstrant.TIME_TOKEN, new Date());
-	}
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response,
+                                Object handler, Exception ex) throws Exception {
+        LogUtil.info(logger, "接受请求");
+        request.getParameterMap().put(CcConstrant.TIME_TOKEN, new Date());
+    }
 
 }

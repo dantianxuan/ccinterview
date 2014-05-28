@@ -20,11 +20,11 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/error.htm")
 public class ErrorController {
 
-	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView handleRequest(HttpServletRequest httpservletrequest,
-			HttpServletResponse httpservletresponse, ModelMap modelMap)
-			throws Exception {
-		ModelAndView view = new ModelAndView("error");
-		return view;
-	}
+    @RequestMapping(method = RequestMethod.GET)
+    public ModelAndView handleRequest(HttpServletRequest httpservletrequest,
+                                      HttpServletResponse httpservletresponse, ModelMap modelMap)
+                                                                                                 throws Exception {
+        ModelAndView view = new ModelAndView("error");
+        return view;
+    }
 }

@@ -16,13 +16,13 @@ public class PageList<T> extends ToString {
     /**  */
     private static final long serialVersionUID = 1L;
 
-    private int     total;
+    private int               total;
 
-    private List<T> list;
+    private List<T>           list;
 
-    private int     pageSize;
+    private int               pageSize;
 
-    private int     currentPage;
+    private int               currentPage;
 
     /**
      * 构造函数

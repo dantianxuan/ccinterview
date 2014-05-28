@@ -9,10 +9,10 @@ package com.interviewer.mail;
  */
 public interface MailSender {
 
-	/**
-	 * 发送mail
-	 * 
-	 * @param mailText
-	 */
-	public boolean sendMail(String email, String mailText);
+    /**
+     * 发送mail
+     * 
+     * @param mailText
+     */
+    public boolean sendMail(String email, String mailText);
 }

@@ -10,7 +10,7 @@ package com.interviewer.base;
  */
 public class CcConstrant {
 
-	/** 用于统计处理时间的时间key */
-	public final static String TIME_TOKEN = "TIME_TOKEN";
+    /** 用于统计处理时间的时间key */
+    public final static String TIME_TOKEN = "TIME_TOKEN";
 
 }
