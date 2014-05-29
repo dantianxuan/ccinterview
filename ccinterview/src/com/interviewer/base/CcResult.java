@@ -26,11 +26,21 @@ public class CcResult extends ToString {
     /** 单次服务请求唯一标识 */
     protected String          token;
 
+    /**包含对象*/
+    protected Object          object;
+
     /**
      * 同意处理结果
      */
     public CcResult() {
 
+    }
+
+    public CcResult(Object object) {
+        this.success = true;
+        this.message = "处理成功";
+        this.code = "SUCCESS";
+        this.object = object;
     }
 
     public static CcResult retSuccess() {

@@ -3,6 +3,7 @@
 
 <hibernate-reverse-engineering>
 <type-mapping>
-	<sql-type jdbc-type="DATETIME" hibernate-type="date"></sql-type>
+	<sql-type jdbc-type="DATETIME" hibernate-type="string"></sql-type>
 </type-mapping>
+
 </hibernate-reverse-engineering>

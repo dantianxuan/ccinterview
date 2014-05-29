@@ -3,6 +3,8 @@
  */
 package com.interviewer.web;
 
+import java.util.UUID;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.interviewer.base.CcResult;
 import com.interviewer.mail.MailSender;
+import com.interviewer.pojo.RegMail;
+import com.interviewer.service.RegistService;
 
 /**
  * @author jingyu.dan
@@ -23,9 +27,8 @@ import com.interviewer.mail.MailSender;
 @Controller
 public class RegInterviewerController {
 
-    /** mailsender */
     @Autowired
-    private MailSender mailSender;
+    private RegistService registService;
 
     /**
      * 注册面试官init页面
@@ -33,11 +36,11 @@ public class RegInterviewerController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/interviewer/reg_interviewer_init.htm", method = RequestMethod.GET)
+    @RequestMapping(value = "/regist/reg_interviewer_init.htm", method = RequestMethod.GET)
     public ModelAndView handleRequest(HttpServletRequest httpservletrequest,
                                       HttpServletResponse httpservletresponse, ModelMap modelMap)
                                                                                                  throws Exception {
-        ModelAndView view = new ModelAndView("interviewer/reg_interviewer_init");
+        ModelAndView view = new ModelAndView("regist/reg_interviewer_init");
         return view;
     }
 
@@ -47,21 +50,16 @@ public class RegInterviewerController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/interviewer/reg_interviewer_mail.htm", method = RequestMethod.GET)
+    @RequestMapping(value = "/regist/reg_interviewer_mail.htm", method = RequestMethod.GET)
     public ModelAndView registMail(HttpServletRequest httpservletrequest, String mail,
                                    ModelMap modelMap) throws Exception {
-        ModelAndView view = new ModelAndView("interviewer/reg_interviewer_init");
-        boolean isSuccess = mailSender.sendMail(mail, "hello ");
-        if (isSuccess) {
-            modelMap.put("result", CcResult.retSuccess());
-        } else {
-            modelMap.put("result", new CcResult());
-        }
+        ModelAndView view = new ModelAndView("regist/reg_interviewer_init");
+        RegMail regMail = new RegMail();
+        regMail.setMail(mail);
+        regMail.setToken(UUID.randomUUID().toString());
+        CcResult result = registService.regMail(regMail);
+        modelMap.put("result", result);
         return view;
-    }
-
-    public void setMailSender(MailSender mailSender) {
-        this.mailSender = mailSender;
     }
 
 }

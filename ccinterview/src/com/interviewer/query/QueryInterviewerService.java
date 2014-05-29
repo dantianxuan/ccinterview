@@ -2,7 +2,7 @@
  * ccinterviewer.com Inc.
  * Copyright (c) 2014-2014 All Rights Reserved.
  */
-package com.interviewer.service;
+package com.interviewer.query;
 
 /**
  * 面试官查询服务

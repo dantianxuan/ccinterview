@@ -18,8 +18,8 @@
 	<mvc:interceptors>
 		<!-- 多个拦截器,顺序执行 -->
 		<mvc:interceptor>
-			<mvc:mapping path="interviewer/*" />
-			<bean class="com.interviewer.filter.CommonInterceptor"></bean>
+			<mvc:mapping path="/interviewer/*" />
+			<bean class="com.interviewer.filter.InterviewerAuthorityInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 	<!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->

@@ -1,6 +1,6 @@
 #MyEclipse Hibernate Properties
-#Thu May 29 21:11:25 GMT+08:00 2014
-sessionFactoryName=
+#Thu May 29 22:01:49 GMT+08:00 2014
+sessionFactoryName=com.interviewer.dao.HibernateSessionFactory
 genBasicCompId=false
 profile=
 daoSFId=
@@ -10,7 +10,7 @@ detectM2M=false
 reStrategyClass=
 detectO2O=false
 springDaoFile=
-useJavaTypes=true
+useJavaTypes=false
 keyGenerator=native
 libInstallFolder=
 addLibs2Project=false

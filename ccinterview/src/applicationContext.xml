@@ -37,8 +37,12 @@
 			expression="execution(* com.ccinterviewer.service.*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="point-cut" />
 	</aop:config>
-	
-	<bean id="regMailService" class="com.interviewer.service.RegMailServiceImpl"></bean>
+
+
+	<bean id="regMailDAO" class="com.interviewer.dao.RegMailDAO" />
+
+
+	<bean id="registService" class="com.interviewer.service.RegistServiceImpl"></bean>
 
 	<bean id="mailSender" class="com.interviewer.mail.MailSenderImpl"></bean>
 	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
