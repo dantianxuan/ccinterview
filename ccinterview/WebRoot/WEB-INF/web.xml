@@ -19,9 +19,7 @@
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
 	</listener>
 	<listener>
-		<listener-class>
-			org.springframework.web.util.Log4jConfigListener
-		</listener-class>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
 	</listener>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -89,6 +87,7 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			classpath:applicationContext.xml,
+			/WEB-INF/service-interceptor.xml
 			/WEB-INF/myspring-servlet.xml
 		</param-value>
 	</context-param>

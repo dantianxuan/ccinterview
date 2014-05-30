@@ -45,7 +45,7 @@
 		                                       placeholder="请输入您的公司邮箱">
 		                            </div>
 		                            <div class="col-lg-2">
-		                                <button type="button" class="btn btn-primary col-lg-11" onclick="submitForm()" style="float: right">
+		                                <button type="submit" class="btn btn-primary col-lg-11"  style="float: right">
 		                                    注册信息
 		                                </button>
 		                            </div>
