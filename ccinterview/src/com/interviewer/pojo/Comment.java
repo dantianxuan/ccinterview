@@ -6,7 +6,7 @@ import java.util.Date;
  * Comment entity. @author MyEclipse Persistence Tools
  */
 
-public class Comment implements java.io.Serializable {
+public class Comment extends com.interviewer.base.ToString implements java.io.Serializable {
 
     // Fields    
 

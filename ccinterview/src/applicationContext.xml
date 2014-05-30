@@ -40,11 +40,12 @@
 
 
 	<bean id="regMailDAO" class="com.interviewer.dao.RegMailDAO" />
+	<bean id="serviceTemplate" class="com.interviewer.base.ServiceTemplateImpl" />
 
 
 	<bean id="registService" class="com.interviewer.service.RegistServiceImpl"></bean>
 
-	<bean id="mailSender" class="com.interviewer.mail.MailSenderImpl"></bean>
+	<bean id="mailSender" class="com.interviewer.core.MailSenderImpl"></bean>
 	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host">
 			<value>smtp.163.com</value>

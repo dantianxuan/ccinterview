@@ -6,7 +6,7 @@ import java.util.Date;
  * Category entity. @author MyEclipse Persistence Tools
  */
 
-public class Category implements java.io.Serializable {
+public class Category extends com.interviewer.base.ToString implements java.io.Serializable {
 
     // Fields    
 

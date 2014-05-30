@@ -1,5 +1,5 @@
 #MyEclipse Hibernate Properties
-#Thu May 29 22:01:49 GMT+08:00 2014
+#Fri May 30 20:35:33 GMT+08:00 2014
 sessionFactoryName=com.interviewer.dao.HibernateSessionFactory
 genBasicCompId=false
 profile=
@@ -16,10 +16,10 @@ libInstallFolder=
 addLibs2Project=false
 genVersionTag=false
 sessionFactoryId=
-basePersistenceClass=
+basePersistenceClass=com.interviewer.base.ToString
 genAnnotations=false
 reSettingsFile=/ccinterview/hibernate.reveng.xml
 configFile=/ccinterview/src/hibernate.cfg.xml
 createConfigFile=false
 addLibs2Classpath=false
-baseDaoClass=BaseHibernateDAO
+baseDaoClass=com.interviewer.dao.BaseHibernateDAO

@@ -6,7 +6,7 @@ import java.util.Date;
  * Company entity. @author MyEclipse Persistence Tools
  */
 
-public class Company implements java.io.Serializable {
+public class Company extends com.interviewer.base.ToString implements java.io.Serializable {
 
     // Fields    
 

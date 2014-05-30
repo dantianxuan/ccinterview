@@ -6,7 +6,7 @@ import java.util.Date;
  * UserInfo entity. @author MyEclipse Persistence Tools
  */
 
-public class UserInfo implements java.io.Serializable {
+public class UserInfo extends com.interviewer.base.ToString implements java.io.Serializable {
 
     // Fields    
 

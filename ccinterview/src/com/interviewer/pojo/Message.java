@@ -6,7 +6,7 @@ import java.util.Date;
  * Message entity. @author MyEclipse Persistence Tools
  */
 
-public class Message implements java.io.Serializable {
+public class Message extends com.interviewer.base.ToString implements java.io.Serializable {
 
     // Fields    
 

@@ -3,6 +3,7 @@
  */
 package com.interviewer.web;
 
+import java.util.Date;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -56,10 +57,10 @@ public class RegInterviewerController {
         ModelAndView view = new ModelAndView("regist/reg_interviewer_init");
         RegMail regMail = new RegMail();
         regMail.setMail(mail);
+        regMail.setGmtCreate(new Date());
         regMail.setToken(UUID.randomUUID().toString());
         CcResult result = registService.regMail(regMail);
         modelMap.put("result", result);
         return view;
     }
-
 }

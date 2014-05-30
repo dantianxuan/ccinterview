@@ -6,7 +6,7 @@ import java.util.Date;
  * Prise entity. @author MyEclipse Persistence Tools
  */
 
-public class Prise implements java.io.Serializable {
+public class Prise extends com.interviewer.base.ToString implements java.io.Serializable {
 
     // Fields    
 

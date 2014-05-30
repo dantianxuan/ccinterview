@@ -6,7 +6,7 @@ import java.util.Date;
  * RegMail entity. @author MyEclipse Persistence Tools
  */
 
-public class RegMail implements java.io.Serializable {
+public class RegMail extends com.interviewer.base.ToString implements java.io.Serializable {
 
     // Fields    
 

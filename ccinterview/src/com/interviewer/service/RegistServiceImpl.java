@@ -6,6 +6,8 @@ package com.interviewer.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.interviewer.base.AbstractService;
+import com.interviewer.base.BlankServiceCallBack;
 import com.interviewer.base.CcResult;
 import com.interviewer.core.MailSender;
 import com.interviewer.dao.RegMailDAO;
@@ -16,7 +18,7 @@ import com.interviewer.pojo.RegMail;
  * @author jingyu.dan
  * @version $Id: RegistServiceImpl.java, v 0.1 2014-5-29 下午9:28:25 jingyu.dan Exp $
  */
-public class RegistServiceImpl implements RegistService {
+public class RegistServiceImpl extends AbstractService implements RegistService {
 
     @Autowired
     private RegMailDAO regMailDAO;
@@ -25,14 +27,19 @@ public class RegistServiceImpl implements RegistService {
     private MailSender mailSender;
 
     @Override
-    public CcResult regMail(RegMail regMail) {
+    public CcResult regMail(final RegMail regMail) {
 
-        boolean isSend = mailSender.sendMail(regMail.getMail(), "欢迎注册");
-        if (isSend) {
-            regMailDAO.save(regMail);
-            return new CcResult(regMail);
-        }
-        return new CcResult();
+        return serviceTemplate.execute(CcResult.class, new BlankServiceCallBack() {
+            @Override
+            public CcResult executeService() {
+                boolean isSend = mailSender.sendMail(regMail.getMail(), "欢迎注册");
+                if (isSend) {
+                    regMailDAO.save(regMail);
+                    return new CcResult(regMail);
+                }
+                return new CcResult();
+            }
+        });
 
     }
 
