@@ -82,6 +82,8 @@ public class TemplateOperate {
         // 执行语句
         session.delete(p);
         // 提交事务
+        
+        
         tran.commit();
     }
 
