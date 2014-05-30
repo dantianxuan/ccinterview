@@ -14,6 +14,7 @@ import com.interviewer.dao.HibernateSessionFactory;
  * @author jingyu.dan
  * @version $Id: ServiceTemplateImpl.java, v 0.1 2014-5-30 下午5:54:22 jingyu.dan Exp $
  */
+@SuppressWarnings("unchecked")
 public class ServiceTemplateImpl implements ServiceTemplate {
 
     /**日志 */
