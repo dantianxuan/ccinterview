@@ -7,8 +7,8 @@ package com.interviewer.service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.interviewer.base.CcResult;
+import com.interviewer.core.MailSender;
 import com.interviewer.dao.RegMailDAO;
-import com.interviewer.mail.MailSender;
 import com.interviewer.pojo.RegMail;
 
 /**

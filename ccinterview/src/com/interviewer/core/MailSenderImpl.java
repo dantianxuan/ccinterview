@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.interviewer.mail;
+package com.interviewer.core;
 
 import javax.mail.internet.MimeMessage;
 
