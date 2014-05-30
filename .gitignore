@@ -2,7 +2,10 @@
 ccinterview/.classpath
 
 ccinterview/.project
-
+.settings*
 *.prefs
-
+target
+.gitignore
 ccinterview/.settings/org.eclipse.core.resources.prefs
+
+ccinterview/WebRoot/VIEW/regist/reg_interviewer_init.vm
