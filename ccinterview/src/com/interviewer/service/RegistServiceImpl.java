@@ -11,7 +11,9 @@ import com.interviewer.base.BlankServiceCallBack;
 import com.interviewer.base.CcResult;
 import com.interviewer.core.MailSender;
 import com.interviewer.dao.RegMailDAO;
+import com.interviewer.pojo.Interview;
 import com.interviewer.pojo.RegMail;
+import com.interviewer.pojo.UserInfo;
 
 /**
  * 
@@ -41,12 +43,12 @@ public class RegistServiceImpl extends AbstractService implements RegistService 
     }
 
     @Override
-    public CcResult regInterviewer() {
+    public CcResult regInterviewer(Interview interview) {
         return null;
     }
 
     @Override
-    public CcResult regJobSeeker() {
+    public CcResult regUserInfo(UserInfo userInfo) {
         return null;
     }
 
