@@ -82,7 +82,7 @@ public class ServiceTemplateImpl implements ServiceTemplate {
             // 业务异常捕获
             LogUtil.error(logger, e, "【业务异常】");
             result.setCode(e.getCode());
-            result.setMessage(e.getMessage());
+            result.setMessage(e.getLocalizedMessage());
             session.getTransaction().rollback();
             return (T) result;
         } catch (Throwable e2) {

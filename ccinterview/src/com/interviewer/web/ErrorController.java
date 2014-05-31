@@ -4,7 +4,6 @@
 package com.interviewer.web;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,9 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class ErrorController {
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView handleRequest(HttpServletRequest httpservletrequest,
-                                      HttpServletResponse httpservletresponse, ModelMap modelMap)
-                                                                                                 throws Exception {
+    public ModelAndView handleRequest(HttpServletRequest httpservletrequest, ModelMap modelMap) {
         ModelAndView view = new ModelAndView("error");
         return view;
     }

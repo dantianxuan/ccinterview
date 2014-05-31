@@ -39,11 +39,21 @@ public class CcException extends RuntimeException {
 
     /**
      * 构造方法
+     * 
+     * @param message   错误信息
+     */
+    public CcException(String message) {
+        this.setMessage(message);
+    }
+
+    /**
+     * 构造方法
      *
      * @param cause
      */
     public CcException(Throwable cause, String message) {
-        super(message, cause);
+        super(cause);
+        this.message = message;
     }
 
     public String getCode() {

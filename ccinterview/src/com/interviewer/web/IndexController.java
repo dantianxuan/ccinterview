@@ -21,9 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class IndexController {
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView handleRequest(HttpServletRequest httpservletrequest,
-                                      HttpServletResponse httpservletresponse, ModelMap modelMap)
-                                                                                                 throws Exception {
+    public ModelAndView handleRequest(HttpServletRequest httpservletrequest, ModelMap modelMap) {
         ModelAndView view = new ModelAndView("content/index");
         return view;
     }

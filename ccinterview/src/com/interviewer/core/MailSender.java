@@ -3,6 +3,8 @@
  */
 package com.interviewer.core;
 
+import com.interviewer.pojo.RegMail;
+
 /**
  * @author jingyu.dan
  * 
@@ -14,5 +16,5 @@ public interface MailSender {
      * 
      * @param mailText
      */
-    public void sendMail(String email, String mailText);
+    public void sendMail(RegMail regMail);
 }

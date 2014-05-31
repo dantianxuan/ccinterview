@@ -19,10 +19,12 @@
                             <h4>感谢您的注册!</h4>
                             <p>请使用您的公司邮箱进行注册，注册后我们会给您发送邮件，并完善其余信息！</p>
                         </div>
-		                 <div class="alert alert-dismissable alert-danger" style="display: none;" id="alertArea">
-                                    <a href="#" class="alert-link">请输入合法的邮箱格式，到您的邮箱中接收我们的邮件，完成注册！</a>
-                        </div>
-	                    <form class="form-horizontal" action="$link.contextPath/regist/reg_interviewer_mail.htm" id="regEmailForm">
+                        #if($result && !$result.success)
+                		<div class="alert alert-dismissable alert-danger">
+                       		<a href="#" class="alert-link">$result.message</a>
+                   	 	</div>
+                        #end
+	                    <form class="form-horizontal" action="$link.contextPath/regist/regInterviewerMail.htm" id="regEmailForm">
 	                        <fieldset>
 	                            <div class="form-group">
 	                                <div class="col-lg-8">

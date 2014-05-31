@@ -3,12 +3,12 @@
         <div class="panel panel-default">
             <div class="panel-heading">欢迎登陆</div>
             <div class="panel-body">
-
-                <div class="alert alert-dismissable alert-danger">
+            	#if($result && !$result.success)
+                <div class="alert alert-dismissable alert-warning">
                     <button type="button" class="close" data-dismiss="alert">×</button>
                     <strong>请注意</strong> 用户或者密码错误
                 </div>
-
+                #end
                 <form class="form-horizontal" id="regEmailForm">
                     <fieldset>
                         <div class="form-group">
@@ -35,7 +35,7 @@
                 <hr/>
                 <a  href="#" style="margin: 12px">忘记密码</a>
                 <a  href="#" style="margin: 12px">快速注册用户</a>
-                <a  href="$link.contextPath/regist/reg_interviewer_init.htm" style="margin: 12px">注册面试官</a>
+                <a  href="$link.contextPath/regist/regInterviewerInit.htm" style="margin: 12px">注册面试官</a>
             </div>
         </div>
     </div>

@@ -25,11 +25,11 @@ public class RegJobseekerController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/jobseeker/reg_jobseeker.htm", method = RequestMethod.GET)
+    @RequestMapping(value = "/jobseeker/regJobseeker.htm", method = RequestMethod.GET)
     public ModelAndView handleRequest(HttpServletRequest httpservletrequest,
                                       HttpServletResponse httpservletresponse, ModelMap modelMap)
                                                                                                  throws Exception {
-        ModelAndView view = new ModelAndView("jobseeker/reg_jobseeker");
+        ModelAndView view = new ModelAndView("jobseeker/regJobseeker");
         return view;
     }
 

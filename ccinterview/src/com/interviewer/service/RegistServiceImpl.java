@@ -4,10 +4,14 @@
  */
 package com.interviewer.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 
 import com.interviewer.base.AbstractService;
 import com.interviewer.base.BlankServiceCallBack;
+import com.interviewer.base.CcException;
 import com.interviewer.base.CcResult;
 import com.interviewer.core.MailSender;
 import com.interviewer.dao.RegMailDAO;
@@ -34,9 +38,25 @@ public class RegistServiceImpl extends AbstractService implements RegistService 
         return serviceTemplate.execute(CcResult.class, new BlankServiceCallBack() {
             @Override
             public CcResult executeService() {
-                mailSender.sendMail(regMail.getMail(), "欢迎注册");
+                mailSender.sendMail(regMail);
                 regMailDAO.save(regMail);
                 return new CcResult(regMail);
+            }
+        });
+
+    }
+
+    @Override
+    public CcResult getRegMainInfo(final String token) {
+        return serviceTemplate.execute(CcResult.class, new BlankServiceCallBack() {
+            @Override
+            public CcResult executeService() {
+                List<RegMail> regMians = regMailDAO.findByToken(token);
+                if (CollectionUtils.isEmpty(regMians)) {
+                    throw new CcException("无注册记录，请重新注册");
+                }
+                RegMail regMain = regMians.get(0);
+                return new CcResult(regMain);
             }
         });
 

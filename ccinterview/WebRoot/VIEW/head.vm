@@ -11,7 +11,7 @@
         <div class="navbar-collapse collapse" id="navbar-main">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="$link.contextPath/interviewer/interviewer_self.htm">我是面试官</a>
+                    <a href="$link.contextPath/interviewer/interviewerSelf.htm">我是面试官</a>
                 </li>
                 <li>
                     <a href="#">面霸面帝</a>
@@ -27,7 +27,7 @@
 
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" >
-                       <img src="$path/resources/image/alipay.jpg" style="width:30px;height: 30px;margin-bottom:6px; float:left" class="img-rounded"/>
+                       <img src="$link.contextPath/resources/image/alipay.jpg" style="width:30px;height: 30px;margin-bottom:6px; float:left" class="img-rounded"/>
                         <div  style="float: left;margin-top:4px;font-size: 18px;">欢迎您：大大猫</span><span class="caret"></span></div>
                     </a>
                     <ul class="dropdown-menu">

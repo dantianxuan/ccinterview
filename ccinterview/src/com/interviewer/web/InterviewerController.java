@@ -19,10 +19,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class InterviewerController {
 
-    @RequestMapping(value = "/interviewer/interviewer_self.htm", method = RequestMethod.GET)
+    @RequestMapping(value = "/interviewer/interviewerSelf.htm", method = RequestMethod.GET)
     public ModelAndView handleRequest(HttpServletRequest httpservletrequest,
                                       HttpSession httpSession, ModelMap modelMap) {
-        ModelAndView view = new ModelAndView("interviewer/interviewer_self");
+        ModelAndView view = new ModelAndView("interviewer/interviewerSelf");
         return view;
     }
 }
