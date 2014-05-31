@@ -52,11 +52,11 @@ public class RegInterviewerController {
      * @throws Exception
      */
     @RequestMapping(value = "/regist/reg_interviewer_mail.htm", method = RequestMethod.GET)
-    public ModelAndView registMail(HttpServletRequest httpservletrequest, String mail,
-                                   ModelMap modelMap) throws Exception {
+    public ModelAndView registMail(HttpServletRequest httpservletrequest, String email,
+                                   String subPrefix, ModelMap modelMap) throws Exception {
         ModelAndView view = new ModelAndView("regist/reg_interviewer_init");
         RegMail regMail = new RegMail();
-        regMail.setMail(mail);
+        regMail.setMail(email + subPrefix);
         regMail.setGmtCreate(new Date());
         regMail.setToken(UUID.randomUUID().toString());
         CcResult result = registService.regMail(regMail);

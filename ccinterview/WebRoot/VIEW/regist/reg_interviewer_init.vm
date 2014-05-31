@@ -22,18 +22,18 @@
 		                 <div class="alert alert-dismissable alert-danger" style="display: none;" id="alertArea">
                                     <a href="#" class="alert-link">请输入合法的邮箱格式，到您的邮箱中接收我们的邮件，完成注册！</a>
                         </div>
-	                    <form class="form-horizontal" id="regEmailForm">
+	                    <form class="form-horizontal" action="$link.contextPath/regist/reg_interviewer_mail.htm" id="regEmailForm">
 	                        <fieldset>
 	                            <div class="form-group">
 	                                <div class="col-lg-8">
-	                                    <input type="text" class="form-control" id="inputEmail"
+	                                    <input type="text" class="form-control" id="inputEmail" name="email"
 	                                           placeholder="请输入您的公司邮箱">
 	                                </div>
 	                                <div class="col-lg-2">
-	                                    <select class="form-control" id="selectMailSubfix">
-	                                        <option>@alipay.com</option>
-	                                        <option>@alibaba-inc.com</option>
-	                                        <option>@baidu.com</option>
+	                                    <select class="form-control" name="subPrefix" id="selectMailSubfix">
+	                                        <option value="@alipay.com">@alipay.com</option>
+	                                        <option value="@alibaba-inc.com">@alibaba-inc.com</option>
+	                                        <option value="@baidu.com">@baidu.com</option>
 	                                    </select>
 	                                </div>
 	                                <div class="col-lg-2">
@@ -48,6 +48,7 @@
 	                        $('#regEmailForm').submit(function(){
 	                            var email=$('#inputEmail').val();
 	                            var prefix=$('#selectMailSubfix').val();
+	                            console.log(prefix);
 	                            var myRegExp = /[a-z0-9-]{1,30}@[a-z0-9-]{1,65}.[a-z]{3}/;
 	                            if(!myRegExp.test(email+prefix)){
 	                                $('#alertArea').show();
