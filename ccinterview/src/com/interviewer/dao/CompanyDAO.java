@@ -26,7 +26,7 @@ public class CompanyDAO extends BaseHibernateDAO {
     public static final String  DESC        = "desc";
     public static final String  LINK        = "link";
     public static final String  CATEGORY_ID = "categoryId";
-    public static final String  MAIL_SUFIX  = "mailSufix";
+    public static final String  MAIL_SUFFIX = "mailSuffix";
 
     public void save(Company transientInstance) {
         log.debug("saving Company instance");
@@ -103,8 +103,8 @@ public class CompanyDAO extends BaseHibernateDAO {
         return findByProperty(CATEGORY_ID, categoryId);
     }
 
-    public List findByMailSufix(Object mailSufix) {
-        return findByProperty(MAIL_SUFIX, mailSufix);
+    public List findByMailSuffix(Object mailSuffix) {
+        return findByProperty(MAIL_SUFFIX, mailSuffix);
     }
 
     public List findAll() {

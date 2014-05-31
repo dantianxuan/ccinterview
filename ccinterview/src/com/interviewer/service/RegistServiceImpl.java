@@ -32,12 +32,9 @@ public class RegistServiceImpl extends AbstractService implements RegistService 
         return serviceTemplate.execute(CcResult.class, new BlankServiceCallBack() {
             @Override
             public CcResult executeService() {
-                boolean isSend = mailSender.sendMail(regMail.getMail(), "欢迎注册");
-                if (isSend) {
-                    regMailDAO.save(regMail);
-                    return new CcResult(regMail);
-                }
-                return new CcResult();
+                mailSender.sendMail(regMail.getMail(), "欢迎注册");
+                regMailDAO.save(regMail);
+                return new CcResult(regMail);
             }
         });
 

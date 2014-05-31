@@ -14,5 +14,5 @@ public interface MailSender {
      * 
      * @param mailText
      */
-    public boolean sendMail(String email, String mailText);
+    public void sendMail(String email, String mailText);
 }

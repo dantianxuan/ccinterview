@@ -16,7 +16,7 @@ public class Company extends com.interviewer.base.ToString implements java.io.Se
     private String  link;
     private Date    gmtCreate;
     private Integer categoryId;
-    private String  mailSufix;
+    private String  mailSuffix;
 
     // Constructors
 
@@ -26,13 +26,13 @@ public class Company extends com.interviewer.base.ToString implements java.io.Se
 
     /** full constructor */
     public Company(String name, String desc, String link, Date gmtCreate, Integer categoryId,
-                   String mailSufix) {
+                   String mailSuffix) {
         this.name = name;
         this.desc = desc;
         this.link = link;
         this.gmtCreate = gmtCreate;
         this.categoryId = categoryId;
-        this.mailSufix = mailSufix;
+        this.mailSuffix = mailSuffix;
     }
 
     // Property accessors
@@ -85,12 +85,12 @@ public class Company extends com.interviewer.base.ToString implements java.io.Se
         this.categoryId = categoryId;
     }
 
-    public String getMailSufix() {
-        return this.mailSufix;
+    public String getMailSuffix() {
+        return this.mailSuffix;
     }
 
-    public void setMailSufix(String mailSufix) {
-        this.mailSufix = mailSufix;
+    public void setMailSuffix(String mailSuffix) {
+        this.mailSuffix = mailSuffix;
     }
 
 }

@@ -5,10 +5,11 @@ package com.interviewer.core;
 
 import javax.mail.internet.MimeMessage;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+
+import com.interviewer.base.CcException;
 
 /**
  * @author jingyu.dan
@@ -16,11 +17,11 @@ import org.springframework.mail.javamail.MimeMessageHelper;
  */
 public class MailSenderImpl implements MailSender {
 
-    /** logger **/
-    private Logger         logger = Logger.getLogger(MailSenderImpl.class);
     /** 发送邮件 */
     @Autowired
-    private JavaMailSender javaMailSender;
+    private JavaMailSender      javaMailSender;
+
+    private final static String mainHtml = "";
 
     /*
      * (non-Javadoc)
@@ -28,9 +29,8 @@ public class MailSenderImpl implements MailSender {
      * @see com.interviewer.mail.MailSender#sendMail(java.lang.String)
      */
     @Override
-    public boolean sendMail(String email, String mailText) {
+    public void sendMail(String email, String mailText) {
         MimeMessage mailMessage = javaMailSender.createMimeMessage();
-        boolean isSuccess = false;
         try {
             // 设置utf-8或GBK编码，否则邮件会有乱码
             MimeMessageHelper messageHelper = new MimeMessageHelper(mailMessage, true, "utf-8");
@@ -41,15 +41,9 @@ public class MailSenderImpl implements MailSender {
             messageHelper.setText(
                 "<html><head></head><body><h1>hello!!chao.wang</h1></body></html>", true);
             javaMailSender.send(mailMessage);
-            isSuccess = true;
         } catch (Exception e) {
-            logger.info("xxx", e);
+            throw new CcException(e, "邮件发送失败");
         }
-        return isSuccess;
-    }
-
-    public void setLogger(Logger logger) {
-        this.logger = logger;
     }
 
     public void setJavaMailSender(JavaMailSender javaMailSender) {

@@ -25,8 +25,8 @@
         <property name="categoryId" type="integer">
             <column name="category_id" />
         </property>
-        <property name="mailSufix" type="string">
-            <column name="mail_sufix" />
+        <property name="mailSuffix" type="string">
+            <column name="mail_suffix" />
         </property>
     </class>
 </hibernate-mapping>

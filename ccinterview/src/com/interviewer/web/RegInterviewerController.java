@@ -15,9 +15,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.interviewer.base.CcResult;
-import com.interviewer.core.MailSender;
 import com.interviewer.pojo.RegMail;
 import com.interviewer.service.RegistService;
 

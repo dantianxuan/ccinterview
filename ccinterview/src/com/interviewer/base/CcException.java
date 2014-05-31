@@ -42,8 +42,8 @@ public class CcException extends RuntimeException {
      *
      * @param cause
      */
-    public CcException(Throwable cause) {
-        super("", cause);
+    public CcException(Throwable cause, String message) {
+        super(message, cause);
     }
 
     public String getCode() {
