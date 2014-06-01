@@ -1,6 +1,6 @@
 package com.interviewer.pojo;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 /**
  * Interview entity. @author MyEclipse Persistence Tools
@@ -10,12 +10,11 @@ public class Interview extends com.interviewer.base.ToString implements java.io.
 
     // Fields    
 
-    private Integer id;
-    private Integer interviewerId;
-    private Integer seekerId;
-    private long    salary;
-    private Date    gmtCreate;
-    private Date    gmtFinish;
+    private Integer   id;
+    private Integer   seekerId;
+    private Long      salary;
+    private Timestamp gmtCreate;
+    private Timestamp gmtFinish;
 
     // Constructors
 
@@ -24,9 +23,7 @@ public class Interview extends com.interviewer.base.ToString implements java.io.
     }
 
     /** full constructor */
-    public Interview(Integer interviewerId, Integer seekerId, long salary, Date gmtCreate,
-                     Date gmtFinish) {
-        this.interviewerId = interviewerId;
+    public Interview(Integer seekerId, Long salary, Timestamp gmtCreate, Timestamp gmtFinish) {
         this.seekerId = seekerId;
         this.salary = salary;
         this.gmtCreate = gmtCreate;
@@ -43,14 +40,6 @@ public class Interview extends com.interviewer.base.ToString implements java.io.
         this.id = id;
     }
 
-    public Integer getInterviewerId() {
-        return this.interviewerId;
-    }
-
-    public void setInterviewerId(Integer interviewerId) {
-        this.interviewerId = interviewerId;
-    }
-
     public Integer getSeekerId() {
         return this.seekerId;
     }
@@ -59,27 +48,27 @@ public class Interview extends com.interviewer.base.ToString implements java.io.
         this.seekerId = seekerId;
     }
 
-    public long getSalary() {
+    public Long getSalary() {
         return this.salary;
     }
 
-    public void setSalary(long salary) {
+    public void setSalary(Long salary) {
         this.salary = salary;
     }
 
-    public Date getGmtCreate() {
+    public Timestamp getGmtCreate() {
         return this.gmtCreate;
     }
 
-    public void setGmtCreate(Date gmtCreate) {
+    public void setGmtCreate(Timestamp gmtCreate) {
         this.gmtCreate = gmtCreate;
     }
 
-    public Date getGmtFinish() {
+    public Timestamp getGmtFinish() {
         return this.gmtFinish;
     }
 
-    public void setGmtFinish(Date gmtFinish) {
+    public void setGmtFinish(Timestamp gmtFinish) {
         this.gmtFinish = gmtFinish;
     }
 

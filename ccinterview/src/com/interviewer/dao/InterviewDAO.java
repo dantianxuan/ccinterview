@@ -1,14 +1,14 @@
 package com.interviewer.dao;
 
-import com.interviewer.pojo.Interview;
 
-import java.util.Date;
 import java.util.List;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
 import org.hibernate.criterion.Example;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import com.interviewer.pojo.Interview;
 
 /**
  	* A data access object (DAO) providing persistence and search support for Interview entities.
@@ -20,11 +20,10 @@ import org.slf4j.LoggerFactory;
  */
 
 public class InterviewDAO extends BaseHibernateDAO {
-    private static final Logger log            = LoggerFactory.getLogger(InterviewDAO.class);
+    private static final Log   log       = LogFactory.getLog(InterviewDAO.class);
     //property constants
-    public static final String  INTERVIEWER_ID = "interviewerId";
-    public static final String  SEEKER_ID      = "seekerId";
-    public static final String  SALARY         = "salary";
+    public static final String SEEKER_ID = "seekerId";
+    public static final String SALARY    = "salary";
 
     public void save(Interview transientInstance) {
         log.debug("saving Interview instance");
@@ -83,10 +82,6 @@ public class InterviewDAO extends BaseHibernateDAO {
             log.error("find by property name failed", re);
             throw re;
         }
-    }
-
-    public List findByInterviewerId(Object interviewerId) {
-        return findByProperty(INTERVIEWER_ID, interviewerId);
     }
 
     public List findBySeekerId(Object seekerId) {
