@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.interviewer.base.CcConstrant;
 import com.interviewer.base.CcResult;
+import com.interviewer.dao.CompanyDAO;
 import com.interviewer.dao.InterviewerDAO;
 import com.interviewer.pojo.Interviewer;
 
@@ -30,6 +31,8 @@ public class LoginController {
 
     @Autowired
     private InterviewerDAO interviewerDAO;
+    @Autowired
+    private CompanyDAO     companyDAO;
 
     @RequestMapping(value = "/login.htm", params = "action=INTERVIEWER", method = RequestMethod.POST)
     public ModelAndView loginInterviewer(HttpServletRequest request, String account,
@@ -58,8 +61,16 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/login.htm", method = RequestMethod.GET)
-    public ModelAndView initPage(HttpServletRequest httpservletrequest) {
+    public ModelAndView initPage(HttpServletRequest request, ModelMap modelMap) {
         ModelAndView view = new ModelAndView("content/login");
+        return view;
+    }
+
+    @RequestMapping(value = "/logout.htm", method = RequestMethod.GET)
+    public ModelAndView logout(HttpServletRequest request) {
+        request.getSession().removeAttribute(CcConstrant.SESSION_NTERVIEWER_OBJECT);
+        request.getSession().removeAttribute(CcConstrant.SESSION_USER_INFO_OBJECT);
+        ModelAndView view = new ModelAndView("redirect:/index.htm");
         return view;
     }
 

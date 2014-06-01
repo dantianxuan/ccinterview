@@ -13,8 +13,8 @@
         <property name="name" type="string">
             <column name="name" />
         </property>
-        <property name="desc" type="string">
-            <column name="desc" length="2048" />
+        <property name="description" type="string">
+            <column name="description" length="2048" />
         </property>
         <property name="link" type="string">
             <column name="link" length="1024" />

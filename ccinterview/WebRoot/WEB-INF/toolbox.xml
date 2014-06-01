@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- ============================================================= @(#) toolbox.xml 
-	Copyright (c) 2005, HOBOKEN Project, All Rights Reserved. ============================================================= -->
-
 <toolbox>
 	<tool>
 		<key>date</key>

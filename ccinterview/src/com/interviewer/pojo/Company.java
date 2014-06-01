@@ -12,7 +12,7 @@ public class Company extends com.interviewer.base.ToString implements java.io.Se
 
     private Integer id;
     private String  name;
-    private String  desc;
+    private String  description;
     private String  link;
     private Date    gmtCreate;
     private Integer categoryId;
@@ -25,10 +25,10 @@ public class Company extends com.interviewer.base.ToString implements java.io.Se
     }
 
     /** full constructor */
-    public Company(String name, String desc, String link, Date gmtCreate, Integer categoryId,
-                   String mailSuffix) {
+    public Company(String name, String description, String link, Date gmtCreate,
+                   Integer categoryId, String mailSuffix) {
         this.name = name;
-        this.desc = desc;
+        this.description = description;
         this.link = link;
         this.gmtCreate = gmtCreate;
         this.categoryId = categoryId;
@@ -53,12 +53,12 @@ public class Company extends com.interviewer.base.ToString implements java.io.Se
         this.name = name;
     }
 
-    public String getDesc() {
-        return this.desc;
+    public String getDescription() {
+        return this.description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getLink() {

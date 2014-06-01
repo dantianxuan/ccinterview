@@ -28,23 +28,26 @@
 	                        <fieldset>
 	                            <div class="form-group">
 	                                <div class="col-lg-8">
-	                                    <input type="text" class="form-control" id="inputEmail" name="email"
+	                                    <input type="text" style="height:28px;width:100%;margin-top:4px;" name="email"
 	                                           placeholder="请输入您的公司邮箱">
 	                                </div>
-	                                <div class="col-lg-2">
-	                                    <select class="form-control" name="subPrefix" id="selectMailSubfix">
-	                                        <option value="@alipay.com">@alipay.com</option>
-	                                        <option value="@alibaba-inc.com">@alibaba-inc.com</option>
-	                                        <option value="@baidu.com">@baidu.com</option>
+	                                <div class="col-lg-4">
+	                                    <select class="col-lg-12" name="subPrefix" id="selectMailSubfix" style="padding:4px;">
+	                                       #foreach($company in $companys)
+	                                        <option  value="$company.mailSuffix">$company.mailSuffix</option>
+	                                       #end 
 	                                    </select>
-	                                </div>
-	                                <div class="col-lg-2">
-	                                    <button type="submit" class="btn btn-primary col-lg-11" style="float: right">
-	                                        注册信息
-	                                    </button>
+	                                    <script>
+	                                    $("#selectMailSubfix").select2({
+										    placeholder: "请选择公司邮箱后缀"
+										});
+	                                    </script>
 	                                </div>
 	                            </div>
 	                        </fieldset>
+                            <button type="submit" class="btn btn-primary col-lg-12">
+                                注册信息
+                            </button>
 	                    </form>
 	                    <script language="javascript">
 	                        $('#regEmailForm').submit(function(){

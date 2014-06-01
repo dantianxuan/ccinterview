@@ -20,6 +20,10 @@ public class CcConstrant {
     public final static String SESSION_USER_INFO_OBJECT  = "SESSION_USER_INFO_OBJECT";
 
     /** USERINFO 对象 */
-    public final static String UPLOAD_FOLDER             = "/Users/jingyu.dan/WorkBench/MyBech/GitHome/UPLOAD_FOLDER";
+    public final static String UPLOAD_FOLDER             = "UPLOAD_FOLDER";
+
+    public static String getUploadFolder() {
+        return UPLOAD_FOLDER;
+    }
 
 }

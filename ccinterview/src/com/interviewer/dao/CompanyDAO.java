@@ -2,6 +2,7 @@ package com.interviewer.dao;
 
 import com.interviewer.pojo.Company;
 
+import java.util.Date;
 import java.util.List;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
@@ -22,7 +23,7 @@ public class CompanyDAO extends BaseHibernateDAO {
     private static final Logger log         = LoggerFactory.getLogger(CompanyDAO.class);
     //property constants
     public static final String  NAME        = "name";
-    public static final String  DESC        = "desc";
+    public static final String  DESCRIPTION = "description";
     public static final String  LINK        = "link";
     public static final String  CATEGORY_ID = "categoryId";
     public static final String  MAIL_SUFFIX = "mailSuffix";
@@ -90,8 +91,8 @@ public class CompanyDAO extends BaseHibernateDAO {
         return findByProperty(NAME, name);
     }
 
-    public List findByDesc(Object desc) {
-        return findByProperty(DESC, desc);
+    public List findByDescription(Object description) {
+        return findByProperty(DESCRIPTION, description);
     }
 
     public List findByLink(Object link) {
