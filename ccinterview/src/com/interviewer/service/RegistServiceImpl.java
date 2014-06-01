@@ -6,16 +6,19 @@ package com.interviewer.service;
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 
 import com.interviewer.base.AbstractService;
+import com.interviewer.base.AssertUtil;
 import com.interviewer.base.BlankServiceCallBack;
 import com.interviewer.base.CcException;
 import com.interviewer.base.CcResult;
 import com.interviewer.core.MailSender;
+import com.interviewer.dao.InterviewerDAO;
 import com.interviewer.dao.RegMailDAO;
-import com.interviewer.pojo.Interview;
+import com.interviewer.pojo.Interviewer;
 import com.interviewer.pojo.RegMail;
 import com.interviewer.pojo.UserInfo;
 
@@ -27,10 +30,12 @@ import com.interviewer.pojo.UserInfo;
 public class RegistServiceImpl extends AbstractService implements RegistService {
 
     @Autowired
-    private RegMailDAO regMailDAO;
+    private RegMailDAO     regMailDAO;
+    @Autowired
+    private InterviewerDAO interviewerDAO;
     /** mailsender */
     @Autowired
-    private MailSender mailSender;
+    private MailSender     mailSender;
 
     @Override
     public CcResult regMail(final RegMail regMail) {
@@ -44,6 +49,20 @@ public class RegistServiceImpl extends AbstractService implements RegistService 
             }
         });
 
+    }
+
+    public CcResult regInterviewer(final Interviewer interviewer, final int regMailId) {
+        return serviceTemplate.execute(CcResult.class, new BlankServiceCallBack() {
+            @Override
+            public CcResult executeService() {
+                RegMail regMail = regMailDAO.findById(regMailId);
+                AssertUtil.notNull(regMail, "非法的注册请求");
+                AssertUtil.state(StringUtils.equals(regMail.getMail(), interviewer.getEmail()),
+                    "非法的账号，账号被篡改");
+                interviewerDAO.save(interviewer);
+                return new CcResult(interviewer);
+            }
+        });
     }
 
     @Override
@@ -60,11 +79,6 @@ public class RegistServiceImpl extends AbstractService implements RegistService 
             }
         });
 
-    }
-
-    @Override
-    public CcResult regInterviewer(Interview interview) {
-        return null;
     }
 
     @Override

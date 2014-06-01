@@ -11,7 +11,6 @@ public class Interview extends com.interviewer.base.ToString implements java.io.
     // Fields    
 
     private Integer id;
-    private Integer interviewerId;
     private Integer seekerId;
     private long    salary;
     private Date    gmtCreate;
@@ -24,9 +23,7 @@ public class Interview extends com.interviewer.base.ToString implements java.io.
     }
 
     /** full constructor */
-    public Interview(Integer interviewerId, Integer seekerId, long salary, Date gmtCreate,
-                     Date gmtFinish) {
-        this.interviewerId = interviewerId;
+    public Interview(Integer seekerId, long salary, Date gmtCreate, Date gmtFinish) {
         this.seekerId = seekerId;
         this.salary = salary;
         this.gmtCreate = gmtCreate;
@@ -41,14 +38,6 @@ public class Interview extends com.interviewer.base.ToString implements java.io.
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getInterviewerId() {
-        return this.interviewerId;
-    }
-
-    public void setInterviewerId(Integer interviewerId) {
-        this.interviewerId = interviewerId;
     }
 
     public Integer getSeekerId() {

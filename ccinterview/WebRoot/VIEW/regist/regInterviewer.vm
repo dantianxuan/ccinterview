@@ -1,73 +1,61 @@
-  <div class="row">
+
+<div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">面试官信息注册</div>
             <div class="panel-body">
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="$link.contextPath/regist/regInterviewer.htm?action=regist" method="post">
+        			#if($result && !$result.success)
+                		<div class="alert alert-dismissable alert-danger">
+                       		<a href="#" class="alert-link">$result.message</a>
+                   	 	</div>
+                    #end
                     <fieldset>
-                        <div class="form-group">
-                            <label for="inputEmail" class="col-lg-2 control-label">名称</label>
-                            <div class="col-lg-10">
-                                <input type="text" class="form-control" id="inputEmail" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPassword" class="col-lg-2 control-label">密码</label>
-                            <div class="col-lg-10">
-                                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPassword" class="col-lg-2 control-label">密码</label>
-                            <div class="col-lg-10">
-                                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPassword" class="col-lg-2 control-label">所在公司</label>
-                            <div class="col-lg-10">
-                                <input type="password" class="form-control" id="i" placeholder="Password">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="textArea" class="col-lg-2 control-label">个人简介</label>
-                            <div class="col-lg-10">
-                                <textarea class="form-control" rows="3" id="textArea"></textarea>
-                                <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPassword" class="col-lg-2 control-label">可以接受的面试方式</label>
-                            <div class="col-lg-10">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Checkbox
-                                    </label>
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">账号</label>
+                                <div class="col-lg-10">
+                                    <h5 class="text-warning">$interviewer.email</h5>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-2 control-label">是否在职</label>
-                            <div class="col-lg-10">
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                                        在校学生
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                                        非在校学生
-                                    </label>
+                            <div class="form-group">
+                                <label  class="col-lg-2 control-label">昵称</label>
+                                <div class="col-lg-8">
+                                    <input type="text" name="name" class="form-control" placeholder="请输入昵称" value="$!interviewer.name"/>
                                 </div>
                             </div>
-                        </div>
-
+                            <div class="form-group">
+                                <label for="inputPassword" class="col-lg-2 control-label">密码</label>
+                                <div class="col-lg-8">
+                                    <input type="password" class="form-control"  placeholder="请输入密码" name="passwd">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword" class="col-lg-2 control-label">重复密码</label>
+                                <div class="col-lg-8">
+                                    <input type="password" class="form-control"  placeholder="请重复输入密码" name="passwd">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword" class="col-lg-2 control-label">联系电话</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control"  placeholder="请输入手机号码" value="$!interviewer.mobile" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword" class="col-lg-2 control-label">上传头像</label>
+                                <div class="col-lg-8">
+                                    <input id="input-2" type="file" name="photo"  class="file" multiple="true" data-show-upload="false" data-show-caption="true" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="textArea" class="col-lg-2 control-label">个人简介</label>
+                                <div class="col-lg-8">
+                                    <textarea class="form-control" rows="3" id="textArea" name="desc" placeholder="请输入您的个人简介，这部分信息能够让需要帮助的人快速的找到您">$!interviewer.desc</textarea>
+                                </div>
+                            </div>
                         <div class="form-group">
                             <div class="col-lg-10 col-lg-offset-2">
-                                <button class="btn btn-default">取消注册</button>
-                                <button type="submit" class="btn btn-primary">注册信息</button>
+                                <button type="submit" class="btn btn-danger col-lg-4">注册信息</button>
                             </div>
                         </div>
                     </fieldset>
@@ -76,3 +64,5 @@
         </div>
     </div>
 </div>
+<script src="$link.contextPath/STATIC/js/fileinput.js"></script>
+<link rel="stylesheet" href="$link.contextPath/STATIC/css/fileinput.css"/>

@@ -94,4 +94,12 @@ public class CcResult extends ToString {
         return token;
     }
 
+    public Object getObject() {
+        return object;
+    }
+
+    public void setObject(Object object) {
+        this.object = object;
+    }
+
 }

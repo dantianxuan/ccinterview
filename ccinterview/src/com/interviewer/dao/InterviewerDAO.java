@@ -1,6 +1,6 @@
 package com.interviewer.dao;
 
-import com.interviewer.pojo.Interview;
+import com.interviewer.pojo.Interviewer;
 
 import java.util.Date;
 import java.util.List;
@@ -11,22 +11,27 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- 	* A data access object (DAO) providing persistence and search support for Interview entities.
+ 	* A data access object (DAO) providing persistence and search support for Interviewer entities.
  			* Transaction control of the save(), update() and delete() operations 
 		can directly support Spring container-managed transactions or they can be augmented	to handle user-managed Spring transactions. 
 		Each of these methods provides additional information for how to configure it for the desired type of transaction control. 	
-	 * @see com.interviewer.pojo.Interview
+	 * @see com.interviewer.pojo.Interviewer
   * @author MyEclipse Persistence Tools 
  */
 
-public class InterviewDAO extends BaseHibernateDAO {
-    private static final Logger log       = LoggerFactory.getLogger(InterviewDAO.class);
+public class InterviewerDAO extends BaseHibernateDAO {
+    private static final Logger log        = LoggerFactory.getLogger(InterviewerDAO.class);
     //property constants
-    public static final String  SEEKER_ID = "seekerId";
-    public static final String  SALARY    = "salary";
+    public static final String  NAME       = "name";
+    public static final String  EMAIL      = "email";
+    public static final String  MOBILE     = "mobile";
+    public static final String  DESC       = "desc";
+    public static final String  COMPANY_ID = "companyId";
+    public static final String  PHOTO      = "photo";
+    public static final String  PASSWD     = "passwd";
 
-    public void save(Interview transientInstance) {
-        log.debug("saving Interview instance");
+    public void save(Interviewer transientInstance) {
+        log.debug("saving Interviewer instance");
         try {
             getSession().save(transientInstance);
             log.debug("save successful");
@@ -36,8 +41,8 @@ public class InterviewDAO extends BaseHibernateDAO {
         }
     }
 
-    public void delete(Interview persistentInstance) {
-        log.debug("deleting Interview instance");
+    public void delete(Interviewer persistentInstance) {
+        log.debug("deleting Interviewer instance");
         try {
             getSession().delete(persistentInstance);
             log.debug("delete successful");
@@ -47,10 +52,11 @@ public class InterviewDAO extends BaseHibernateDAO {
         }
     }
 
-    public Interview findById(java.lang.Integer id) {
-        log.debug("getting Interview instance with id: " + id);
+    public Interviewer findById(java.lang.Integer id) {
+        log.debug("getting Interviewer instance with id: " + id);
         try {
-            Interview instance = (Interview) getSession().get("com.interviewer.pojo.Interview", id);
+            Interviewer instance = (Interviewer) getSession().get(
+                "com.interviewer.pojo.Interviewer", id);
             return instance;
         } catch (RuntimeException re) {
             log.error("get failed", re);
@@ -58,10 +64,10 @@ public class InterviewDAO extends BaseHibernateDAO {
         }
     }
 
-    public List findByExample(Interview instance) {
-        log.debug("finding Interview instance by example");
+    public List findByExample(Interviewer instance) {
+        log.debug("finding Interviewer instance by example");
         try {
-            List results = getSession().createCriteria("com.interviewer.pojo.Interview")
+            List results = getSession().createCriteria("com.interviewer.pojo.Interviewer")
                 .add(Example.create(instance)).list();
             log.debug("find by example successful, result size: " + results.size());
             return results;
@@ -72,9 +78,10 @@ public class InterviewDAO extends BaseHibernateDAO {
     }
 
     public List findByProperty(String propertyName, Object value) {
-        log.debug("finding Interview instance with property: " + propertyName + ", value: " + value);
+        log.debug("finding Interviewer instance with property: " + propertyName + ", value: "
+                  + value);
         try {
-            String queryString = "from Interview as model where model." + propertyName + "= ?";
+            String queryString = "from Interviewer as model where model." + propertyName + "= ?";
             Query queryObject = getSession().createQuery(queryString);
             queryObject.setParameter(0, value);
             return queryObject.list();
@@ -84,18 +91,38 @@ public class InterviewDAO extends BaseHibernateDAO {
         }
     }
 
-    public List findBySeekerId(Object seekerId) {
-        return findByProperty(SEEKER_ID, seekerId);
+    public List findByName(Object name) {
+        return findByProperty(NAME, name);
     }
 
-    public List findBySalary(Object salary) {
-        return findByProperty(SALARY, salary);
+    public List findByEmail(Object email) {
+        return findByProperty(EMAIL, email);
+    }
+
+    public List findByMobile(Object mobile) {
+        return findByProperty(MOBILE, mobile);
+    }
+
+    public List findByDesc(Object desc) {
+        return findByProperty(DESC, desc);
+    }
+
+    public List findByCompanyId(Object companyId) {
+        return findByProperty(COMPANY_ID, companyId);
+    }
+
+    public List findByPhoto(Object photo) {
+        return findByProperty(PHOTO, photo);
+    }
+
+    public List findByPasswd(Object passwd) {
+        return findByProperty(PASSWD, passwd);
     }
 
     public List findAll() {
-        log.debug("finding all Interview instances");
+        log.debug("finding all Interviewer instances");
         try {
-            String queryString = "from Interview";
+            String queryString = "from Interviewer";
             Query queryObject = getSession().createQuery(queryString);
             return queryObject.list();
         } catch (RuntimeException re) {
@@ -104,10 +131,10 @@ public class InterviewDAO extends BaseHibernateDAO {
         }
     }
 
-    public Interview merge(Interview detachedInstance) {
-        log.debug("merging Interview instance");
+    public Interviewer merge(Interviewer detachedInstance) {
+        log.debug("merging Interviewer instance");
         try {
-            Interview result = (Interview) getSession().merge(detachedInstance);
+            Interviewer result = (Interviewer) getSession().merge(detachedInstance);
             log.debug("merge successful");
             return result;
         } catch (RuntimeException re) {
@@ -116,8 +143,8 @@ public class InterviewDAO extends BaseHibernateDAO {
         }
     }
 
-    public void attachDirty(Interview instance) {
-        log.debug("attaching dirty Interview instance");
+    public void attachDirty(Interviewer instance) {
+        log.debug("attaching dirty Interviewer instance");
         try {
             getSession().saveOrUpdate(instance);
             log.debug("attach successful");
@@ -127,8 +154,8 @@ public class InterviewDAO extends BaseHibernateDAO {
         }
     }
 
-    public void attachClean(Interview instance) {
-        log.debug("attaching clean Interview instance");
+    public void attachClean(Interviewer instance) {
+        log.debug("attaching clean Interviewer instance");
         try {
             getSession().lock(instance, LockMode.NONE);
             log.debug("attach successful");

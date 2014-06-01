@@ -15,7 +15,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
+
+import com.interviewer.base.CcConstrant;
 import com.interviewer.base.CcResult;
+import com.interviewer.pojo.Interview;
+import com.interviewer.pojo.Interviewer;
 import com.interviewer.pojo.RegMail;
 import com.interviewer.query.QueryCompanyService;
 import com.interviewer.service.RegistService;
@@ -71,14 +76,36 @@ public class RegInterviewerController {
      * @throws Exception
      */
     @RequestMapping(value = "/regist/regInterviewer.htm", method = RequestMethod.GET)
-    public ModelAndView handleRequest(HttpServletRequest httpservletrequest, String token,
-                                      ModelMap modelMap) {
+    public ModelAndView initRegInterviewer(String token, ModelMap modelMap) {
         CcResult result = registService.getRegMainInfo(token);
         if (!result.isSuccess()) {
             modelMap.put("result", result);
             return new ModelAndView("regist/regInterviewerInit");
         }
         modelMap.put("result", result);
+        Interviewer interviewer = new Interviewer();
+        interviewer.setEmail(((RegMail) result.getObject()).getMail());
+        modelMap.put("interviewer", interviewer);
+        return new ModelAndView("regist/regInterviewer");
+    }
+
+    /**
+     * 公司邮箱链接注册
+     * 
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/regist/regInterviewer.htm", params = "action=regist")
+    public ModelAndView submitRegInterviewer(HttpServletRequest request, Interviewer interviewer,
+                                             int regMailId, ModelMap modelMap) {
+        CcResult result = registService.regInterviewer(interviewer, regMailId);
+        if (result.isSuccess()) {
+            request.getSession().setAttribute(CcConstrant.SESSION_NTERVIEWER_OBJECT,
+                result.getObject());
+            return new ModelAndView("redirect:/interviewer/interviewerSelf.htm");
+        }
+        modelMap.put("result", result);
+        modelMap.put("interviewer", interviewer);
         return new ModelAndView("regist/regInterviewer");
     }
 }

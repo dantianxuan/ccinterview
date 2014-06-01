@@ -10,9 +10,6 @@
             <column name="id" />
             <generator class="native" />
         </id>
-        <property name="interviewerId" type="integer">
-            <column name="interviewer_id" />
-        </property>
         <property name="seekerId" type="integer">
             <column name="seeker_Id" />
         </property>

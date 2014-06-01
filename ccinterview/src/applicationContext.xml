@@ -38,8 +38,8 @@
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="point-cut" />
 	</aop:config>
 
-
 	<bean id="regMailDAO" class="com.interviewer.dao.RegMailDAO" />
+	<bean id="interviewerDAO" class="com.interviewer.dao.InterviewerDAO" />
 	<bean id="serviceTemplate" class="com.interviewer.base.ServiceTemplateImpl" />
 
 
