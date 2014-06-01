@@ -1,161 +1,93 @@
-<div class="row">
-	<div class="col-lg-12">
-		<div class="form-group">
-			<div class="input-group">
-				<input type="text" class="form-control"
-					placeholder="请输入公司名称或行业名称进行查询"> <span
-					class="input-group-btn">
-					<button class="btn btn-default" type="button">搜索面试信息</button> </span>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="row">
-	<div class="col-lg-5">
-		<div class="carousel slide" data-ride="carousel">
-			<!-- Indicators -->
-			<ol class="carousel-indicators">
-				<li data-target="#carousel-example-generic" data-slide-to="0"
-					class="active"></li>
-				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-				<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-			</ol>
+#set($interviewerHolder=$session.getAttribute("SESSION_NTERVIEWER_OBJECT"))
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                    <div class="col-lg-4">
+                        <img src="$link.contextPath/STATIC/image/image.jpg" class="img-rounded" style="width: 82px;height: 82px;">
+                    </div>
+                    <div class="col-lg-8">
+                    <p>名称：$!interviewerHolder.name</p>
+                    <p>单位：$!interviewerHolder.company</p>
+                    <p>等级：$!interviewerHolder.level</p>
+                    </div>
+                    </div>
+                    <div class="row" >
+                       <div class="col-lg-6">
+                       <a>等级和收费<span class="badge">?</span></a>
+                       </div>
+                        <div class="col-lg-6">
+                            <a>等级和收费<span class="badge">?</span></a>
+                        </div>
+                        <div class="col-lg-6">
+                            <a>等级和收费<span class="badge">?</span></a>
+                        </div>
 
-			<!-- Wrapper for slides -->
-			<div class="carousel-inner">
-				<div class="item active">
-					<img class="img-rounded" src="$link.contextPath/STATIC/image/image.jpg">
-					<div class="carousel-caption">最顶尖企业的一线员工，为您带来最真实的面试支持和发展建议</div>
-				</div>
-			</div>
+                        <div class="col-lg-6">
+                            <a>等级和收费<span class="badge">?</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-			<!-- Controls -->
-			<a class="left carousel-control" href="#carousel-example-generic"
-				data-slide="prev"> <span>《</span> </a> <a
-				class="right carousel-control" href="#carousel-example-generic"
-				data-slide="next"> <span>》</span> </a>
-		</div>
-	</div>
-	<!-- right CONTENT
-       ================================================== -->
-	<div class="col-lg-7">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h5 class="panel-title">
-					动态信息 <span class="badge" style="float: right">更多信息</span>
-				</h5>
-			</div>
-			<div class="panel-body" style="font-size: 14px;">
-				<p style="margin: 0px">
-					<a>支付宝（中国）网络技术有限公司 </a>
-				</p>
-				<p style="margin: 0px">
-					<a>支付宝（中国）网络技术有限公司 </a>
-				</p>
-				<p style="margin: 0px">
-					<a>支付宝（中国）网络技术有限公司 </a>
-				</p>
-				<p style="margin: 0px">
-					<a>支付宝（中国）网络技术有限公司 </a>
-				</p>
-				<p style="margin: 0px">
-					<a>支付宝（中国）网络技术有限公司 </a>
-				</p>
-				<p style="margin: 0px">
-					<a>支付宝（中国）网络技术有限公司 </a>
-				</p>
-				<p style="margin: 0px">
-					<a>支付宝（中国）网络技术有限公司 </a>
-				</p>
-				<p style="margin: 0px">
-					<a>支付宝（中国）网络技术有限公司 </a>
-				</p>
-			</div>
-		</div>
+        <!-- right CONTENT
+   ================================================== -->
+        <div class="col-lg-8" >
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h5 class="panel-title">个人简介</h5>
+                </div>
+                <div class="panel-body" style="font-size: 14px;">
+                    支付宝是国内领先的独立第三方支付平台，是由前阿里巴巴集团CEO马云先生在2004年12月创立的第三方支付平台，
+                    是阿里巴巴集团的关联公司。目前，支付宝实名用户超过3亿，在电商支付、移动支付、航空支付等多个领域占有优势。
+                    宝交易是互联网发展过程中一个创举，也是电子商务发展的一个里程碑。支付宝品牌以安全、诚信赢得了用户和业界的一致好评。
+                </div>
+            </div>
 
-	</div>
+        </div>
 
-</div>
+    </div>
 
-<div class="row">
-	<div class="col-lg-12">
-		<blockquote>
-			<p>
-				<small>预约面试后，您所预约的面试官会联系您的</small>
-			</p>
-			<button type="button" class="btn btn-sm btn-danger">
-				预约面试<span style="color: red;margin-left: 12px;" class="badge">H</span>
-			</button>
-			<button type="button" class="btn btn-sm btn-warning">成为面试官</button>
-			<button type="button" class="btn btn-sm btn-warning">我要推荐</button>
-		</blockquote>
-	</div>
-</div>
+    <div class="row">
 
-<div class="row">
-	<div class="col-lg-12">
-		<ul class="nav nav-tabs" style="margin-bottom: 15px;">
-			<li class="active"><a href="#home" data-toggle="tab">IT企业</a></li>
-			<li><a href="#profile" data-toggle="tab">金融</a></li>
-			<li><a>建筑/土木</a></li>
-			<li><a>营销设计</a></li>
-			<li><a>建筑/土木</a></li>
-			<li><a>营销设计</a></li>
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">面试记录</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="well well-sm clearfix">
+                            <div class="col-lg-2">
+                                <img src="$link.contextPath/STATIC/image/alipay.jpg" style="width: 80px;" class="img-rounded">
+                            </div>
+                            <div class="col-lg-10">
+                                <p class="text-warning">一条大猫，毛毛多  <span style="float: right">2013-12-23 <span class="badge">好评</span></span></p>
+                                <p class="text-warning">
+                                    <small>非常不错的面试官，几句话就能听出我的基本水平，并针对我的需要面试的岗位提出了很多有效的建议，虽然最后没有通过，但是还是感觉到了面试官的专业水准
+                                    </small>
+                                </p>
+                                <p style="float: right">
+                                    <button type="button" class="btn btn-xs btn-danger">完成面试<span style="color: red;margin-left: 12px;" class="badge">H</span></button>
+                                    <button type="button" class="btn btn-xs btn-warning">查看信息</button>
+                                    <button type="button" class="btn btn-xs btn-warning">给点建议</button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
 
-
-		</ul>
-		<div id="myTabContent" class="tab-content">
-			<div class="tab-pane fade active in" id="home">
-
-				<div style="width:32%;height:80px;margin: 0px;float: left;">
-					<a> <img src="$link.contextPath/STATIC/image/alipay.jpg"
-						style="width:60px;height: 60px; float:left" class="img-rounded">
-						<p style="padding-left: 72px;">
-							<small>支付宝中国</small><br /> <small>面试官：12人</small><br /> <small>面试人数：24人</small>
-						</p> </a>
-				</div>
-
-				<div style="width:32%;height:80px;margin: 0px;float: left;">
-					<a> <img src="$link.contextPath/STATIC/image/alipay.jpg"
-						style="width:60px;height: 60px; float:left" class="img-rounded">
-						<p style="padding-left: 72px;">
-							<small>支付宝中国</small><br /> <small>面试官：12人</small><br /> <small>面试人数：24人</small>
-						</p> </a>
-				</div>
-
-				<div style="width:32%;height:80px;margin: 0px;float: left;">
-					<a> <img src="$link.contextPath/STATIC/image/alipay.jpg"
-						style="width:60px;height: 60px; float:left" class="img-rounded">
-						<p style="padding-left: 72px;">
-							<small>支付宝中国</small><br /> <small>面试官：12人</small><br /> <small>面试人数：24人</small>
-						</p> </a>
-				</div>
-
-				<div style="width:32%;height:80px;margin: 0px;float: left;">
-					<a> <img src="$link.contextPath/STATIC/image/alipay.jpg"
-						style="width:60px;height: 60px; float:left" class="img-rounded">
-						<p style="padding-left: 72px;">
-							<small>支付宝中国</small><br /> <small>面试官：12人</small><br /> <small>面试人数：24人</small>
-						</p> </a>
-				</div>
-
-				<div style="width:32%;height:80px;margin: 0px;float: left;">
-					<a> <img src="$link.contextPath/STATIC/image/alipay.jpg"
-						style="width:60px;height: 60px; float:left" class="img-rounded">
-						<p style="padding-left: 72px;">
-							<small>支付宝中国</small><br /> <small>面试官：12人</small><br /> <small>面试人数：24人</small>
-						</p> </a>
-				</div>
-
-				<div style="width:32%;height:80px;margin: 0px;float: left;">
-					<a> <img src="$link.contextPath/STATIC/image/alipay.jpg"
-						style="width:60px;height: 60px; float:left" class="img-rounded">
-						<p style="padding-left: 72px;">
-							<small>支付宝中国</small><br /> <small>面试官：12人</small><br /> <small>面试人数：24人</small>
-						</p> </a>
-				</div>
-			</div>
-
-		</div>
-	</div>
+                    <div class="row">
+                        <ul class="pagination pagination-sm" style="float: right">
+                            <li class="disabled"><a href="#">«</a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">»</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
 </div>

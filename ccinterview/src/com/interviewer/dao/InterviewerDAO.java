@@ -1,14 +1,14 @@
 package com.interviewer.dao;
 
-import java.util.List;
+import com.interviewer.pojo.Interviewer;
 
+import java.util.Date;
+import java.util.List;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
 import org.hibernate.criterion.Example;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.interviewer.pojo.Interviewer;
 
 /**
  	* A data access object (DAO) providing persistence and search support for Interviewer entities.
@@ -20,15 +20,15 @@ import com.interviewer.pojo.Interviewer;
  */
 
 public class InterviewerDAO extends BaseHibernateDAO {
-    private static final Logger log        = LoggerFactory.getLogger(InterviewerDAO.class);
+    private static final Logger log         = LoggerFactory.getLogger(InterviewerDAO.class);
     //property constants
-    public static final String  NAME       = "name";
-    public static final String  EMAIL      = "email";
-    public static final String  MOBILE     = "mobile";
-    public static final String  DESC       = "desc";
-    public static final String  COMPANY_ID = "companyId";
-    public static final String  PHOTO      = "photo";
-    public static final String  PASSWD     = "passwd";
+    public static final String  NAME        = "name";
+    public static final String  EMAIL       = "email";
+    public static final String  MOBILE      = "mobile";
+    public static final String  DESCRIPTION = "description";
+    public static final String  COMPANY_ID  = "companyId";
+    public static final String  PHOTO       = "photo";
+    public static final String  PASSWD      = "passwd";
 
     public void save(Interviewer transientInstance) {
         log.debug("saving Interviewer instance");
@@ -103,8 +103,8 @@ public class InterviewerDAO extends BaseHibernateDAO {
         return findByProperty(MOBILE, mobile);
     }
 
-    public List findByDesc(Object desc) {
-        return findByProperty(DESC, desc);
+    public List findByDescription(Object description) {
+        return findByProperty(DESCRIPTION, description);
     }
 
     public List findByCompanyId(Object companyId) {

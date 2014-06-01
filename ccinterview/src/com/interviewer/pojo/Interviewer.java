@@ -16,7 +16,7 @@ public class Interviewer extends com.interviewer.base.ToString implements java.i
     private String  mobile;
     private Date    gmtCreate;
     private Date    gmtModified;
-    private String  desc;
+    private String  description;
     private Integer companyId;
     private String  photo;
     private String  passwd;
@@ -29,13 +29,13 @@ public class Interviewer extends com.interviewer.base.ToString implements java.i
 
     /** full constructor */
     public Interviewer(String name, String email, String mobile, Date gmtCreate, Date gmtModified,
-                       String desc, Integer companyId, String photo, String passwd) {
+                       String description, Integer companyId, String photo, String passwd) {
         this.name = name;
         this.email = email;
         this.mobile = mobile;
         this.gmtCreate = gmtCreate;
         this.gmtModified = gmtModified;
-        this.desc = desc;
+        this.description = description;
         this.companyId = companyId;
         this.photo = photo;
         this.passwd = passwd;
@@ -91,12 +91,12 @@ public class Interviewer extends com.interviewer.base.ToString implements java.i
         this.gmtModified = gmtModified;
     }
 
-    public String getDesc() {
-        return this.desc;
+    public String getDescription() {
+        return this.description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Integer getCompanyId() {
