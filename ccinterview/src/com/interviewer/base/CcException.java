@@ -64,6 +64,7 @@ public class CcException extends RuntimeException {
         this.code = code;
     }
 
+    @Override
     public String getMessage() {
         return message;
     }

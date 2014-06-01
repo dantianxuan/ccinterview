@@ -51,6 +51,7 @@ public class RegistServiceImpl extends AbstractService implements RegistService 
 
     }
 
+    @Override
     public CcResult regInterviewer(final Interviewer interviewer, final int regMailId) {
         return serviceTemplate.execute(CcResult.class, new BlankServiceCallBack() {
             @Override

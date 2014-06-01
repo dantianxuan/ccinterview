@@ -12,7 +12,6 @@ import com.interviewer.base.BlankServiceCallBack;
 import com.interviewer.base.CcResult;
 import com.interviewer.base.ServiceTemplate;
 import com.interviewer.dao.InterviewDAO;
-import com.interviewer.pojo.Company;
 import com.interviewer.pojo.Interview;
 import com.interviewer.util.LogUtil;
 
