@@ -20,11 +20,7 @@ import com.interviewer.util.LogUtil;
  * @author jinsaichen
  * @version $Id: QueryCompanyServiceImpl.java, v 0.1 2014-5-31 上午11:33:45 jinsaichen Exp $
  */
-/**
- * 
- * @author jinsaichen
- * @version $Id: QueryCompanyServiceImpl.java, v 0.1 2014-5-31 下午6:11:50 jinsaichen Exp $
- */
+
 public class QueryCompanyServiceImpl implements QueryCompanyService {
 
     /**日志 */
@@ -67,6 +63,17 @@ public class QueryCompanyServiceImpl implements QueryCompanyService {
 
     }
 
+    @Override
+    public CcResult queryCompanyByCatagoryId(final int categoryId) {
+        LogUtil.info(logger, "通过公司类目开始查询公司信息");
+        return serviceTemplate.execute(CcResult.class, new BlankServiceCallBack() {
+            @Override
+            public CcResult executeService() {
+                List<Company> companys = companyDAO.findByCategoryId(categoryId);
+                return new CcResult(companys);
+            }
+        });
+    }
     /**
      * Setter method for property <tt>companyDAO</tt>.
      * 
@@ -84,5 +91,7 @@ public class QueryCompanyServiceImpl implements QueryCompanyService {
     public void setServiceTemplate(ServiceTemplate serviceTemplate) {
         this.serviceTemplate = serviceTemplate;
     }
+
+    
 
 }

@@ -64,4 +64,22 @@ public class QueryInterviewerServiceImpl implements QueryInterviewerService {
 
     }
 
+    /**
+     * Setter method for property <tt>interviewDAO</tt>.
+     * 
+     * @param interviewDAO value to be assigned to property interviewDAO
+     */
+    public void setInterviewDAO(InterviewDAO interviewDAO) {
+        this.interviewDAO = interviewDAO;
+    }
+
+    /**
+     * Setter method for property <tt>serviceTemplate</tt>.
+     * 
+     * @param serviceTemplate value to be assigned to property serviceTemplate
+     */
+    public void setServiceTemplate(ServiceTemplate serviceTemplate) {
+        this.serviceTemplate = serviceTemplate;
+    }
+
 }

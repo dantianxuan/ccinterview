@@ -27,5 +27,12 @@ public interface QueryCompanyService {
      * @return
      */
     public CcResult searchFuzzyByName(String name);
+    
+    /***
+     * 查询所有的公司
+     *  最大limit100
+     * @return
+     */
+    public CcResult queryCompanyByCatagoryId(int categoryId);
 
 }
