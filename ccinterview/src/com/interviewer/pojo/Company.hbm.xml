@@ -6,26 +6,26 @@
 -->
 <hibernate-mapping>
     <class name="com.interviewer.pojo.Company" table="company" catalog="ccinterviewer">
-        <id name="id" type="integer">
+        <id name="id" type="java.lang.Integer">
             <column name="id" />
             <generator class="native" />
         </id>
-        <property name="name" type="string">
+        <property name="name" type="java.lang.String">
             <column name="name" />
         </property>
-        <property name="desc" type="string">
+        <property name="desc" type="java.lang.String">
             <column name="desc" length="2048" />
         </property>
-        <property name="link" type="string">
+        <property name="link" type="java.lang.String">
             <column name="link" length="1024" />
         </property>
-        <property name="gmtCreate" type="timestamp">
-            <column name="gmt_create" length="19" />
+        <property name="gmtCreate" type="java.sql.Timestamp">
+            <column name="gmt_create" length="0" />
         </property>
-        <property name="categoryId" type="integer">
+        <property name="categoryId" type="java.lang.Integer">
             <column name="category_id" />
         </property>
-        <property name="mailSuffix" type="string">
+        <property name="mailSuffix" type="java.lang.String">
             <column name="mail_suffix" />
         </property>
     </class>
