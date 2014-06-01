@@ -13,4 +13,9 @@
 		<scope>request</scope>
 		<class>org.apache.velocity.tools.view.tools.LinkTool</class>
 	</tool>
+	<tool>
+		<key>constant</key>
+		<scope>application</scope>
+		<class>com.interviewer.base.CcConstrant</class>
+	</tool>
 </toolbox>

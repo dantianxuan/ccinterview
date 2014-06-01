@@ -3,17 +3,20 @@
  */
 package com.interviewer.web;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.UUID;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.apache.commons.lang.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.interviewer.base.CcConstrant;
 import com.interviewer.base.CcResult;
@@ -90,14 +93,39 @@ public class RegInterviewerController {
      * 公司邮箱链接注册
      * 
      * @return
+     * @throws IOException 
      * @throws Exception
      */
     @RequestMapping(value = "/regist/regInterviewer.htm", params = "action=regist")
     public ModelAndView submitRegInterviewer(HttpServletRequest request, Interviewer interviewer,
+                                             @RequestParam MultipartFile[] localPhoto,
                                              String regMailId, ModelMap modelMap) {
-        interviewer.setGmtCreate(new Date());
-        interviewer.setGmtModified(new Date());
-        CcResult result = registService.regInterviewer(interviewer, NumberUtils.toInt(regMailId));
+        CcResult result = null;
+        String fileName = "";
+        try {
+            for (MultipartFile myfile : localPhoto) {
+                if (myfile.isEmpty()) {
+                    System.out.println("文件未上传");
+                } else {
+                    System.out.println("文件长度: " + myfile.getSize() + "文件类型: "
+                                       + myfile.getContentType() + "文件名称: " + myfile.getName()
+                                       + "文件原名: " + myfile.getOriginalFilename());
+                    String realPath = CcConstrant.UPLOAD_FOLDER;
+                    File parentFile = new File(realPath);
+                    if (!parentFile.exists()) {
+                        parentFile.mkdir();
+                    }
+                    fileName = UUID.randomUUID().toString() + myfile.getOriginalFilename();
+                    FileCopyUtils.copy(myfile.getBytes(), new File(realPath, fileName));
+                }
+            }
+            interviewer.setGmtCreate(new Date());
+            interviewer.setPhoto(fileName);
+            interviewer.setGmtModified(new Date());
+            result = registService.regInterviewer(interviewer, NumberUtils.toInt(regMailId));
+        } catch (Exception e) {
+            result = new CcResult("文件上传失败");
+        }
         if (result.isSuccess()) {
             request.getSession().setAttribute(CcConstrant.SESSION_NTERVIEWER_OBJECT,
                 result.getObject());

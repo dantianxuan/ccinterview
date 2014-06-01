@@ -47,14 +47,24 @@ public class RegistServiceImpl extends AbstractService implements RegistService 
         return serviceTemplate.execute(CcResult.class, new BlankServiceCallBack() {
             @Override
             public CcResult executeService() {
-                mailSender.sendMail(regMail);
-                regMailDAO.save(regMail);
+                @SuppressWarnings("unchecked")
+                List<RegMail> regMails = regMailDAO.findByMail(regMail.getMail());
+                if (CollectionUtils.isEmpty(regMails)) {
+                    regMailDAO.save(regMail);
+                    mailSender.sendMail(regMail);
+                } else {
+                    mailSender.sendMail(regMails.get(0));
+                }
                 return new CcResult(regMail);
             }
         });
 
     }
 
+    /**
+     * 注册成为一个面试官
+     * @see com.interviewer.service.RegistService#regInterviewer(com.interviewer.pojo.Interviewer, int)
+     */
     @Override
     public CcResult regInterviewer(final Interviewer interviewer, final int regMailId) {
         return serviceTemplate.execute(CcResult.class, new BlankServiceCallBack() {
@@ -64,6 +74,10 @@ public class RegistServiceImpl extends AbstractService implements RegistService 
                 AssertUtil.notNull(regMail, "非法的注册请求");
                 AssertUtil.state(StringUtils.equals(regMail.getMail(), interviewer.getEmail()),
                     "非法的账号，账号被篡改");
+                List<Interviewer> interviewers = interviewerDAO.findByEmail(interviewer.getEmail());
+                if (!CollectionUtils.isEmpty(interviewers)) {
+                    throw new CcException("你已经注册过该用户，请直接登录");
+                }
                 interviewerDAO.save(interviewer);
                 return new CcResult(interviewer);
             }

@@ -36,6 +36,11 @@ public class CcResult extends ToString {
 
     }
 
+    public CcResult(String message) {
+        this.message = message;
+
+    }
+
     public CcResult(Object object) {
         this.success = true;
         this.message = "处理成功";

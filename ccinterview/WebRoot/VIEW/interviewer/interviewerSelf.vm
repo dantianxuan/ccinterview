@@ -5,7 +5,7 @@
                 <div class="panel-body">
                     <div class="row">
                     <div class="col-lg-4">
-                        <img src="$link.contextPath/STATIC/image/image.jpg" class="img-rounded" style="width: 82px;height: 82px;">
+                        <img src="$constant.UPLOAD_FOLDER/$!interviewerHolder.photo" class="img-rounded" style="width: 82px;height: 82px;">
                     </div>
                     <div class="col-lg-8">
                     <p>名称：$!interviewerHolder.name</p>
