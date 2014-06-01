@@ -18,6 +18,7 @@ import com.interviewer.base.CcResult;
 import com.interviewer.core.MailSender;
 import com.interviewer.dao.InterviewerDAO;
 import com.interviewer.dao.RegMailDAO;
+import com.interviewer.dao.UserInfoDAO;
 import com.interviewer.pojo.Interviewer;
 import com.interviewer.pojo.RegMail;
 import com.interviewer.pojo.UserInfo;
@@ -36,6 +37,9 @@ public class RegistServiceImpl extends AbstractService implements RegistService 
     /** mailsender */
     @Autowired
     private MailSender     mailSender;
+
+    @Autowired
+    private UserInfoDAO    userInfoDAO;
 
     @Override
     public CcResult regMail(final RegMail regMail) {
@@ -83,8 +87,15 @@ public class RegistServiceImpl extends AbstractService implements RegistService 
     }
 
     @Override
-    public CcResult regUserInfo(UserInfo userInfo) {
-        return null;
+    public CcResult regUserInfo(final UserInfo userInfo) {
+
+        return serviceTemplate.execute(CcResult.class, new BlankServiceCallBack() {
+            @Override
+            public CcResult executeService() {
+                userInfoDAO.save(userInfo);
+                return new CcResult();
+            }
+        });
     }
 
 }

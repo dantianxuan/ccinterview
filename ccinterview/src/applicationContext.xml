@@ -41,9 +41,8 @@
 	<bean id="regMailDAO" class="com.interviewer.dao.RegMailDAO" />
 	<bean id="interviewerDAO" class="com.interviewer.dao.InterviewerDAO" />
 	<bean id="companyDAO" class="com.interviewer.dao.CompanyDAO" />
+	<bean id="userInfoDAO" class="com.interviewer.dao.UserInfoDAO" />
 	<bean id="serviceTemplate" class="com.interviewer.base.ServiceTemplateImpl" />
-
-
 	<bean id="registService" class="com.interviewer.service.RegistServiceImpl"></bean>
 
 	<bean id="mailSender" class="com.interviewer.core.MailSenderImpl"></bean>

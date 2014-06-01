@@ -7,6 +7,7 @@ package com.interviewer.query;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.interviewer.base.BlankServiceCallBack;
 import com.interviewer.base.CcResult;
@@ -26,9 +27,11 @@ public class QueryInterviewerServiceImpl implements QueryInterviewerService {
     private static final Logger logger = Logger.getLogger(QueryCompanyServiceImpl.class);
 
     /**公司数据库操作类 */
+    @Autowired
     private InterviewDAO          interviewDAO;
 
     /**事物模板类 */
+    @Autowired
     private ServiceTemplate     serviceTemplate;
 
     /** 
@@ -55,6 +58,13 @@ public class QueryInterviewerServiceImpl implements QueryInterviewerService {
         
         LogUtil.info(logger, "开始查询所有面试人员信息");
         return serviceTemplate.execute(CcResult.class, new BlankServiceCallBack() {
+            
+            public void check() {
+                if (id == 0) {
+                    LogUtil.warn(logger, "入参为空id=" + id);
+                }
+            }
+            
             @Override
             public CcResult executeService() {
                 Interview interview = interviewDAO.findById(id);
@@ -62,24 +72,6 @@ public class QueryInterviewerServiceImpl implements QueryInterviewerService {
             }
         });
 
-    }
-
-    /**
-     * Setter method for property <tt>interviewDAO</tt>.
-     * 
-     * @param interviewDAO value to be assigned to property interviewDAO
-     */
-    public void setInterviewDAO(InterviewDAO interviewDAO) {
-        this.interviewDAO = interviewDAO;
-    }
-
-    /**
-     * Setter method for property <tt>serviceTemplate</tt>.
-     * 
-     * @param serviceTemplate value to be assigned to property serviceTemplate
-     */
-    public void setServiceTemplate(ServiceTemplate serviceTemplate) {
-        this.serviceTemplate = serviceTemplate;
     }
 
 }

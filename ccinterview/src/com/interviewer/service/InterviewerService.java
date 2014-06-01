@@ -5,28 +5,30 @@
 package com.interviewer.service;
 
 import com.interviewer.base.CcResult;
+import com.interviewer.pojo.Interviewer;
 import com.interviewer.pojo.UserInfo;
 
 /**
- * 用户操作服务
+ * 
  * @author jingyu.dan
- * @version $Id: JobSeekerService.java, v 0.1 2014-5-28 下午8:35:57 jingyu.dan Exp $
+ * @version $Id: InterviwerService.java, v 0.1 2014-5-28 下午8:36:13 jingyu.dan Exp $
  */
-public interface UserInfoService {
+public interface InterviewerService {
+    
     /**
-     * 修改用户信息
+     * 修改面试官信息
      * 
      * @param userInfo
      * @return
      */
-    public CcResult updateUserInfo(UserInfo userInfo);
+    public CcResult updateInterviewer(Interviewer interviewer);
     
     /**
-     * 删除用户信息
+     * 删除面试官信息
      * 
      * @param id
      * @return
      */
-    public CcResult deleteUserInfo(int id);
+    public CcResult deleteInterviewer(int id);
 
 }

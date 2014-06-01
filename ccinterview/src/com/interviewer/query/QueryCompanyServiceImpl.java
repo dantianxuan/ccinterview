@@ -6,7 +6,9 @@ package com.interviewer.query;
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.interviewer.base.BlankServiceCallBack;
 import com.interviewer.base.CcResult;
@@ -27,9 +29,11 @@ public class QueryCompanyServiceImpl implements QueryCompanyService {
     private static final Logger logger = Logger.getLogger(QueryCompanyServiceImpl.class);
 
     /**公司数据库操作类 */
+    @Autowired
     private CompanyDAO          companyDAO;
 
     /**事物模板类 */
+    @Autowired
     private ServiceTemplate     serviceTemplate;
 
     /** 
@@ -39,6 +43,7 @@ public class QueryCompanyServiceImpl implements QueryCompanyService {
     public CcResult queryAllCompany() {
         LogUtil.info(logger, "开始查询所有公司信息");
         return serviceTemplate.execute(CcResult.class, new BlankServiceCallBack() {
+
             @Override
             public CcResult executeService() {
                 List<Company> companys = companyDAO.findAll();
@@ -54,6 +59,13 @@ public class QueryCompanyServiceImpl implements QueryCompanyService {
     public CcResult searchFuzzyByName(final String name) {
         LogUtil.info(logger, "通过公司名开始查询公司信息");
         return serviceTemplate.execute(CcResult.class, new BlankServiceCallBack() {
+
+            public void check() {
+                if (StringUtils.isBlank(name)) {
+                    LogUtil.warn(logger, "通过公司名查询公司信息入参为空name=" + name);
+                }
+            }
+
             @Override
             public CcResult executeService() {
                 List<Company> companys = companyDAO.findByName(name);
@@ -67,6 +79,13 @@ public class QueryCompanyServiceImpl implements QueryCompanyService {
     public CcResult queryCompanyByCatagoryId(final int categoryId) {
         LogUtil.info(logger, "通过公司类目开始查询公司信息");
         return serviceTemplate.execute(CcResult.class, new BlankServiceCallBack() {
+
+            public void check() {
+                if (categoryId == 0) {
+                    LogUtil.warn(logger, "通过类目查询公司categoryId =" + categoryId);
+                }
+            }
+
             @Override
             public CcResult executeService() {
                 List<Company> companys = companyDAO.findByCategoryId(categoryId);
@@ -74,24 +93,5 @@ public class QueryCompanyServiceImpl implements QueryCompanyService {
             }
         });
     }
-    /**
-     * Setter method for property <tt>companyDAO</tt>.
-     * 
-     * @param companyDAO value to be assigned to property companyDAO
-     */
-    public void setCompanyDAO(CompanyDAO companyDAO) {
-        this.companyDAO = companyDAO;
-    }
-
-    /**
-     * Setter method for property <tt>serviceTemplate</tt>.
-     * 
-     * @param serviceTemplate value to be assigned to property serviceTemplate
-     */
-    public void setServiceTemplate(ServiceTemplate serviceTemplate) {
-        this.serviceTemplate = serviceTemplate;
-    }
-
-    
 
 }
