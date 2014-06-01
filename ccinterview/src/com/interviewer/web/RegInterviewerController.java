@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.lang.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -80,6 +82,7 @@ public class RegInterviewerController {
         Interviewer interviewer = new Interviewer();
         interviewer.setEmail(((RegMail) result.getObject()).getMail());
         modelMap.put("interviewer", interviewer);
+        modelMap.put("regMailId", ((RegMail) result.getObject()).getId());
         return new ModelAndView("regist/regInterviewer");
     }
 
@@ -91,14 +94,17 @@ public class RegInterviewerController {
      */
     @RequestMapping(value = "/regist/regInterviewer.htm", params = "action=regist")
     public ModelAndView submitRegInterviewer(HttpServletRequest request, Interviewer interviewer,
-                                             int regMailId, ModelMap modelMap) {
-        CcResult result = registService.regInterviewer(interviewer, regMailId);
+                                             String regMailId, ModelMap modelMap) {
+        interviewer.setGmtCreate(new Date());
+        interviewer.setGmtModified(new Date());
+        CcResult result = registService.regInterviewer(interviewer, NumberUtils.toInt(regMailId));
         if (result.isSuccess()) {
             request.getSession().setAttribute(CcConstrant.SESSION_NTERVIEWER_OBJECT,
                 result.getObject());
             return new ModelAndView("redirect:/interviewer/interviewerSelf.htm");
         }
         modelMap.put("result", result);
+        modelMap.put("regMailId", regMailId);
         modelMap.put("interviewer", interviewer);
         return new ModelAndView("regist/regInterviewer");
     }
