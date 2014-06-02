@@ -13,6 +13,8 @@
 		<property name="connection.url">
 			jdbc:mysql://203.195.212.130:3306/ccinterviewer
 		</property>
+		<property name="connection.useUnicode">true</property>
+		<property name="connection.characterEncoding">UTF-8</property>
 		<property name="connection.username">root</property>
 		<property name="connection.password">3145275dan</property>
 		<property name="connection.driver_class">
@@ -31,6 +33,7 @@
 		<mapping resource="com/interviewer/pojo/Prise.hbm.xml" />
 		<mapping resource="com/interviewer/pojo/Company.hbm.xml" />
 		<mapping resource="com/interviewer/pojo/Interviewer.hbm.xml" />
+		<mapping resource="com/interviewer/pojo/Article.hbm.xml" />
 
 	</session-factory>
 

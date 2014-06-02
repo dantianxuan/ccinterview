@@ -34,20 +34,26 @@
 	<!-- 那些类使用事务 -->
 	<aop:config>
 		<aop:pointcut id="point-cut"
-			expression="execution(* com.ccinterviewer.service.*.*(..))" />
+			expression="execution(* com.ccinterviewer.dao.*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="point-cut" />
 	</aop:config>
 
 	<bean id="regMailDAO" class="com.interviewer.dao.RegMailDAO" />
 	<bean id="interviewerDAO" class="com.interviewer.dao.InterviewerDAO" />
 	<bean id="companyDAO" class="com.interviewer.dao.CompanyDAO" />
+	<bean id="articeDAO" class="com.interviewer.dao.ArticleDAO" />
 	<bean id="userInfoDAO" class="com.interviewer.dao.UserInfoDAO" />
+
 	<bean id="serviceTemplate" class="com.interviewer.base.ServiceTemplateImpl" />
 	<bean id="registService" class="com.interviewer.service.RegistServiceImpl"></bean>
+	<bean id="articleService" class="com.interviewer.service.ArticleServiceImpl"></bean>
+
 
 	<bean id="mailSender" class="com.interviewer.core.MailSenderImpl"></bean>
 	<bean id="queryCompanyService" class="com.interviewer.query.QueryCompanyServiceImpl"></bean>
 	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+
+
 		<property name="host">
 			<value>smtp.163.com</value>
 		</property>

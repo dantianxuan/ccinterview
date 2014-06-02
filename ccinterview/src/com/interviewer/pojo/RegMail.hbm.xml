@@ -14,7 +14,7 @@
             <column name="mail" />
         </property>
         <property name="token" type="string">
-            <column name="token" />
+            <column name="token" unique="true" />
         </property>
         <property name="gmtCreate" type="timestamp">
             <column name="gmt_create" length="19" />

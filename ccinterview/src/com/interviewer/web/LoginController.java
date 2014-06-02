@@ -18,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.interviewer.base.CcConstrant;
 import com.interviewer.base.CcResult;
-import com.interviewer.dao.CompanyDAO;
 import com.interviewer.dao.InterviewerDAO;
 import com.interviewer.pojo.Interviewer;
 
@@ -31,8 +30,6 @@ public class LoginController {
 
     @Autowired
     private InterviewerDAO interviewerDAO;
-    @Autowired
-    private CompanyDAO     companyDAO;
 
     @RequestMapping(value = "/login.htm", params = "action=INTERVIEWER", method = RequestMethod.POST)
     public ModelAndView loginInterviewer(HttpServletRequest request, String account,

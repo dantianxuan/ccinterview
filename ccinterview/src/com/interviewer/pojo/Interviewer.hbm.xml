@@ -16,7 +16,7 @@
             </column>
         </property>
         <property name="email" type="string">
-            <column name="email">
+            <column name="email" unique="true">
                 <comment>邮箱地址</comment>
             </column>
         </property>

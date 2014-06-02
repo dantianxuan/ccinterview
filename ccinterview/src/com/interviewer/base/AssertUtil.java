@@ -89,18 +89,6 @@ public class AssertUtil {
      * 判断一个字符串不为空
      *
      * @param text 字符串
-     * @exception CcException 如果字符串为空
-     */
-    public static void notBlank(String text) {
-        if (StringUtils.isBlank(text)) {
-            throw new CcException();
-        }
-    }
-
-    /**
-     * 判断一个字符串不为空
-     *
-     * @param text 字符串
      * @param message 错误信息
      * @exception CcException 如果字符串为空
      */

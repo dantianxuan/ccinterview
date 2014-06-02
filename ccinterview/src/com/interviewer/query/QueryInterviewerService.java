@@ -13,22 +13,19 @@ import com.interviewer.base.CcResult;
  * @version $Id: QueryInterviewerService.java, v 0.1 2014-5-28 下午7:58:41 jingyu.dan Exp $
  */
 public interface QueryInterviewerService {
-    
+
     /***
      * 查询所有的面试人员
      * 
      * @return
      */
     public CcResult queryAllInterview();
-    
-    
+
     /***
      * 通过id查询面试人员
      * 
      * @return
      */
     public CcResult queryInterviewById(int id);
-    
-    
 
 }

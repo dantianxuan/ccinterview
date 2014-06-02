@@ -2,6 +2,7 @@ package com.interviewer.dao;
 
 import com.interviewer.pojo.Comment;
 
+import java.util.Date;
 import java.util.List;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
