@@ -64,7 +64,7 @@ public class ArticleServiceImpl extends AbstractService implements ArticleServic
             @Override
             public CcResult executeService() {
                 article.setGmtModified(new Date());
-                articleDAO.save(article);
+                articleDAO.update(article);
                 return new CcResult(article);
             }
         });

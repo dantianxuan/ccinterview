@@ -39,6 +39,17 @@ public class ArticleDAO extends BaseHibernateDAO {
         }
     }
 
+    public void update(Article transientInstance) {
+        log.debug("update Article instance");
+        try {
+            getSession().save(transientInstance);
+            log.debug("update successful");
+        } catch (RuntimeException re) {
+            log.error("update failed", re);
+            throw re;
+        }
+    }
+
     public void delete(Article persistentInstance) {
         log.debug("deleting Article instance");
         try {
