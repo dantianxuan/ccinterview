@@ -59,4 +59,11 @@ public class ArticleController {
         modelMap.put("result", new CcResult("非法请求"));
         return new ModelAndView("error", modelMap);
     }
+
+    @RequestMapping(value = "/articles.htm", method = RequestMethod.GET)
+    public ModelAndView articlesPage(HttpServletRequest request, ModelMap modelMap) {
+        modelMap.put("result", new CcResult(articleDAO.findAll()));
+        return new ModelAndView("content/articles");
+    }
+
 }
