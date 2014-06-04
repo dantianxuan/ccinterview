@@ -29,15 +29,13 @@
 			
 			 <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" >
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
                        <img src="$link.contextPath/STATIC/image/alipay.jpg" style="width:30px;height: 30px;margin-bottom:6px; float:left" class="img-rounded"/>
                         <div  style="float: left;margin-top:4px;font-size: 16px;">欢迎您面试官：$interviewerHolder.name</span><span class="caret"></span></div>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="$link.contextPath/jobseeker/personal.htm" data-toggle="tab">个人信息</a></li>
                         <li><a href="#dropdown1" data-toggle="tab">我的面试</a></li>
-                        <li><a href="#dropdown1" data-toggle="tab">简历修改</a></li>
-                        <li><a href="#dropdown2" data-toggle="tab">账户信息</a></li>
                         <li><a href="#dropdown2" data-toggle="tab">站内信</a></li>
                         <li><a href="$link.contextPath/logout.htm">注销</a></li>
                     </ul>
