@@ -7,6 +7,7 @@ package com.interviewer.service;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 
@@ -22,6 +23,7 @@ import com.interviewer.dao.UserInfoDAO;
 import com.interviewer.pojo.Interviewer;
 import com.interviewer.pojo.RegMail;
 import com.interviewer.pojo.UserInfo;
+import com.interviewer.util.LogUtil;
 
 /**
  * 
@@ -30,16 +32,18 @@ import com.interviewer.pojo.UserInfo;
  */
 public class RegistServiceImpl extends AbstractService implements RegistService {
 
-    @Autowired
-    private RegMailDAO     regMailDAO;
-    @Autowired
-    private InterviewerDAO interviewerDAO;
-    /** mailsender */
-    @Autowired
-    private MailSender     mailSender;
+    private static final Logger log = Logger.getLogger(RegistServiceImpl.class);
 
     @Autowired
-    private UserInfoDAO    userInfoDAO;
+    private RegMailDAO          regMailDAO;
+    @Autowired
+    private InterviewerDAO      interviewerDAO;
+    /** mailsender */
+    @Autowired
+    private MailSender          mailSender;
+
+    @Autowired
+    private UserInfoDAO         userInfoDAO;
 
     @Override
     public CcResult regMail(final RegMail regMail) {
@@ -47,13 +51,16 @@ public class RegistServiceImpl extends AbstractService implements RegistService 
         return serviceTemplate.execute(CcResult.class, new BlankServiceCallBack() {
             @Override
             public CcResult executeService() {
-                @SuppressWarnings("unchecked")
-                List<RegMail> regMails = regMailDAO.findByMail(regMail.getMail());
-                if (CollectionUtils.isEmpty(regMails)) {
+                RegMail existRegMail = regMailDAO.findByMail(regMail.getMail());
+                if (existRegMail == null) {
                     regMailDAO.save(regMail);
                     mailSender.sendMail(regMail);
                 } else {
-                    mailSender.sendMail(regMails.get(0));
+                    interviewerDAO.findByEmail(email);
+                    
+                    
+                    LogUtil.info(log, "用户已经注册过");
+                    mailSender.sendMail(existRegMail);
                 }
                 return new CcResult(regMail);
             }

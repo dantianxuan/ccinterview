@@ -1,6 +1,7 @@
 package com.interviewer.dao;
 
 import com.interviewer.pojo.Interviewer;
+import com.interviewer.pojo.RegMail;
 
 import java.util.Date;
 import java.util.List;
@@ -19,7 +20,7 @@ import org.slf4j.LoggerFactory;
   * @author MyEclipse Persistence Tools 
  */
 
-public class InterviewerDAO extends BaseHibernateDAO {
+public class InterviewerDAO extends BaseHibernateDAO<Interviewer> {
     private static final Logger log         = LoggerFactory.getLogger(InterviewerDAO.class);
     //property constants
     public static final String  NAME        = "name";
@@ -29,28 +30,6 @@ public class InterviewerDAO extends BaseHibernateDAO {
     public static final String  COMPANY_ID  = "companyId";
     public static final String  PHOTO       = "photo";
     public static final String  PASSWD      = "passwd";
-
-    public void save(Interviewer transientInstance) {
-        log.debug("saving Interviewer instance");
-        try {
-            getSession().save(transientInstance);
-            log.debug("save successful");
-        } catch (RuntimeException re) {
-            log.error("save failed", re);
-            throw re;
-        }
-    }
-
-    public void delete(Interviewer persistentInstance) {
-        log.debug("deleting Interviewer instance");
-        try {
-            getSession().delete(persistentInstance);
-            log.debug("delete successful");
-        } catch (RuntimeException re) {
-            log.error("delete failed", re);
-            throw re;
-        }
-    }
 
     public Interviewer findById(java.lang.Integer id) {
         log.debug("getting Interviewer instance with id: " + id);
@@ -64,20 +43,8 @@ public class InterviewerDAO extends BaseHibernateDAO {
         }
     }
 
-    public List findByExample(Interviewer instance) {
-        log.debug("finding Interviewer instance by example");
-        try {
-            List results = getSession().createCriteria("com.interviewer.pojo.Interviewer")
-                .add(Example.create(instance)).list();
-            log.debug("find by example successful, result size: " + results.size());
-            return results;
-        } catch (RuntimeException re) {
-            log.error("find by example failed", re);
-            throw re;
-        }
-    }
-
-    public List findByProperty(String propertyName, Object value) {
+    @SuppressWarnings("unchecked")
+    public List<Interviewer> findByProperty(String propertyName, Object value) {
         log.debug("finding Interviewer instance with property: " + propertyName + ", value: "
                   + value);
         try {
@@ -95,28 +62,9 @@ public class InterviewerDAO extends BaseHibernateDAO {
         return findByProperty(NAME, name);
     }
 
-    public List findByEmail(Object email) {
-        return findByProperty(EMAIL, email);
-    }
-
-    public List findByMobile(Object mobile) {
-        return findByProperty(MOBILE, mobile);
-    }
-
-    public List findByDescription(Object description) {
-        return findByProperty(DESCRIPTION, description);
-    }
-
-    public List findByCompanyId(Object companyId) {
-        return findByProperty(COMPANY_ID, companyId);
-    }
-
-    public List findByPhoto(Object photo) {
-        return findByProperty(PHOTO, photo);
-    }
-
-    public List findByPasswd(Object passwd) {
-        return findByProperty(PASSWD, passwd);
+    public Interviewer findByEmail(Object email) {
+        List<Interviewer> interviews = findByProperty(EMAIL, email);
+        return getLimit(interviews);
     }
 
     public List findAll() {
@@ -131,37 +79,4 @@ public class InterviewerDAO extends BaseHibernateDAO {
         }
     }
 
-    public Interviewer merge(Interviewer detachedInstance) {
-        log.debug("merging Interviewer instance");
-        try {
-            Interviewer result = (Interviewer) getSession().merge(detachedInstance);
-            log.debug("merge successful");
-            return result;
-        } catch (RuntimeException re) {
-            log.error("merge failed", re);
-            throw re;
-        }
-    }
-
-    public void attachDirty(Interviewer instance) {
-        log.debug("attaching dirty Interviewer instance");
-        try {
-            getSession().saveOrUpdate(instance);
-            log.debug("attach successful");
-        } catch (RuntimeException re) {
-            log.error("attach failed", re);
-            throw re;
-        }
-    }
-
-    public void attachClean(Interviewer instance) {
-        log.debug("attaching clean Interviewer instance");
-        try {
-            getSession().lock(instance, LockMode.NONE);
-            log.debug("attach successful");
-        } catch (RuntimeException re) {
-            log.error("attach failed", re);
-            throw re;
-        }
-    }
 }
