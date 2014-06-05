@@ -27,7 +27,7 @@
 	                    <form class="form-horizontal" action="$link.contextPath/regist/regInterviewerMail.htm" id="regEmailForm">
 	                        <fieldset>
 	                            <div class="form-group">
-	                                <div class="col-lg-8">
+	                                <div class="col-lg-6">
 	                                    <input type="text" style="height:28px;width:100%;margin-top:4px;" name="email"
 	                                           placeholder="请输入您的公司邮箱">
 	                                </div>
@@ -43,11 +43,13 @@
 										});
 	                                    </script>
 	                                </div>
+	                               <div class="col-lg-2">
+			                            <button type="submit" class="btn btn-primary col-lg-12">
+			                                注册信息
+			                            </button>	                               
+	                               </div>
 	                            </div>
 	                        </fieldset>
-                            <button type="submit" class="btn btn-primary col-lg-12">
-                                注册信息
-                            </button>
 	                    </form>
 	                    <script language="javascript">
 	                        $('#regEmailForm').submit(function(){
