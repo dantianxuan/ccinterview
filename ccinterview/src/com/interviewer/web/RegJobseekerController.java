@@ -4,7 +4,6 @@
 package com.interviewer.web;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,29 +19,14 @@ import org.springframework.web.servlet.ModelAndView;
 public class RegJobseekerController {
 
     /**
-     * 注册面试官init页面
+     * 注册一个求职者
      * 
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/jobseeker/regJobseeker.htm", method = RequestMethod.GET)
-    public ModelAndView handleRequest(HttpServletRequest httpservletrequest,
-                                      HttpServletResponse httpservletresponse, ModelMap modelMap)
-                                                                                                 throws Exception {
-        ModelAndView view = new ModelAndView("jobseeker/regJobseeker");
-        return view;
-    }
-
-    /**
-     * 注册面试官init页面
-     * 
-     * @return
-     * @throws Exception
-     */
-    @RequestMapping(value = "/jobseeker/reg_jobseeker_submit.htm", method = RequestMethod.GET)
-    public ModelAndView registMail(HttpServletRequest httpservletrequest, String mail,
-                                   ModelMap modelMap) throws Exception {
-        ModelAndView view = new ModelAndView("jobseeker/reg_jobseeker");
+    @RequestMapping(value = "/regJobseeker.htm", method = RequestMethod.GET)
+    public ModelAndView handleRequest(HttpServletRequest httpservletrequest,ModelMap modelMap){
+        ModelAndView view = new ModelAndView("content/regJobseeker");
         return view;
     }
 

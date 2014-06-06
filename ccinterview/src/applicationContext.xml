@@ -22,21 +22,6 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	<!-- 配置事务传播特性 -->
-	<tx:advice id="txAdvice" transaction-manager="transactionMgr">
-		<tx:attributes>
-			<tx:method name="add*" propagation="REQUIRED" />
-			<tx:method name="del*" propagation="REQUIRED" />
-			<tx:method name="update*" propagation="REQUIRED" />
-			<tx:method name="*" read-only="true" />
-		</tx:attributes>
-	</tx:advice>
-	<!-- 那些类使用事务 -->
-	<aop:config>
-		<aop:pointcut id="point-cut"
-			expression="execution(* com.ccinterviewer.dao.*.*(..))" />
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="point-cut" />
-	</aop:config>
 
 	<bean id="regMailDAO" class="com.interviewer.dao.RegMailDAO" />
 	<bean id="interviewerDAO" class="com.interviewer.dao.InterviewerDAO" />
@@ -50,8 +35,6 @@
 
 
 	<bean id="mailSender" class="com.interviewer.core.MailSenderImpl"></bean>
-	<bean id="queryCompanyService" class="com.interviewer.query.QueryCompanyServiceImpl"></bean>
-
 	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 
 

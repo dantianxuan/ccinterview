@@ -22,24 +22,20 @@ import com.interviewer.util.LogUtil;
  * @version $Id: QueryInterviewerServiceImpl.java, v 0.1 2014-6-1 上午8:08:27 jinsaichen Exp $
  */
 public class QueryInterviewerServiceImpl implements QueryInterviewerService {
-    
-    /**日志 */
-    private static final Logger logger = Logger.getLogger(QueryCompanyServiceImpl.class);
 
     /**公司数据库操作类 */
     @Autowired
-    private InterviewDAO          interviewDAO;
+    private InterviewDAO    interviewDAO;
 
     /**事物模板类 */
     @Autowired
-    private ServiceTemplate     serviceTemplate;
+    private ServiceTemplate serviceTemplate;
 
     /** 
      * @see com.interviewer.query.QueryInterviewerService#queryAllInterview()
      */
     @Override
     public CcResult queryAllInterview() {
-        LogUtil.info(logger, "开始查询所有面试人员信息");
         return serviceTemplate.execute(CcResult.class, new BlankServiceCallBack() {
             @Override
             public CcResult executeService() {
@@ -55,16 +51,9 @@ public class QueryInterviewerServiceImpl implements QueryInterviewerService {
      */
     @Override
     public CcResult queryInterviewById(final int id) {
-        
-        LogUtil.info(logger, "开始查询所有面试人员信息");
+
         return serviceTemplate.execute(CcResult.class, new BlankServiceCallBack() {
-            
-            public void check() {
-                if (id == 0) {
-                    LogUtil.warn(logger, "入参为空id=" + id);
-                }
-            }
-            
+
             @Override
             public CcResult executeService() {
                 Interview interview = interviewDAO.findById(id);

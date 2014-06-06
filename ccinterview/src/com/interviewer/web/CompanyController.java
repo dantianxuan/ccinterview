@@ -13,9 +13,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.interviewer.base.CcResult;
-import com.interviewer.query.QueryCompanyService;
+import com.interviewer.dao.CompanyDAO;
+import com.interviewer.pojo.Company;
 
 /**
  * 
@@ -25,14 +25,14 @@ import com.interviewer.query.QueryCompanyService;
 @Controller
 public class CompanyController extends BaseController {
     @Autowired
-    private QueryCompanyService queryCompanyService;
+    private CompanyDAO companyDAO;
 
     @RequestMapping(value = "/company.htm", method = RequestMethod.GET)
     public ModelAndView handleRequest(HttpServletRequest request, ModelMap modelMap) {
         ModelAndView view = new ModelAndView("content/company");
         int companyId = NumberUtils.toInt(request.getParameter("companyId"));
-        CcResult result = queryCompanyService.queryCompanyByCatagoryId(companyId);
-        modelMap.put("result", result);
+        Company company = companyDAO.findById(companyId);
+        modelMap.put("result", new CcResult(company));
         return view;
     }
 }

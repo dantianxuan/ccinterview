@@ -64,15 +64,44 @@
 	
 		</div>
 </div>
-<br/>
 <div class="row">
 	<div class="col-lg-12">
-		<div class="panel panel-default">
-			  <div class="panel-heading">热门公司</div>
+		<div class="panel panel-primary">
+			  <div class="panel-heading">热门公司  <span class="badge" style="float: right" >更多信息</span></a></div>
 			  <div class="panel-body">
 		 		#foreach($company in $companys)
-					<div class="col-lg-3">
-						<div style="height:80px;">
+					<div class="col-lg-4">
+						<div class="well well-sm" style="height:80px;">
+						<a href="$link.contextPath/company.htm?companyId=$company.id">
+								<img src="STATIC/image/alipay.jpg"
+								style="width:60px;height: 60px; float:left" class="img-rounded">
+								<p style="padding-left: 72px;">
+									<small>$company.name</small><br /> 
+									<small>面试官：12人</small><br /> 
+									<small>面试人数：24人</small>
+								</p>
+						</a>			
+						</div>
+					</div>
+				#end
+		 		#foreach($company in $companys)
+					<div class="col-lg-4">
+						<div class="well well-sm" style="height:80px;">
+						<a href="$link.contextPath/company.htm?companyId=$company.id">
+								<img src="STATIC/image/alipay.jpg"
+								style="width:60px;height: 60px; float:left" class="img-rounded">
+								<p style="padding-left: 72px;">
+									<small>$company.name</small><br /> 
+									<small>面试官：12人</small><br /> 
+									<small>面试人数：24人</small>
+								</p>
+						</a>			
+						</div>
+					</div>
+				#end
+		 		#foreach($company in $companys)
+					<div class="col-lg-4">
+						<div class="well well-sm" style="height:80px;">
 						<a href="$link.contextPath/company.htm?companyId=$company.id">
 								<img src="STATIC/image/alipay.jpg"
 								style="width:60px;height: 60px; float:left" class="img-rounded">

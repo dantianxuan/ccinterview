@@ -34,9 +34,15 @@ public class CompanyDAO extends BaseHibernateDAO<Company> {
         return query.list();
     }
 
-    public List<Company> findRecentList(int topx) {
+    public List<Company> findHotList(int topx) {
         String hql = "from Company order by gmtCreate desc";
         return findPageByQuery(0, topx, hql, null);
+    }
+
+    public List<Company> findAll() {
+        String queryString = "from Company";
+        Query queryObject = getSession().createQuery(queryString);
+        return queryObject.list();
     }
 
 }

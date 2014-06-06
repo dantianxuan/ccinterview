@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.interviewer.dao.ArticleDAO;
 import com.interviewer.dao.CompanyDAO;
 import com.interviewer.pojo.Article;
+import com.interviewer.pojo.Company;
 
 /**
  * @author jingyu.dan
@@ -37,7 +38,7 @@ public class IndexController {
     public ModelAndView handleRequest(HttpServletRequest httpservletrequest, ModelMap modelMap) {
 
         List<Article> articles = articleDAO.findRecentList(TOPX);
-        List companys = companyDAO.findAll();
+        List<Company> companys = companyDAO.findHotList(TOPX);
         modelMap.put("articles", articles);
         modelMap.put("companys", companys);
         ModelAndView view = new ModelAndView("content/index");
