@@ -5,9 +5,10 @@
 	            <h3 class="panel-title">面试官网简介</h3>
 	        </div>
 	        <div class="panel-body">
+	        	<p>
 	            面试官网是国内唯一一家提供虚拟面试的平台，来自知名企业的
 	            真实员工给你提供最真实的你面试指导和建议和职业规划建议，通个虚拟面试简历的优良个人面试档案会提高您的
-	
+				</p>
 	        </div>
 	    </div>
     </div>
@@ -20,7 +21,8 @@
 	        </div>
 	        <div class="panel-body">
 	            <a>
-	                <img src="$link.contextPath/STATIC/image/weibo.png" style="width:60px;height: 60px; float:left" class="img-rounded">
+	                <img src="$link.contextPath/STATIC/image/weibo.png" style="width:60px;height: 60px; float:left" 
+	                class="img-rounded">
 	                <p style="padding-left: 72px;">
 	                    <small>请关注我们的微博账号：</small>
 	                    <small>dantianxuan@qq.com</small>
@@ -28,7 +30,8 @@
 	            </a>
 	            </br>
 	            <a>
-	                <img src="$link.contextPath/STATIC/image/weixin.png" style="width:60px;height: 60px; float:left" class="img-rounded">
+	                <img src="$link.contextPath/STATIC/image/weixin.png" style="width:60px;height: 60px; float:left" 
+	                class="img-rounded">
 	                <p style="padding-left: 72px;">
 	                    <small>请关注我们的微博账号：</small>
 	                    <small>dantianxuan@qq.com</small>

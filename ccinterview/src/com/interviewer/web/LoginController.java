@@ -68,4 +68,10 @@ public class LoginController {
 		return view;
 	}
 
+	@RequestMapping(value = "/findPasswd.htm", method = RequestMethod.GET)
+	public ModelAndView findPasswd(HttpServletRequest request) {
+		ModelAndView view = new ModelAndView("content/findPasswd");
+		return view;
+	}
+
 }

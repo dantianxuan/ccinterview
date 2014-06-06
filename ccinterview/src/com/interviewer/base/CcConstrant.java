@@ -22,6 +22,9 @@ public class CcConstrant {
     /** USERINFO 对象 */
     public final static String UPLOAD_FOLDER             = "UPLOAD_FOLDER";
 
+    /**默认页大小*/
+    public final static int    DEFAULT_PAGE_SIZE         = 20;
+
     public static String getUploadFolder() {
         return UPLOAD_FOLDER;
     }

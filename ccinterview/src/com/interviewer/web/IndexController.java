@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.interviewer.dao.ArticleDAO;
 import com.interviewer.dao.CompanyDAO;
+import com.interviewer.pojo.Article;
 
 /**
  * @author jingyu.dan
@@ -25,15 +26,17 @@ import com.interviewer.dao.CompanyDAO;
 @RequestMapping("/index.htm")
 public class IndexController {
 
+    private final static int TOPX = 16;
+
     @Autowired
-    private ArticleDAO articleDAO;
+    private ArticleDAO       articleDAO;
     @Autowired
-    private CompanyDAO companyDAO;
+    private CompanyDAO       companyDAO;
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView handleRequest(HttpServletRequest httpservletrequest, ModelMap modelMap) {
-        
-        List articles = articleDAO.findAll();
+
+        List<Article> articles = articleDAO.findRecentList(TOPX);
         List companys = companyDAO.findAll();
         modelMap.put("articles", articles);
         modelMap.put("companys", companys);

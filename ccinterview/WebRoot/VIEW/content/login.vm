@@ -55,7 +55,7 @@
                     <input type="hidden" name="action" id="actionInput"/>
                 </form>
                 <hr/>
-                <a  href="#" style="margin: 12px">忘记密码</a>
+                <a  href="$link.contextPath/findPasswd.htm" style="margin: 12px">忘记密码</a>
                 <a  href="#" style="margin: 12px">快速注册用户</a>
                 <a  href="$link.contextPath/regist/regInterviewerInit.htm" style="margin: 12px">注册面试官</a>
             </div>

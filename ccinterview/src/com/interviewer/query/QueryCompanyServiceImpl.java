@@ -37,37 +37,17 @@ public class QueryCompanyServiceImpl implements QueryCompanyService {
     private ServiceTemplate     serviceTemplate;
 
     /** 
-     * @see com.interviewer.query.QueryCompanyService#queryAllCompany()
-     */
-    @Override
-    public CcResult queryAllCompany() {
-        LogUtil.info(logger, "开始查询所有公司信息");
-        return serviceTemplate.execute(CcResult.class, new BlankServiceCallBack() {
-
-            @Override
-            public CcResult executeService() {
-                List<Company> companys = companyDAO.findAll();
-                return new CcResult(companys);
-            }
-        });
-    }
-
-    /** 
      * @see com.interviewer.query.QueryCompanyService#searchFuzzyByName(java.lang.String)
      */
     @Override
     public CcResult searchFuzzyByName(final String name) {
-        LogUtil.info(logger, "通过公司名开始查询公司信息");
         return serviceTemplate.execute(CcResult.class, new BlankServiceCallBack() {
-
-            public void check() {
-                if (StringUtils.isBlank(name)) {
-                    LogUtil.warn(logger, "通过公司名查询公司信息入参为空name=" + name);
-                }
-            }
 
             @Override
             public CcResult executeService() {
+                if (StringUtils.isBlank(name)) {
+                    return new CcResult(null);
+                }
                 List<Company> companys = companyDAO.findByName(name);
                 return new CcResult(companys);
             }
@@ -76,19 +56,13 @@ public class QueryCompanyServiceImpl implements QueryCompanyService {
     }
 
     @Override
-    public CcResult queryCompanyByCatagoryId(final int categoryId) {
-        LogUtil.info(logger, "通过公司类目开始查询公司信息");
+    public CcResult queryHotCompanyBrief() {
         return serviceTemplate.execute(CcResult.class, new BlankServiceCallBack() {
-
-            public void check() {
-                if (categoryId == 0) {
-                    LogUtil.warn(logger, "通过类目查询公司categoryId =" + categoryId);
-                }
-            }
 
             @Override
             public CcResult executeService() {
-                List<Company> companys = companyDAO.findByCategoryId(categoryId);
+
+                List<Company> companys = companyDAO.findByName(name);
                 return new CcResult(companys);
             }
         });

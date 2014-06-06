@@ -51,6 +51,7 @@
 
 	<bean id="mailSender" class="com.interviewer.core.MailSenderImpl"></bean>
 	<bean id="queryCompanyService" class="com.interviewer.query.QueryCompanyServiceImpl"></bean>
+
 	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 
 

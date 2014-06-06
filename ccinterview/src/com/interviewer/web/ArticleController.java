@@ -24,10 +24,11 @@ import com.interviewer.service.ArticleService;
 @Controller
 public class ArticleController {
 
+    private final static int TOPX = 100;
     @Autowired
-    private ArticleService articleService;
+    private ArticleService   articleService;
     @Autowired
-    private ArticleDAO     articleDAO;
+    private ArticleDAO       articleDAO;
 
     @RequestMapping(value = "/articleEdit.htm")
     public ModelAndView toPage(HttpServletRequest request, ModelMap modelMap) {
@@ -62,7 +63,7 @@ public class ArticleController {
 
     @RequestMapping(value = "/articles.htm", method = RequestMethod.GET)
     public ModelAndView articlesPage(HttpServletRequest request, ModelMap modelMap) {
-        modelMap.put("result", new CcResult(articleDAO.findAll()));
+        modelMap.put("result", new CcResult(articleDAO.findRecentList(TOPX)));
         return new ModelAndView("content/articles");
     }
 
