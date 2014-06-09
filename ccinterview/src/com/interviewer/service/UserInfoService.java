@@ -20,7 +20,7 @@ public interface UserInfoService {
      * @return
      */
     public CcResult updateUserInfo(UserInfo userInfo);
-    
+
     /**
      * 删除用户信息
      * 

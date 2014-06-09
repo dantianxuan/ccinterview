@@ -21,6 +21,11 @@
 			<mvc:mapping path="/interviewer/*" />
 			<bean class="com.interviewer.filter.InterviewerAuthorityInterceptor"></bean>
 		</mvc:interceptor>
+		<!-- 多个拦截器,顺序执行 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/jobseeker/*" />
+			<bean class="com.interviewer.filter.JobSeekerAuthorityInterceptor"></bean>
+		</mvc:interceptor>
 	</mvc:interceptors>
 	<!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
 	<bean

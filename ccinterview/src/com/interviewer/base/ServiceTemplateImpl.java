@@ -98,31 +98,4 @@ public class ServiceTemplateImpl implements ServiceTemplate {
         return (T) result;
     }
 
-    public <T> T webExecute(Class<? extends CcResult> clazz, WebCallBack action) {
-        CcResult result = null;
-        try {
-            result = clazz.newInstance();
-            // 执行校验
-            action.check();
-            // 执行处理逻辑
-            result = action.executeService();
-            if (result == null || !(result instanceof CcResult)) {
-                throw new RuntimeException("逻辑错误");
-            }
-        } catch (CcException e) {
-            // 业务异常捕获
-            LogUtil.error(logger, e, "【业务异常】");
-            result.setCode(e.getCode());
-            result.setSuccess(false);
-            result.setMessage(e.getLocalizedMessage());
-            return (T) result;
-        } catch (Throwable e2) {
-            result.setSuccess(false);
-            LogUtil.error(logger, e2, "【系统异常】");
-            return (T) result;
-        }
-        LogUtil.info(logger, "【推出web处理模板】", result);
-        return (T) result;
-    }
-
 }

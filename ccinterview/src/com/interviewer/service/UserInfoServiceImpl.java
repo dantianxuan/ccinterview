@@ -34,7 +34,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     public CcResult updateUserInfo(final UserInfo userInfo) {
         LogUtil.info(logger, "开始修改用户信息");
         return serviceTemplate.execute(CcResult.class, new BlankServiceCallBack() {
-            
+
             public void check() {
                 if (userInfo == null) {
                     LogUtil.warn(logger, "入参为空userInfo=" + userInfo);

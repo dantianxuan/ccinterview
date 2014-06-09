@@ -6,8 +6,8 @@ package com.interviewer.service;
 
 import com.interviewer.base.CcResult;
 import com.interviewer.pojo.Interviewer;
+import com.interviewer.pojo.Jobseeker;
 import com.interviewer.pojo.RegMail;
-import com.interviewer.pojo.UserInfo;
 
 /**
  * 用户注册服务
@@ -36,7 +36,11 @@ public interface RegistService {
     public CcResult regInterviewer(Interviewer interviewer, int regMailId);
 
     /**
-     * 注册信息
+     * 注册一个用户
+     * 
+     * @param jobseeker
+     * @return
      */
-    public CcResult regUserInfo(UserInfo userInfo);
+    public CcResult regJobseeker(final Jobseeker jobseeker);
+
 }

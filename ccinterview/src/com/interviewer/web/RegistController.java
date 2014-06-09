@@ -27,6 +27,7 @@ import com.interviewer.base.CcConstrant;
 import com.interviewer.base.CcResult;
 import com.interviewer.dao.CompanyDAO;
 import com.interviewer.pojo.Interviewer;
+import com.interviewer.pojo.Jobseeker;
 import com.interviewer.pojo.RegMail;
 import com.interviewer.service.RegistService;
 import com.interviewer.service.UserInfoServiceImpl;
@@ -37,7 +38,7 @@ import com.interviewer.util.LogUtil;
  * 
  */
 @Controller
-public class RegInterviewerController {
+public class RegistController {
 
     /**日志 */
     private static final Logger logger = Logger.getLogger(UserInfoServiceImpl.class);
@@ -48,14 +49,10 @@ public class RegInterviewerController {
     @Autowired
     private CompanyDAO          companyDAO;
 
-    //@Autowired
-    // private QueryCompanyService queryCompanyService;
-
     /**
      * 注册面试官init页面
      * 
      * @return
-     * @throws Exception
      */
     @RequestMapping(value = "/regist/regInterviewerInit.htm", method = RequestMethod.GET)
     public ModelAndView handleRequest(HttpServletRequest httpservletrequest, ModelMap modelMap) {
@@ -68,7 +65,6 @@ public class RegInterviewerController {
      * 使用公司邮箱进行注册
      * 
      * @return
-     * @throws Exception
      */
     @RequestMapping(value = "/regist/regInterviewerMail.htm", method = RequestMethod.GET)
     public ModelAndView registMail(HttpServletRequest httpservletrequest, String email,
@@ -87,7 +83,6 @@ public class RegInterviewerController {
      * 公司邮箱链接注册
      * 
      * @return
-     * @throws Exception
      */
     @RequestMapping(value = "/regist/regInterviewer.htm", method = RequestMethod.GET)
     public ModelAndView initRegInterviewer(String token, ModelMap modelMap) {
@@ -106,10 +101,7 @@ public class RegInterviewerController {
 
     /**
      * 公司邮箱链接注册
-     * 
      * @return
-     * @throws IOException 
-     * @throws Exception
      */
     @RequestMapping(value = "/regist/regInterviewer.htm", params = "action=regist")
     public ModelAndView submitRegInterviewer(HttpServletRequest request, Interviewer interviewer,
@@ -159,5 +151,70 @@ public class RegInterviewerController {
         modelMap.put("regMailId", regMailId);
         modelMap.put("interviewer", interviewer);
         return new ModelAndView("regist/regInterviewer");
+    }
+
+    /**
+     * @return
+     */
+    @RequestMapping(value = "/regist/regJobseeker.htm", method = RequestMethod.GET)
+    public ModelAndView submitRegJobseeker(HttpServletRequest request, ModelMap modelMap) {
+        return new ModelAndView("regist/regJobseeker");
+    }
+
+    /**
+     * 公司邮箱链接注册
+     * 
+     * @return
+     * @throws IOException 
+     * @throws Exception
+     */
+    @RequestMapping(value = "/regist/regJobseeker.htm", params = "action=regist")
+    public ModelAndView submitRegJobseeker(HttpServletRequest request, Jobseeker jobseeker,
+                                           String repasswd,
+                                           @RequestParam MultipartFile[] localPhoto,
+                                           ModelMap modelMap) {
+        CcResult result = null;
+        String fileName = "";
+        try {
+            for (MultipartFile myfile : localPhoto) {
+                if (myfile.isEmpty()) {
+                    System.out.println("文件未上传");
+                } else {
+                    System.out.println("文件长度: " + myfile.getSize() + "文件类型: "
+                                       + myfile.getContentType() + "文件名称: " + myfile.getName()
+                                       + "文件原名: " + myfile.getOriginalFilename());
+                    String path = request.getSession().getServletContext().getRealPath("/")
+                                  + "UPLOAD";
+                    File parentFile = new File(path);
+                    if (!parentFile.exists()) {
+                        parentFile.mkdirs();
+                    }
+                    fileName = UUID.randomUUID().toString() + myfile.getOriginalFilename();
+                    FileCopyUtils.copy(myfile.getBytes(), new File(path, fileName));
+                }
+            }
+            jobseeker.setGmtCreate(new Date());
+            jobseeker.setPhoto(fileName);
+            jobseeker.setGmtModified(new Date());
+            if (StringUtils.equals(jobseeker.getPasswd(), repasswd)) {
+                result = registService.regJobseeker(jobseeker);
+            } else {
+                result = new CcResult("重复密码输入不一致");
+            }
+
+        } catch (Exception e) {
+            LogUtil.error(logger, e, "文件上传失败");
+            result = new CcResult("文件上传失败");
+        }
+        if (result.isSuccess()) {
+            request.getSession().setAttribute(CcConstrant.SESSION_JOBSEEKER_OBJECT,
+                result.getObject());
+            return new ModelAndView("redirect:/jobseeker/jobseekerSelf.htm?jobseekerId="
+                                    + jobseeker.getId());
+        }
+
+        modelMap.put("result", result);
+        modelMap.put("jobseeker", jobseeker);
+        return new ModelAndView("regist/regJobseeker");
     }
 }

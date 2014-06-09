@@ -16,7 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.interviewer.base.CcConstrant;
 import com.interviewer.base.CcResult;
 import com.interviewer.dao.InterviewerDAO;
+import com.interviewer.dao.JobseekerDAO;
 import com.interviewer.pojo.Interviewer;
+import com.interviewer.pojo.Jobseeker;
 
 /**
  * @author jingyu.dan
@@ -25,53 +27,70 @@ import com.interviewer.pojo.Interviewer;
 @Controller
 public class LoginController {
 
-	@Autowired
-	private InterviewerDAO interviewerDAO;
+    @Autowired
+    private InterviewerDAO interviewerDAO;
 
-	@RequestMapping(value = "/login.htm", params = "action=INTERVIEWER", method = RequestMethod.POST)
-	public ModelAndView loginInterviewer(HttpServletRequest request,
-			String account, String password, ModelMap modelMap) {
-		Interviewer interviewer = interviewerDAO.findByEmail(account);
-		if (interviewer == null) {
-			modelMap.put("result", new CcResult("用户不存在"));
-			return new ModelAndView("content/login");
-		}
-		if (!StringUtils.equals(interviewer.getPasswd(), password)) {
-			modelMap.put("result", new CcResult("密码错误"));
-			return new ModelAndView("content/login");
-		}
-		request.getSession().setAttribute(
-				CcConstrant.SESSION_NTERVIEWER_OBJECT, interviewer);
-		return new ModelAndView("redirect:/interviewer/interviewerSelf.htm");
-	}
+    @Autowired
+    private JobseekerDAO   jobseekerDAO;
 
-	@RequestMapping(value = "/login.htm", method = RequestMethod.POST)
-	public ModelAndView loginUser(HttpServletRequest request, String account,
-			String password, ModelMap modelMap) {
+    @RequestMapping(value = "/login.htm", params = "action=INTERVIEWER", method = RequestMethod.POST)
+    public ModelAndView loginInterviewer(HttpServletRequest request, String account,
+                                         String password, ModelMap modelMap) {
+        Interviewer interviewer = interviewerDAO.findByEmail(account);
+        if (interviewer == null) {
+            modelMap.put("result", new CcResult("用户不存在"));
+            return new ModelAndView("content/login");
+        }
+        if (!StringUtils.equals(interviewer.getPasswd(), password)) {
+            modelMap.put("result", new CcResult("密码错误"));
+            return new ModelAndView("content/login");
+        }
+        request.getSession().setAttribute(CcConstrant.SESSION_NTERVIEWER_OBJECT, interviewer);
+        return new ModelAndView("redirect:/interviewer/interviewerSelf.htm");
+    }
 
-		return new ModelAndView("content/login");
-	}
+    @RequestMapping(value = "/login.htm", params = "action=JOBSEEKER", method = RequestMethod.POST)
+    public ModelAndView loginJobseeker(HttpServletRequest request, String account, String password,
+                                       ModelMap modelMap) {
+        Jobseeker jobseeker = jobseekerDAO.findByEmail(account);
+        modelMap.put("account", account);
+        if (jobseeker == null) {
+            modelMap.put("result", new CcResult("用户不存在"));
+            return new ModelAndView("content/login");
+        }
+        if (!StringUtils.equals(jobseeker.getPasswd(), password)) {
+            modelMap.put("result", new CcResult("密码错误"));
+            return new ModelAndView("content/login");
+        }
+        request.getSession().setAttribute(CcConstrant.SESSION_JOBSEEKER_OBJECT, jobseeker);
+        return new ModelAndView("redirect:/jobseeker/jobseekerSelf.htm");
+    }
 
-	@RequestMapping(value = "/login.htm", method = RequestMethod.GET)
-	public ModelAndView initPage(HttpServletRequest request, ModelMap modelMap) {
-		ModelAndView view = new ModelAndView("content/login");
-		return view;
-	}
+    @RequestMapping(value = "/login.htm", method = RequestMethod.POST)
+    public ModelAndView loginUser(HttpServletRequest request, String account, String password,
+                                  ModelMap modelMap) {
 
-	@RequestMapping(value = "/logout.htm", method = RequestMethod.GET)
-	public ModelAndView logout(HttpServletRequest request) {
-		request.getSession().removeAttribute(
-				CcConstrant.SESSION_NTERVIEWER_OBJECT);
-		request.getSession().removeAttribute(
-				CcConstrant.SESSION_USER_INFO_OBJECT);
-		ModelAndView view = new ModelAndView("redirect:/index.htm");
-		return view;
-	}
+        return new ModelAndView("content/login");
+    }
 
-	@RequestMapping(value = "/findPasswd.htm", method = RequestMethod.GET)
-	public ModelAndView findPasswd(HttpServletRequest request) {
-		ModelAndView view = new ModelAndView("content/findPasswd");
-		return view;
-	}
+    @RequestMapping(value = "/login.htm", method = RequestMethod.GET)
+    public ModelAndView initPage(HttpServletRequest request, ModelMap modelMap) {
+        ModelAndView view = new ModelAndView("content/login");
+        return view;
+    }
+
+    @RequestMapping(value = "/logout.htm", method = RequestMethod.GET)
+    public ModelAndView logout(HttpServletRequest request) {
+        request.getSession().removeAttribute(CcConstrant.SESSION_NTERVIEWER_OBJECT);
+        request.getSession().removeAttribute(CcConstrant.SESSION_JOBSEEKER_OBJECT);
+        ModelAndView view = new ModelAndView("redirect:/index.htm");
+        return view;
+    }
+
+    @RequestMapping(value = "/findPasswd.htm", method = RequestMethod.GET)
+    public ModelAndView findPasswd(HttpServletRequest request) {
+        ModelAndView view = new ModelAndView("content/findPasswd");
+        return view;
+    }
 
 }

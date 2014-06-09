@@ -1,312 +1,63 @@
-#set($company=$result.object)
 <div class="row">
     <div class="col-lg-4" >
         <img src="STATIC/image/alipays.jpg" class="img-thumbnail">
     </div>
     <!-- right CONTENT================================ -->
     <div class="col-lg-8" >
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h5 class="panel-title">公司信息</h5>
-            </div>
+        <div class="panel panel-default">
             <div class="panel-body" style="font-size: 13px;">
-                支付宝是国内领先的独立第三方支付平台，是由前阿里巴巴集团CEO马云先生在2004年12月创立的第三方支付平台，
-                是阿里巴巴集团的关联公司。目前，支付宝实名用户超过3亿，在电商支付、移动支付、航空支付等多个领域占有优势。
-                宝交易是互联网发展过程中一个创举，也是电子商务发展的一个里程碑。支付宝品牌以安全、诚信赢得了用户和业界的一致好评。
-                <br/>
-                <a  style="float:right;" href="http://www.baidu.com" target="_blank">友情链接：www.alipay.net </a>
+                <p style="border-bottom:solid 1px #ddd;padding-bottom:12px;"> $!company.description</p>
+                <a  style="float:right;" href="$!company.link" target="_blank">友情链接：www.alipay.net </a>
             </div>
         </div>
     </div>
 </div>
-
 <br/>
 <div class="row">
     <div class="col-lg-12">
-        <ul class="nav nav-tabs" style="margin-bottom: 15px;">
-            <li class="active"><a href="#home" data-toggle="tab">技术</a></li>
-            <li><a href="#profile" data-toggle="tab">运维</a></li>
-            <li><a>运营服务</a></li>
-            <li><a>客满中心</a></li>
-            <li><a>余额宝金融</a></li>
-        </ul>
-        <div id="myTabContent" class="tab-content">
-            <div class="tab-pane fade active in" id="home">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="well well-sm clearfix">
-                            <div class="col-lg-2">
-                                <img src="STATIC/image/alipay.jpg" style="width: 80px;" class="img-rounded">
-                            </div>
-                            <div class="col-lg-8">
-                                <p class="text-warning">张小龙（支付宝-技术部）  2013-12-23 好评：<span class="badge">3</span></p>
-                                <p class="text-warning">
-                                    <small>支付宝架构师，精通J2EE相关技术，现在为taobao中间件换成团队核心负责人，拥有大量面试经验，特别善于在
-                                    技术层面找出面试同学的弱点，并提出有效的职业规划建议
-                                    </small>
-
-                                </p>
-                            </div>
-                            <div class="col-lg-2">
-                                <button type="button" class="btn btn-default btn-xs col-lg-10" style="margin: 2px">预约面试</button>
-                                <button type="button" class="btn btn-primary btn-xs col-lg-10" style="margin: 2px">发送站内信</button>
-                                <button type="button" class="btn btn-success btn-xs col-lg-10" style="margin: 2px">查看评价</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="well well-sm clearfix">
-                            <div class="col-lg-2">
-                                <img src="STATIC/image/alipay.jpg" style="width: 80px;" class="img-rounded">
-                            </div>
-                            <div class="col-lg-8">
-                                <p class="text-warning">张小龙（支付宝-技术部）  2013-12-23 好评：<span class="badge">3</span></p>
-                                <p class="text-warning">
-                                    <small>支付宝架构师，精通J2EE相关技术，现在为taobao中间件换成团队核心负责人，拥有大量面试经验，特别善于在
-                                        技术层面找出面试同学的弱点，并提出有效的职业规划建议
-                                    </small>
-
-                                </p>
-                            </div>
-                            <div class="col-lg-2">
-                                <button type="button" class="btn btn-default btn-xs col-lg-10" style="margin: 2px">预约面试</button>
-                                <button type="button" class="btn btn-primary btn-xs col-lg-10" style="margin: 2px">发送站内信</button>
-                                <button type="button" class="btn btn-success btn-xs col-lg-10" style="margin: 2px">查看评价</button>
-                            </div>
-                        </div>
-                    </div>                        <div class="col-lg-12">
-                    <div class="well well-sm clearfix">
-                        <div class="col-lg-2">
-                            <img src="STATIC/image/alipay.jpg" style="width: 80px;" class="img-rounded">
-                        </div>
-                        <div class="col-lg-8">
-                            <p class="text-warning">张小龙（支付宝-技术部）  2013-12-23 好评：<span class="badge">3</span></p>
-                            <p class="text-warning">
-                                <small>支付宝架构师，精通J2EE相关技术，现在为taobao中间件换成团队核心负责人，拥有大量面试经验，特别善于在
-                                    技术层面找出面试同学的弱点，并提出有效的职业规划建议
-                                </small>
-
-                            </p>
-                        </div>
-                        <div class="col-lg-2">
-                            <button type="button" class="btn btn-default btn-xs col-lg-10" style="margin: 2px">预约面试</button>
-                            <button type="button" class="btn btn-primary btn-xs col-lg-10" style="margin: 2px">发送站内信</button>
-                            <button type="button" class="btn btn-success btn-xs col-lg-10" style="margin: 2px">查看评价</button>
-                        </div>
-                    </div>
-                </div>                        <div class="col-lg-12">
-                    <div class="well well-sm clearfix">
-                        <div class="col-lg-2">
-                            <img src="STATIC/image/alipay.jpg" style="width: 80px;" class="img-rounded">
-                        </div>
-                        <div class="col-lg-8">
-                            <p class="text-warning">张小龙（支付宝-技术部）  2013-12-23 好评：<span class="badge">3</span></p>
-                            <p class="text-warning">
-                                <small>支付宝架构师，精通J2EE相关技术，现在为taobao中间件换成团队核心负责人，拥有大量面试经验，特别善于在
-                                    技术层面找出面试同学的弱点，并提出有效的职业规划建议
-                                </small>
-
-                            </p>
-                        </div>
-                        <div class="col-lg-2">
-                            <button type="button" class="btn btn-default btn-xs col-lg-10" style="margin: 2px">预约面试</button>
-                            <button type="button" class="btn btn-primary btn-xs col-lg-10" style="margin: 2px">发送站内信</button>
-                            <button type="button" class="btn btn-success btn-xs col-lg-10" style="margin: 2px">查看评价</button>
-                        </div>
-                    </div>
-                </div>                        <div class="col-lg-12">
-                    <div class="well well-sm clearfix">
-                        <div class="col-lg-2">
-                            <img src="STATIC/image/alipay.jpg" style="width: 80px;" class="img-rounded">
-                        </div>
-                        <div class="col-lg-8">
-                            <p class="text-warning">张小龙（支付宝-技术部）  2013-12-23 好评：<span class="badge">3</span></p>
-                            <p class="text-warning">
-                                <small>支付宝架构师，精通J2EE相关技术，现在为taobao中间件换成团队核心负责人，拥有大量面试经验，特别善于在
-                                    技术层面找出面试同学的弱点，并提出有效的职业规划建议
-                                </small>
-
-                            </p>
-                        </div>
-                        <div class="col-lg-2">
-                            <button type="button" class="btn btn-default btn-xs col-lg-10" style="margin: 2px">预约面试</button>
-                            <button type="button" class="btn btn-primary btn-xs col-lg-10" style="margin: 2px">发送站内信</button>
-                            <button type="button" class="btn btn-success btn-xs col-lg-10" style="margin: 2px">查看评价</button>
-                        </div>
-                    </div>
-                </div>                        <div class="col-lg-12">
-                    <div class="well well-sm clearfix">
-                        <div class="col-lg-2">
-                            <img src="STATIC/image/alipay.jpg" style="width: 80px;" class="img-rounded">
-                        </div>
-                        <div class="col-lg-8">
-                            <p class="text-warning">张小龙（支付宝-技术部）  2013-12-23 好评：<span class="badge">3</span></p>
-                            <p class="text-warning">
-                                <small>支付宝架构师，精通J2EE相关技术，现在为taobao中间件换成团队核心负责人，拥有大量面试经验，特别善于在
-                                    技术层面找出面试同学的弱点，并提出有效的职业规划建议
-                                </small>
-
-                            </p>
-                        </div>
-                        <div class="col-lg-2">
-                            <button type="button" class="btn btn-default btn-xs col-lg-10" style="margin: 2px">预约面试</button>
-                            <button type="button" class="btn btn-primary btn-xs col-lg-10" style="margin: 2px">发送站内信</button>
-                            <button type="button" class="btn btn-success btn-xs col-lg-10" style="margin: 2px">查看评价</button>
-                        </div>
-                    </div>
-                </div>                        <div class="col-lg-12">
-                    <div class="well well-sm clearfix">
-                        <div class="col-lg-2">
-                            <img src="STATIC/image/alipay.jpg" style="width: 80px;" class="img-rounded">
-                        </div>
-                        <div class="col-lg-8">
-                            <p class="text-warning">张小龙（支付宝-技术部）  2013-12-23 好评：<span class="badge">3</span></p>
-                            <p class="text-warning">
-                                <small>支付宝架构师，精通J2EE相关技术，现在为taobao中间件换成团队核心负责人，拥有大量面试经验，特别善于在
-                                    技术层面找出面试同学的弱点，并提出有效的职业规划建议
-                                </small>
-
-                            </p>
-                        </div>
-                        <div class="col-lg-2">
-                            <button type="button" class="btn btn-default btn-xs col-lg-10" style="margin: 2px">预约面试</button>
-                            <button type="button" class="btn btn-primary btn-xs col-lg-10" style="margin: 2px">发送站内信</button>
-                            <button type="button" class="btn btn-success btn-xs col-lg-10" style="margin: 2px">查看评价</button>
-                        </div>
-                    </div>
-                </div>                        <div class="col-lg-12">
-                    <div class="well well-sm clearfix">
-                        <div class="col-lg-2">
-                            <img src="STATIC/image/alipay.jpg" style="width: 80px;" class="img-rounded">
-                        </div>
-                        <div class="col-lg-8">
-                            <p class="text-warning">张小龙（支付宝-技术部）  2013-12-23 好评：<span class="badge">3</span></p>
-                            <p class="text-warning">
-                                <small>支付宝架构师，精通J2EE相关技术，现在为taobao中间件换成团队核心负责人，拥有大量面试经验，特别善于在
-                                    技术层面找出面试同学的弱点，并提出有效的职业规划建议
-                                </small>
-
-                            </p>
-                        </div>
-                        <div class="col-lg-2">
-                            <button type="button" class="btn btn-default btn-xs col-lg-10" style="margin: 2px">预约面试</button>
-                            <button type="button" class="btn btn-primary btn-xs col-lg-10" style="margin: 2px">发送站内信</button>
-                            <button type="button" class="btn btn-success btn-xs col-lg-10" style="margin: 2px">查看评价</button>
-                        </div>
-                    </div>
-                </div>                        <div class="col-lg-12">
-                    <div class="well well-sm clearfix">
-                        <div class="col-lg-2">
-                            <img src="STATIC/image/alipay.jpg" style="width: 80px;" class="img-rounded">
-                        </div>
-                        <div class="col-lg-8">
-                            <p class="text-warning">张小龙（支付宝-技术部）  2013-12-23 好评：<span class="badge">3</span></p>
-                            <p class="text-warning">
-                                <small>支付宝架构师，精通J2EE相关技术，现在为taobao中间件换成团队核心负责人，拥有大量面试经验，特别善于在
-                                    技术层面找出面试同学的弱点，并提出有效的职业规划建议
-                                </small>
-
-                            </p>
-                        </div>
-                        <div class="col-lg-2">
-                            <button type="button" class="btn btn-default btn-xs col-lg-10" style="margin: 2px">预约面试</button>
-                            <button type="button" class="btn btn-primary btn-xs col-lg-10" style="margin: 2px">发送站内信</button>
-                            <button type="button" class="btn btn-success btn-xs col-lg-10" style="margin: 2px">查看评价</button>
-                        </div>
-                    </div>
-                </div>                        <div class="col-lg-12">
-                        <div class="well well-sm clearfix">
-                            <div class="col-lg-2">
-                                <img src="STATIC/image/alipay.jpg" style="width: 80px;" class="img-rounded">
-                            </div>
-                            <div class="col-lg-8">
-                                <p class="text-warning">张小龙（支付宝-技术部）  2013-12-23 好评：<span class="badge">3</span></p>
-                                <p class="text-warning">
-                                    <small>支付宝架构师，精通J2EE相关技术，现在为taobao中间件换成团队核心负责人，拥有大量面试经验，特别善于在
-                                        技术层面找出面试同学的弱点，并提出有效的职业规划建议
-                                    </small>
-
-                                </p>
-                            </div>
-                            <div class="col-lg-2">
-                                <button type="button" class="btn btn-default btn-xs col-lg-10" style="margin: 2px">预约面试</button>
-                                <button type="button" class="btn btn-primary btn-xs col-lg-10" style="margin: 2px">发送站内信</button>
-                                <button type="button" class="btn btn-success btn-xs col-lg-10" style="margin: 2px">查看评价</button>
-                            </div>
-                        </div>
-                    </div>                        <div class="col-lg-12">
-                        <div class="well well-sm clearfix">
-                            <div class="col-lg-2">
-                                <img src="STATIC/image/alipay.jpg" style="width: 80px;" class="img-rounded">
-                            </div>
-                            <div class="col-lg-8">
-                                <p class="text-warning">张小龙（支付宝-技术部）  2013-12-23 好评：<span class="badge">3</span></p>
-                                <p class="text-warning">
-                                    <small>支付宝架构师，精通J2EE相关技术，现在为taobao中间件换成团队核心负责人，拥有大量面试经验，特别善于在
-                                        技术层面找出面试同学的弱点，并提出有效的职业规划建议
-                                    </small>
-
-                                </p>
-                            </div>
-                            <div class="col-lg-2">
-                                <button type="button" class="btn btn-default btn-xs col-lg-10" style="margin: 2px">预约面试</button>
-                                <button type="button" class="btn btn-primary btn-xs col-lg-10" style="margin: 2px">发送站内信</button>
-                                <button type="button" class="btn btn-success btn-xs col-lg-10" style="margin: 2px">查看评价</button>
-                            </div>
-                        </div>
-                    </div>                        <div class="col-lg-12">
-                        <div class="well well-sm clearfix">
-                            <div class="col-lg-2">
-                                <img src="STATIC/image/alipay.jpg" style="width: 80px;" class="img-rounded">
-                            </div>
-                            <div class="col-lg-8">
-                                <p class="text-warning">张小龙（支付宝-技术部）  2013-12-23 好评：<span class="badge">3</span></p>
-                                <p class="text-warning">
-                                    <small>支付宝架构师，精通J2EE相关技术，现在为taobao中间件换成团队核心负责人，拥有大量面试经验，特别善于在
-                                        技术层面找出面试同学的弱点，并提出有效的职业规划建议
-                                    </small>
-
-                                </p>
-                            </div>
-                            <div class="col-lg-2">
-                                <button type="button" class="btn btn-default btn-xs col-lg-10" style="margin: 2px">预约面试</button>
-                                <button type="button" class="btn btn-primary btn-xs col-lg-10" style="margin: 2px">发送站内信</button>
-                                <button type="button" class="btn btn-success btn-xs col-lg-10" style="margin: 2px">查看评价</button>
-                            </div>
-                        </div>
-                    </div>                        <div class="col-lg-12">
-                        <div class="well well-sm clearfix">
-                            <div class="col-lg-2">
-                                <img src="STATIC/image/alipay.jpg" style="width: 80px;" class="img-rounded">
-                            </div>
-                            <div class="col-lg-8">
-                                <p class="text-warning">张小龙（支付宝-技术部）  2013-12-23 好评：<span class="badge">3</span></p>
-                                <p class="text-warning">
-                                    <small>支付宝架构师，精通J2EE相关技术，现在为taobao中间件换成团队核心负责人，拥有大量面试经验，特别善于在
-                                        技术层面找出面试同学的弱点，并提出有效的职业规划建议
-                                    </small>
-
-                                </p>
-                            </div>
-                            <div class="col-lg-2">
-                                <button type="button" class="btn btn-default btn-xs col-lg-10" style="margin: 2px">预约面试</button>
-                                <button type="button" class="btn btn-primary btn-xs col-lg-10" style="margin: 2px">发送站内信</button>
-                                <button type="button" class="btn btn-success btn-xs col-lg-10" style="margin: 2px">查看评价</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <ul class="pagination pagination-sm" style="float: right">
-                    <li class="disabled"><a href="#">«</a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">»</a></li>
-                </ul>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+               	面试人
             </div>
-
+            <div class="panel-body">
+              	#if(!$interviewers)
+            		<p>该公司无可咨询人员</p>
+            	#else
+	            	#foreach($interviwer in $interviewers)
+		            	 <div class="row">
+			                    <div class="col-lg-12">
+			                        <div class="well well-sm clearfix">
+			                            <div class="col-lg-2">
+			                                <img src="STATIC/image/alipay.jpg" style="width: 80px;" class="img-rounded"/><br/>
+			                            </div>
+			                            <div class="col-lg-10">
+			                                <p class="text-warning">
+			                                	<small><a href="$link.contextPath/interviewerInfo.htm?interviewerId=$interviwer.id">
+			                                	张小龙（支付宝-技术部）  2013-12-23 好评：<span class="badge">3</span></a></small></p>
+			                                <p >
+			                                    <small>$!interviwer.description
+			                                    </small>
+			                                </p>
+			                            </div>
+			                        </div>
+			                    </div>
+		                </div>
+	            	#end
+ 					<div class="row">
+	                    <ul class="pagination pagination-sm" style="float: right">
+	                        <li class="disabled"><a href="#">«</a></li>
+	                        <li class="active"><a href="#">1</a></li>
+	                        <li><a href="#">2</a></li>
+	                        <li><a href="#">3</a></li>
+	                        <li><a href="#">4</a></li>
+	                        <li><a href="#">5</a></li>
+	                        <li><a href="#">»</a></li>
+	                    </ul>
+                	</div>	            	
+            	#end
+            </div>
         </div>
     </div>
 </div>
+
+

@@ -1,15 +1,12 @@
 package com.interviewer.dao;
 
-import com.interviewer.pojo.Interviewer;
-import com.interviewer.pojo.RegMail;
-
-import java.util.Date;
 import java.util.List;
-import org.hibernate.LockMode;
+
 import org.hibernate.Query;
-import org.hibernate.criterion.Example;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.interviewer.pojo.Interviewer;
 
 /**
  	* A data access object (DAO) providing persistence and search support for Interviewer entities.
@@ -45,38 +42,21 @@ public class InterviewerDAO extends BaseHibernateDAO<Interviewer> {
 
     @SuppressWarnings("unchecked")
     public List<Interviewer> findByProperty(String propertyName, Object value) {
-        log.debug("finding Interviewer instance with property: " + propertyName + ", value: "
-                  + value);
-        try {
-            String queryString = "from Interviewer as model where model." + propertyName + "= ?";
-            Query queryObject = getSession().createQuery(queryString);
-            queryObject.setParameter(0, value);
-            return queryObject.list();
-        } catch (RuntimeException re) {
-            log.error("find by property name failed", re);
-            throw re;
-        }
+        String queryString = "from Interviewer as model where model." + propertyName + "= ?";
+        Query queryObject = getSession().createQuery(queryString);
+        queryObject.setParameter(0, value);
+        return queryObject.list();
+
     }
 
-    public List findByName(Object name) {
-        return findByProperty(NAME, name);
+    public List<Interviewer> findByCompanyId(int companyId) {
+        return findByProperty(COMPANY_ID, companyId);
+
     }
 
     public Interviewer findByEmail(Object email) {
         List<Interviewer> interviews = findByProperty(EMAIL, email);
         return getLimit(interviews);
-    }
-
-    public List findAll() {
-        log.debug("finding all Interviewer instances");
-        try {
-            String queryString = "from Interviewer";
-            Query queryObject = getSession().createQuery(queryString);
-            return queryObject.list();
-        } catch (RuntimeException re) {
-            log.error("find all failed", re);
-            throw re;
-        }
     }
 
 }

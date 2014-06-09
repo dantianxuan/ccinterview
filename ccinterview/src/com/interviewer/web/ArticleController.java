@@ -30,7 +30,7 @@ public class ArticleController {
     @Autowired
     private ArticleDAO       articleDAO;
 
-    @RequestMapping(value = "/articleEdit.htm")
+    @RequestMapping(value = "/articleEdit.htm", method = RequestMethod.GET)
     public ModelAndView toPage(HttpServletRequest request, ModelMap modelMap) {
         String articleId = request.getParameter("articleId");
         if (!StringUtils.isBlank(articleId)) {
@@ -40,7 +40,7 @@ public class ArticleController {
         return view;
     }
 
-    @RequestMapping(value = "/articleSave.htm", method = RequestMethod.POST)
+    @RequestMapping(value = "/articleEdit.htm", params = "action=save", method = RequestMethod.POST)
     public ModelAndView saveArtcile(HttpServletRequest request, Article article, ModelMap modelMap) {
         if (article.getId() != null && article.getId() > 0) {
             modelMap.put("result", articleService.updateArticle(article));

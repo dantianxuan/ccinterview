@@ -17,7 +17,7 @@ public class CcConstrant {
     public final static String SESSION_NTERVIEWER_OBJECT = "SESSION_NTERVIEWER_OBJECT";
 
     /** USERINFO 对象 */
-    public final static String SESSION_USER_INFO_OBJECT  = "SESSION_USER_INFO_OBJECT";
+    public final static String SESSION_JOBSEEKER_OBJECT  = "SESSION_JOBSEEKER_OBJECT";
 
     /** USERINFO 对象 */
     public final static String UPLOAD_FOLDER             = "UPLOAD_FOLDER";

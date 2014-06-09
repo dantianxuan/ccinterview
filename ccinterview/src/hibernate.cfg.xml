@@ -32,6 +32,7 @@
 		<mapping resource="com/interviewer/pojo/Company.hbm.xml" />
 		<mapping resource="com/interviewer/pojo/Interviewer.hbm.xml" />
 		<mapping resource="com/interviewer/pojo/Article.hbm.xml" />
+		<mapping resource="com/interviewer/pojo/Jobseeker.hbm.xml" />
 
 	</session-factory>
 

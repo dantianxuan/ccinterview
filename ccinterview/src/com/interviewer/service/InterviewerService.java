@@ -14,7 +14,7 @@ import com.interviewer.pojo.UserInfo;
  * @version $Id: InterviwerService.java, v 0.1 2014-5-28 下午8:36:13 jingyu.dan Exp $
  */
 public interface InterviewerService {
-    
+
     /**
      * 修改面试官信息
      * 
@@ -22,7 +22,7 @@ public interface InterviewerService {
      * @return
      */
     public CcResult updateInterviewer(Interviewer interviewer);
-    
+
     /**
      * 删除面试官信息
      * 

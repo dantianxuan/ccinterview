@@ -19,9 +19,9 @@
         <div class="panel panel-default">
             <div class="panel-heading">
 				<ul class="nav nav-pills">
-				  <li class="active"><a href="#">预约记录<span class="badge">42</span></a></li>
-				  <li><a href="#">进行中 <span class="badge"></span></a></li>
-				  <li><a href="#">已完成<span class="badge">3</span></a></li>
+				  <li class="active"><a href="#">全部消息<span class="badge">42</span></a></li>
+				  <li><a href="#">已读<span class="badge"></span></a></li>
+				  <li><a href="#">未读取<span class="badge">3</span></a></li>
 				</ul>
             </div>
             <div class="panel-body">
