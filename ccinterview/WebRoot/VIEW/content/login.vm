@@ -18,7 +18,7 @@
  <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
-            <div class="panel-heading">欢迎登陆</div>
+            <div class="panel-heading">请登录</div>
             <div class="panel-body">
             	#if($result && !$result.success)
                 <div class="alert alert-dismissable alert-danger">

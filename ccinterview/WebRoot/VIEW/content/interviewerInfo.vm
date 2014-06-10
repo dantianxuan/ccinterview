@@ -7,14 +7,14 @@
 	                        <img src="$link.contextPath/UPLOAD/$!interviewerHolder.photo" class="img-rounded" style="width: 82px;height: 82px;">
 	                    </div>
 	                    <div class="col-lg-5">
-		                    <p><span class=" text-right col-lg-4">名称:</span>$!interviewer.name</p>
-		                    <p><span class=" text-right col-lg-4">邮箱:</span>$!company.name</p>
-		                    <p><span class=" text-right col-lg-4">公司:</span>$!interviewer.name</p>
+		                    <p class="col-lg-12"><span class=" text-right col-lg-4">名称:</span>$!interviewer.name</p>
+		                    <p class="col-lg-12"><span class=" text-right col-lg-4">邮箱:</span>$!company.name</p>
+		                    <p class="col-lg-12"><span class=" text-right col-lg-4">公司:</span>$!interviewer.name</p>
 	                    </div>
 	                    <div class="col-lg-5">
-		                    <p><span class=" text-right col-lg-4">手机:</span>$!interviewer.name</p>
-		                    <p><span class=" text-right col-lg-4">等级:</span>$!company.name</p>
-		                    <p><span class=" text-right col-lg-4">认证状态:</span>$!interviewer.name</p>		                    
+		                    <p class="col-lg-12"><span class=" text-right col-lg-4">手机:</span>$!interviewer.name</p><br/>
+		                    <p class="col-lg-12"><span class=" text-right col-lg-4">等级:</span>$!company.name</p><br/>
+		                    <p class="col-lg-12"><span class=" text-right col-lg-4">认证状态:</span>$!interviewer.name</p>		                    
 	                    </div>	
                     </div>
                     <div class="row">
@@ -31,10 +31,13 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-						<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-star"></span>  咨询预约</button>
-						<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span>  毛遂自荐</button>
+						<button type="button" class="btn btn-primary" 
+							onclick="window.location.href='$link.contextPath/jobseeker/createInterview.htm?interviewerId=$!interviewer.id'"><span class="glyphicon glyphicon-star">
+							</span>  咨询预约
+						</button>
+						<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-send"></span>  毛遂自荐</button>
 						<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-star"></span>  优选人才</button>
-						<button type="button" class="btn btn-info"> <span class="glyphicon glyphicon-paperclip"></span>发送站内信</button>
+						<button type="button" class="btn btn-warning"> <span class="glyphicon glyphicon-paperclip"></span>发送站内信</button>
            	 	</div>
         	</div>
         </div>
