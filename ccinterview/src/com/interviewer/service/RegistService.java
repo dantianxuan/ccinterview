@@ -19,12 +19,13 @@ public interface RegistService {
 
     /**
      * 注册信息
+     * @param regMail
+     * @return
      */
     public CcResult regMail(RegMail regMail);
 
     /***
      * 通个token获取注册信息
-     * 
      * @param token
      * @return
      */
@@ -32,12 +33,14 @@ public interface RegistService {
 
     /**
      * 注册信息
+     * @param interviewer
+     * @param regMailId
+     * @return
      */
     public CcResult regInterviewer(Interviewer interviewer, int regMailId);
 
     /**
      * 注册一个用户
-     * 
      * @param jobseeker
      * @return
      */

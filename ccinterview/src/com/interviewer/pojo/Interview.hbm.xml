@@ -8,19 +8,28 @@
     <class name="com.interviewer.pojo.Interview" table="interview" catalog="ccinterviewer">
         <id name="id" type="integer">
             <column name="id" />
-            <generator class="native" />
+            <generator class="identity" />
         </id>
-        <property name="seekerId" type="integer">
-            <column name="seeker_Id" />
+        <property name="jobseekerId" type="integer">
+            <column name="jobseeker_Id" />
         </property>
-        <property name="salary" type="long">
-            <column name="salary" precision="10" scale="0" />
+        <property name="interviewId" type="integer">
+            <column name="interview_id" />
+        </property>
+        <property name="state" type="string">
+            <column name="state" length="45" />
+        </property>
+        <property name="memo" type="string">
+            <column name="memo" length="2048" />
+        </property>
+        <property name="orderId" type="string">
+            <column name="order_id" length="45" />
+        </property>
+        <property name="gmtModified" type="timestamp">
+            <column name="gmt_modified" length="19" />
         </property>
         <property name="gmtCreate" type="timestamp">
             <column name="gmt_create" length="19" />
-        </property>
-        <property name="gmtFinish" type="timestamp">
-            <column name="gmt_finish" length="19" />
         </property>
     </class>
 </hibernate-mapping>

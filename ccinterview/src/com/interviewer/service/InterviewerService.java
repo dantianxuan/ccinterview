@@ -6,7 +6,6 @@ package com.interviewer.service;
 
 import com.interviewer.base.CcResult;
 import com.interviewer.pojo.Interviewer;
-import com.interviewer.pojo.UserInfo;
 
 /**
  * 

@@ -47,6 +47,7 @@ public class InterviewController {
     public ModelAndView createInterview(HttpServletRequest request, Interview interview,
                                         ModelMap modelMap) {
         ModelAndView view = new ModelAndView("jobseeker/createInterview");
+        
         return view;
     }
 
