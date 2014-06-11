@@ -35,5 +35,5 @@
 		<mapping resource="com/interviewer/pojo/Jobseeker.hbm.xml" />
 
 	</session-factory>
-	
+
 </hibernate-configuration>
