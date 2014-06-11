@@ -7,7 +7,7 @@
 <script type="text/javascript" src="$link.contextPath/STATIC/plugin/umeditor/lang/zh-cn/zh-cn.js"></script>  
 
 <form action="$link.contextPath/jobseeker/createInterview.htm" method="POST">
-<input type="hidden" name="interviewerId" value="$!interviewer.id">
+<input type="hidden" name="interviewerId" value="$!interviewerVO.interviewer.id">
 <input type="hidden" name="jobseekerId" value="$jobseeker.id">
 
 <div class="row">
@@ -19,19 +19,19 @@
                         <img src="$link.contextPath/UPLOAD/$!interviewerHolder.photo" class="img-rounded" style="width: 82px;height: 82px;">
                     </div>
                     <div class="col-lg-5">
-	                    <p class="col-lg-12"><span class=" text-right col-lg-4">名称:</span>$!interviewer.name</p>
-	                    <p class="col-lg-12"><span class=" text-right col-lg-4">邮箱:</span>$!company.name</p>
-	                    <p class="col-lg-12"><span class=" text-right col-lg-4">公司:</span>$!interviewer.name</p>
+	                    <p class="col-lg-12"><span class=" text-right col-lg-4">名称:</span>$!interviewerVO.interviewer.name</p>
+	                    <p class="col-lg-12"><span class=" text-right col-lg-4">邮箱:</span>$!interviewerVO.company.name</p>
+	                    <p class="col-lg-12"><span class=" text-right col-lg-4">公司:</span>$!interviewerVO.interviewer.name</p>
                     </div>
                     <div class="col-lg-5">
-	                    <p class="col-lg-12"><span class=" text-right col-lg-4">手机:</span>$!interviewer.name</p><br/>
-	                    <p class="col-lg-12"><span class=" text-right col-lg-4">等级:</span>$!company.name</p><br/>
-	                    <p class="col-lg-12"><span class=" text-right col-lg-4">认证状态:</span>$!interviewer.name</p>		                    
+	                    <p class="col-lg-12"><span class=" text-right col-lg-4">手机:</span>$!interviewerVO.interviewer.name</p><br/>
+	                    <p class="col-lg-12"><span class=" text-right col-lg-4">等级:</span>$!interviewerVO.company.name</p><br/>
+	                    <p class="col-lg-12"><span class=" text-right col-lg-4">认证状态:</span>$interviewerVO.interviewer.name</p>		                    
                     </div>	
                 </div>
                 <div class="row"> 
                     <div class="col-lg-12" >
-						<div class="alert alert-dismissable alert-info" style="margin:12px 0px 12px 0px">
+						<div style="margin:0px 0px 12px 0px;padding-top:12px;border-top:solid 1px #ddd">
 						  <p>
 							  <button type="submit" class="btn btn-primary">创建预约订单</button>
 							  <span class="glyphicon glyphicon-arrow-right"></span>
@@ -45,7 +45,7 @@
 							   <span class="glyphicon glyphicon-ok"></span>
 							  </button>
 						  </p>
-						  <p class="text-primary">您的预约会创建一笔担保交易，只有在完成咨询和确认后，才能最终完成交易.</p>
+						  <p class="text-primary">您的预约会创建一笔担保交易，只有在完成咨询和确认后，才能最终完成交易,请简单描述一下您需要咨询的内容和方式，以方便我们的面试官能够给与您更好的服务</p>
 						</div>
                     </div>
                 </div>   
@@ -63,18 +63,28 @@
         </div>
     </div>
 </div>   
-
+<div class="row" id="messageArea">
+    <div class="col-lg-12">
+        <script type="text/plain" id="myEditor" name="memo" style="width:100%;height:260px;">$!article.content</script>
+        <script type="text/javascript">
+	        $(function(){
+	            window.um = UM.getEditor('myEditor', {
+	                /* 传入配置参数,可配参数列表看umeditor.config.js */
+	                toolbar: ['undo redo | bold italic underline']
+	            });
+	        });
+        </script>   
+    </div>
+</div>
 <div class="row">
     <div class="col-lg-12">
-                <script type="text/plain" id="myEditor" name="memo" style="width:100%;height:260px;">$!article.content</script>
-                <script type="text/javascript">
-				    $(function(){
-				        window.um = UM.getEditor('myEditor', {
-				            /* 传入配置参数,可配参数列表看umeditor.config.js */
-				            toolbar: ['undo redo | bold italic underline']
-				        });
-				    });
-                </script>       
+		<div class="alert alert-dismissable alert-danger">
+			<p >本平台真实可靠，力求为您提供最真实和直接的服务，全部的<a href="">详细信息</a>请点击查看</p>
+			<p >请完善您的简历信息，这样能够帮助咨询人员迅速了解您的信息，<a href="">完善简历</a>请点击此处</p>
+			<p >如果您有明确的面试目标，可以简单面试一下您的目标和信息，以便于面试官了解您的需求</p>
+			<p >由于您的面试官都是一线企业员工，可能无法及时回复您的预约，请耐心等待。</p>
+			<p >请不要在面试过程中谈论设计公司机密信息，由此带来的法律问题和本平台无关</p>
+		</div>
     </div>
 </div>
 </form>

@@ -19,6 +19,7 @@ import com.interviewer.dao.RegMailDAO;
 import com.interviewer.pojo.Interviewer;
 import com.interviewer.pojo.Jobseeker;
 import com.interviewer.pojo.RegMail;
+import com.interviewer.view.InterviewerVO;
 
 /**
  * 
@@ -48,8 +49,8 @@ public class RegistServiceImpl extends AbstractService implements RegistService 
                     regMailDAO.save(regMail);
                     mailSender.sendMail(regMail);
                 } else {
-                    Interviewer interviewer = interviewerDAO.findByEmail(regMail.getMail());
-                    if (interviewer != null) {
+                    InterviewerVO interviewerVO = interviewerDAO.findByEmail(regMail.getMail());
+                    if (interviewerVO != null) {
                         throw new CcException("您已经注册过该用户，请直接登录，如果忘记密码请点击忘记密码找回");
                     }
                     mailSender.sendMail(existRegMail);
@@ -100,8 +101,8 @@ public class RegistServiceImpl extends AbstractService implements RegistService 
                 AssertUtil.notNull(regMail, "非法的注册请求");
                 AssertUtil.state(StringUtils.equals(regMail.getMail(), interviewer.getEmail()),
                     "非法的账号，账号被篡改");
-                Interviewer innerInterviewer = interviewerDAO.findByEmail(interviewer.getEmail());
-                if (innerInterviewer != null) {
+                InterviewerVO innerInterviewerVO = interviewerDAO.findByEmail(interviewer.getEmail());
+                if (innerInterviewerVO != null) {
                     throw new CcException("您已经注册过该用户，请直接登录，如果忘记密码请点击忘记密码找回");
                 }
                 interviewerDAO.save(interviewer);

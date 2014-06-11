@@ -1,5 +1,5 @@
-#set($interviewerHolder=$session.getAttribute("SESSION_NTERVIEWER_OBJECT"))
-#set($jobseekerHolder=$session.getAttribute("SESSION_JOBSEEKER_OBJECT"))
+#set($interviewerVO=$session.getAttribute("SESSION_INTERVIEWER_OBJECT"))
+#set($jobseeker=$session.getAttribute("SESSION_JOBSEEKER_OBJECT"))
 <div class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -24,12 +24,12 @@
                 </li>
 
             </ul>
-			#if($interviewerHolder)
+			#if($interviewerVO)
 			 <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
                        <img src="$link.contextPath/STATIC/image/alipay.jpg" style="width:30px;height: 30px;margin-bottom:6px; float:left" class="img-rounded"/>
-                        <div  style="float: left;margin-top:4px;font-size: 16px;">欢迎您面试官：$interviewerHolder.name</span><span class="caret"></span></div>
+                        <div  style="float: left;margin-top:4px;font-size: 16px;">欢迎您面试官：$interviewerVO.interviewer.name</span><span class="caret"></span></div>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="$link.contextPath/jobseeker/personal.htm" data-toggle="tab">个人信息</a></li>
@@ -39,12 +39,12 @@
                     </ul>
                 </li>
             </ul>
-			#elseif($jobseekerHolder)
+			#elseif($jobseeker)
 			 <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" >
                        <img src="$link.contextPath/STATIC/image/alipay.jpg" style="width:30px;height: 30px;margin-bottom:6px; float:left" class="img-rounded"/>
-                        <div  style="float: left;margin-top:4px;font-size: 16px;">欢迎您：大大猫</span><span class="caret"></span></div>
+                        <div  style="float: left;margin-top:4px;font-size: 16px;">欢迎您：$jobseeker.name</span><span class="caret"></span></div>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="$link.contextPath/jobseeker/personal.htm" data-toggle="tab">个人信息</a></li>

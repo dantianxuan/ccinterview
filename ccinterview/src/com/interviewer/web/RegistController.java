@@ -141,7 +141,7 @@ public class RegistController {
             result = new CcResult("文件上传失败");
         }
         if (result.isSuccess()) {
-            request.getSession().setAttribute(CcConstrant.SESSION_NTERVIEWER_OBJECT,
+            request.getSession().setAttribute(CcConstrant.SESSION_INTERVIEWER_OBJECT,
                 result.getObject());
             return new ModelAndView("redirect:/interviewer/interviewerSelf.htm");
         }

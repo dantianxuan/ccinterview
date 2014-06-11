@@ -18,14 +18,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.interviewer.base.AssertUtil;
 import com.interviewer.base.BlankServiceCallBack;
 import com.interviewer.base.CcResult;
-import com.interviewer.dao.CompanyDAO;
 import com.interviewer.dao.InterviewDAO;
 import com.interviewer.dao.InterviewerDAO;
 import com.interviewer.enums.InterviewStateEnum;
-import com.interviewer.pojo.Company;
 import com.interviewer.pojo.Interview;
-import com.interviewer.pojo.Interviewer;
 import com.interviewer.pojo.Jobseeker;
+import com.interviewer.view.InterviewerVO;
 
 /**
  * @author jingyu.dan
@@ -37,8 +35,6 @@ public class InterviewController extends BaseController {
     @Autowired
     private InterviewerDAO interviewerDAO;
     @Autowired
-    private CompanyDAO     companyDAO;
-    @Autowired
     private InterviewDAO   interviewDAO;
 
     @RequestMapping(value = "jobseeker/createInterview.htm", method = RequestMethod.GET)
@@ -46,10 +42,8 @@ public class InterviewController extends BaseController {
                                     ModelMap modelMap) {
         ModelAndView view = new ModelAndView("jobseeker/createInterview");
         int viewerId = NumberUtils.toInt(interviewerId);
-        Interviewer interviewer = interviewerDAO.findById(viewerId);
-        Company company = companyDAO.findById(interviewer.getCompanyId());
-        modelMap.put("interviewer", interviewer);
-        modelMap.put("company", company);
+        InterviewerVO interviewerVO = interviewerDAO.findById(viewerId);
+        modelMap.put("interviewerVO", interviewerVO);
         return view;
     }
 
@@ -61,9 +55,8 @@ public class InterviewController extends BaseController {
             public CcResult executeService() {
                 Jobseeker jobseeker = getJobseekerInSession(request.getSession());
                 AssertUtil.notNull(jobseeker, "不合法的用户");
-                Interviewer interviewer = interviewerDAO.findById(interview.getInterviewerId());
-                AssertUtil.notNull(interviewer, "咨询对象不存在，请检查");
-
+                InterviewerVO interviewerVO = interviewerDAO.findById(interview.getInterviewerId());
+                AssertUtil.notNull(interviewerVO, "咨询对象不存在，请检查");
                 interview.setGmtCreate(new Date());
                 interview.setStep((short) InterviewStateEnum.CREATE.getValue());
                 interview.setGmtModified(new Date());
@@ -75,10 +68,8 @@ public class InterviewController extends BaseController {
             return new ModelAndView("redirect:/jobseeker/interview.htm?interviewId="
                                     + interview.getId());
         }
-        Interviewer interviewer = interviewerDAO.findById(interview.getInterviewerId());
-        Company company = companyDAO.findById(interviewer.getCompanyId());
-        modelMap.put("interviewer", interviewer);
-        modelMap.put("company", company);
+        InterviewerVO interviewerVO = interviewerDAO.findById(interview.getInterviewerId());
+        modelMap.put("interviewerVO", interviewerVO);
         modelMap.put("result", result);
         return new ModelAndView("jobseeker/createInterview");
     }
@@ -88,10 +79,8 @@ public class InterviewController extends BaseController {
                                         ModelMap modelMap) {
         Interview interview = interviewDAO.findById(NumberUtils.toInt(interviewId));
         modelMap.put("interview", interview);
-        Interviewer interviewer = interviewerDAO.findById(interview.getInterviewerId());
-        Company company = companyDAO.findById(interviewer.getCompanyId());
-        modelMap.put("interviewer", interviewer);
-        modelMap.put("company", company);
+        InterviewerVO interviewerVO = interviewerDAO.findById(interview.getInterviewerId());
+        modelMap.put("interviewerVO", interviewerVO);
         return new ModelAndView("jobseeker/interview");
     }
 

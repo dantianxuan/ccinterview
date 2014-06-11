@@ -33,11 +33,5 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
         return true;
     }
 
-    @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response,
-                                Object handler, Exception ex) throws Exception {
-        LogUtil.info(logger, "接受请求");
-        request.getParameterMap().put(CcConstrant.TIME_TOKEN, new Date());
-    }
 
 }

@@ -55,9 +55,14 @@ public class InterviewerDAO extends BaseHibernateDAO<Interviewer> {
 
     }
 
-    public Interviewer findByEmail(Object email) {
+    public InterviewerVO findByEmail(Object email) {
         List<Interviewer> interviews = findByProperty(EMAIL, email);
-        return getLimit(interviews);
+        Interviewer interviewer= getLimit(interviews);
+        if(interviewer==null){
+            return null;
+        }
+        Company company = companyDAO.findById(interviewer.getCompanyId());
+        return new InterviewerVO(interviewer, company);
     }
 
 }

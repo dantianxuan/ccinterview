@@ -20,12 +20,13 @@ import org.slf4j.LoggerFactory;
  */
 
 public class MessageDAO extends BaseHibernateDAO {
-    private static final Logger log       = LoggerFactory.getLogger(MessageDAO.class);
+    private static final Logger log          = LoggerFactory.getLogger(MessageDAO.class);
     //property constants
-    public static final String  MESSAGE   = "message";
-    public static final String  FROM_USER = "fromUser";
-    public static final String  TO_USER   = "toUser";
-    public static final String  STATE     = "state";
+    public static final String  MESSAGE      = "message";
+    public static final String  CREATOR_ROLE = "creatorRole";
+    public static final String  CREATOR      = "creator";
+    public static final String  REL_TYPE     = "relType";
+    public static final String  REL_ID       = "relId";
 
     public void save(Message transientInstance) {
         log.debug("saving Message instance");
@@ -90,16 +91,20 @@ public class MessageDAO extends BaseHibernateDAO {
         return findByProperty(MESSAGE, message);
     }
 
-    public List findByFromUser(Object fromUser) {
-        return findByProperty(FROM_USER, fromUser);
+    public List findByCreatorRole(Object creatorRole) {
+        return findByProperty(CREATOR_ROLE, creatorRole);
     }
 
-    public List findByToUser(Object toUser) {
-        return findByProperty(TO_USER, toUser);
+    public List findByCreator(Object creator) {
+        return findByProperty(CREATOR, creator);
     }
 
-    public List findByState(Object state) {
-        return findByProperty(STATE, state);
+    public List findByRelType(Object relType) {
+        return findByProperty(REL_TYPE, relType);
+    }
+
+    public List findByRelId(Object relId) {
+        return findByProperty(REL_ID, relId);
     }
 
     public List findAll() {

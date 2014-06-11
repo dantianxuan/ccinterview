@@ -19,6 +19,7 @@ import com.interviewer.dao.InterviewerDAO;
 import com.interviewer.dao.JobseekerDAO;
 import com.interviewer.pojo.Interviewer;
 import com.interviewer.pojo.Jobseeker;
+import com.interviewer.view.InterviewerVO;
 
 /**
  * @author jingyu.dan
@@ -36,16 +37,16 @@ public class LoginController {
     @RequestMapping(value = "/login.htm", params = "action=INTERVIEWER", method = RequestMethod.POST)
     public ModelAndView loginInterviewer(HttpServletRequest request, String account,
                                          String password, ModelMap modelMap) {
-        Interviewer interviewer = interviewerDAO.findByEmail(account);
-        if (interviewer == null) {
+        InterviewerVO interviewerVO = interviewerDAO.findByEmail(account);
+        if (interviewerVO == null) {
             modelMap.put("result", new CcResult("用户不存在"));
             return new ModelAndView("content/login");
         }
-        if (!StringUtils.equals(interviewer.getPasswd(), password)) {
+        if (!StringUtils.equals(interviewerVO.getInterviewer().getPasswd(), password)) {
             modelMap.put("result", new CcResult("密码错误"));
             return new ModelAndView("content/login");
         }
-        request.getSession().setAttribute(CcConstrant.SESSION_NTERVIEWER_OBJECT, interviewer);
+        request.getSession().setAttribute(CcConstrant.SESSION_INTERVIEWER_OBJECT, interviewerVO);
         return new ModelAndView("redirect:/interviewer/interviewerSelf.htm");
     }
 
@@ -81,7 +82,7 @@ public class LoginController {
 
     @RequestMapping(value = "/logout.htm", method = RequestMethod.GET)
     public ModelAndView logout(HttpServletRequest request) {
-        request.getSession().removeAttribute(CcConstrant.SESSION_NTERVIEWER_OBJECT);
+        request.getSession().removeAttribute(CcConstrant.SESSION_INTERVIEWER_OBJECT);
         request.getSession().removeAttribute(CcConstrant.SESSION_JOBSEEKER_OBJECT);
         ModelAndView view = new ModelAndView("redirect:/index.htm");
         return view;

@@ -29,7 +29,6 @@ public class JobseekerController extends BaseController {
     @RequestMapping(value = "/jobseeker/jobseekerSelf.htm", method = RequestMethod.GET)
     public ModelAndView handleRequest(HttpServletRequest request, ModelMap modelMap) {
 
-        interviewDAO.findById(id);
         ModelAndView view = new ModelAndView("jobseeker/jobseekerSelf");
         return view;
     }

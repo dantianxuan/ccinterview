@@ -34,7 +34,7 @@ public class BaseController {
     }
 
     public Interviewer getInterviewerInSession(HttpSession session) {
-        Object interivewer = session.getAttribute(CcConstrant.SESSION_NTERVIEWER_OBJECT);
+        Object interivewer = session.getAttribute(CcConstrant.SESSION_INTERVIEWER_OBJECT);
         if (interivewer != null) {
             return (Interviewer) interivewer;
         } else {

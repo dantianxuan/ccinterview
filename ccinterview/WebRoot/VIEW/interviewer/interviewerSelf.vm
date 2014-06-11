@@ -1,9 +1,9 @@
-#set($interviewerHolder=$session.getAttribute("SESSION_NTERVIEWER_OBJECT"))
+#set($interviewerVO=$session.getAttribute("SESSION_INTERVIEWER_OBJECT"))
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-            	欢迎您：$interviewerHolder.name
+            	欢迎您：$interviewerVO.interviewer.name
             </div>
             <div class="panel-body">
 					<a  class="btn btn-primary" href="$link.contextPath/interviewer/interviewerSelf.htm"><span class="glyphicon glyphicon-send"></span>  咨询信息</a>

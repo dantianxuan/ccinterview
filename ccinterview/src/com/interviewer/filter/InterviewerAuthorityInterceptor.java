@@ -23,9 +23,9 @@ public class InterviewerAuthorityInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
                              Object handler) throws Exception {
 
-        Object interviewer = request.getSession().getAttribute(
-            CcConstrant.SESSION_NTERVIEWER_OBJECT);
-        if (interviewer == null) {
+        Object interviewerVO = request.getSession().getAttribute(
+            CcConstrant.SESSION_INTERVIEWER_OBJECT);
+        if (interviewerVO == null) {
             LogUtil.info(log, "无权限的请求", request.getLocalAddr());
             response.sendRedirect("/ccinterview/login.htm");
             return false;

@@ -12,10 +12,11 @@ public class Message extends com.interviewer.base.ToString implements java.io.Se
 
     private Integer id;
     private String  message;
-    private Integer fromUser;
-    private Integer toUser;
+    private short   creatorRole;
+    private Integer creator;
+    private short   relType;
+    private Integer relId;
     private Date    gmtCreate;
-    private String  state;
 
     // Constructors
 
@@ -24,12 +25,14 @@ public class Message extends com.interviewer.base.ToString implements java.io.Se
     }
 
     /** full constructor */
-    public Message(String message, Integer fromUser, Integer toUser, Date gmtCreate, String state) {
+    public Message(String message, short creatorRole, Integer creator, short relType,
+                   Integer relId, Date gmtCreate) {
         this.message = message;
-        this.fromUser = fromUser;
-        this.toUser = toUser;
+        this.creatorRole = creatorRole;
+        this.creator = creator;
+        this.relType = relType;
+        this.relId = relId;
         this.gmtCreate = gmtCreate;
-        this.state = state;
     }
 
     // Property accessors
@@ -50,20 +53,36 @@ public class Message extends com.interviewer.base.ToString implements java.io.Se
         this.message = message;
     }
 
-    public Integer getFromUser() {
-        return this.fromUser;
+    public short getCreatorRole() {
+        return this.creatorRole;
     }
 
-    public void setFromUser(Integer fromUser) {
-        this.fromUser = fromUser;
+    public void setCreatorRole(short creatorRole) {
+        this.creatorRole = creatorRole;
     }
 
-    public Integer getToUser() {
-        return this.toUser;
+    public Integer getCreator() {
+        return this.creator;
     }
 
-    public void setToUser(Integer toUser) {
-        this.toUser = toUser;
+    public void setCreator(Integer creator) {
+        this.creator = creator;
+    }
+
+    public short getRelType() {
+        return this.relType;
+    }
+
+    public void setRelType(short relType) {
+        this.relType = relType;
+    }
+
+    public Integer getRelId() {
+        return this.relId;
+    }
+
+    public void setRelId(Integer relId) {
+        this.relId = relId;
     }
 
     public Date getGmtCreate() {
@@ -72,14 +91,6 @@ public class Message extends com.interviewer.base.ToString implements java.io.Se
 
     public void setGmtCreate(Date gmtCreate) {
         this.gmtCreate = gmtCreate;
-    }
-
-    public String getState() {
-        return this.state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
     }
 
 }

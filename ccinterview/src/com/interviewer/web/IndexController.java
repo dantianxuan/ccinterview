@@ -51,7 +51,7 @@ public class IndexController {
             return new ModelAndView("redirect:/jobseeker/jobseekerSelf.htm");
         }
         Object interviewer = request.getSession().getAttribute(
-            CcConstrant.SESSION_NTERVIEWER_OBJECT);
+            CcConstrant.SESSION_INTERVIEWER_OBJECT);
         if (interviewer != null) {
             return new ModelAndView("redirect:/interviewer/interviewerSelf.htm");
         }

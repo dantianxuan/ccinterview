@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.interviewer.base.CcConstrant;
@@ -24,10 +22,9 @@ public class JobSeekerAuthorityInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
                              Object handler) throws Exception {
-
-        Object interviewer = request.getSession()
+        Object jobseeker = request.getSession()
             .getAttribute(CcConstrant.SESSION_JOBSEEKER_OBJECT);
-        if (interviewer == null) {
+        if (jobseeker == null) {
             LogUtil.info(log, "无权限的请求", request.getLocalAddr());
             response.sendRedirect("/ccinterview/login.htm");
             return false;

@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.interviewer.dao.CompanyDAO;
 import com.interviewer.dao.InterviewerDAO;
-import com.interviewer.pojo.Company;
-import com.interviewer.pojo.Interviewer;
+import com.interviewer.view.InterviewerVO;
 
 /**
  * @author jingyu.dan
@@ -24,11 +22,8 @@ import com.interviewer.pojo.Interviewer;
  */
 @Controller
 public class InterviewerController {
-
     @Autowired
     private InterviewerDAO interviewerDAO;
-    @Autowired
-    private CompanyDAO     companyDAO;
 
     @RequestMapping(value = "interviewer/interviewerSelf.htm", method = RequestMethod.GET)
     public ModelAndView interviewerSelf(HttpServletRequest request, ModelMap modelMap) {
@@ -52,10 +47,8 @@ public class InterviewerController {
     public ModelAndView toInterviewerInfo(HttpServletRequest request, String interviewerId,
                                           ModelMap modelMap) {
         int interverId = NumberUtils.toInt(interviewerId);
-        Interviewer interviewer = interviewerDAO.findById(interverId);
-        Company company = companyDAO.findById(interverId);
-        modelMap.put("interviewer", interviewer);
-        modelMap.put("company", company);
+        InterviewerVO interviewerVO = interviewerDAO.findById(interverId);
+        modelMap.put("interviewerVO", interviewerVO);
         ModelAndView view = new ModelAndView("content/interviewerInfo");
         return view;
     }
