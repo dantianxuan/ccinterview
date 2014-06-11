@@ -20,13 +20,13 @@
 		<property name="connection.driver_class">
 			com.mysql.jdbc.Driver
 		</property>
+		<property name="validationQuery">select 1</property>
 		<property name="myeclipse.connection.profile">jdbc</property>
 		<mapping resource="com/interviewer/pojo/Comment.hbm.xml" />
 		<mapping resource="com/interviewer/pojo/RegMail.hbm.xml" />
 		<mapping resource="com/interviewer/pojo/Interview.hbm.xml" />
 		<mapping resource="com/interviewer/pojo/Message.hbm.xml" />
 		<mapping resource="com/interviewer/pojo/Category.hbm.xml" />
-		<mapping resource="com/interviewer/pojo/UserInfo.hbm.xml" />
 		<mapping resource="com/interviewer/pojo/Resume.hbm.xml" />
 		<mapping resource="com/interviewer/pojo/Prise.hbm.xml" />
 		<mapping resource="com/interviewer/pojo/Company.hbm.xml" />

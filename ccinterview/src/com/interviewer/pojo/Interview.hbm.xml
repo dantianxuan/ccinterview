@@ -10,17 +10,26 @@
             <column name="id" />
             <generator class="native" />
         </id>
-        <property name="seekerId" type="integer">
-            <column name="seeker_Id" />
+        <property name="jobseekerId" type="integer">
+            <column name="jobseeker_Id" />
         </property>
-        <property name="salary" type="long">
-            <column name="salary" precision="10" scale="0" />
+        <property name="interviewerId" type="integer">
+            <column name="interviewer_id" />
+        </property>
+        <property name="step" type="short">
+            <column name="step" />
+        </property>
+        <property name="memo" type="string">
+            <column name="memo" length="2048" />
+        </property>
+        <property name="orderId" type="string">
+            <column name="order_id" length="45" />
+        </property>
+        <property name="gmtModified" type="timestamp">
+            <column name="gmt_modified" length="19" />
         </property>
         <property name="gmtCreate" type="timestamp">
             <column name="gmt_create" length="19" />
-        </property>
-        <property name="gmtFinish" type="timestamp">
-            <column name="gmt_finish" length="19" />
         </property>
     </class>
 </hibernate-mapping>

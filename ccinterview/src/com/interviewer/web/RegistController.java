@@ -30,7 +30,6 @@ import com.interviewer.pojo.Interviewer;
 import com.interviewer.pojo.Jobseeker;
 import com.interviewer.pojo.RegMail;
 import com.interviewer.service.RegistService;
-import com.interviewer.service.UserInfoServiceImpl;
 import com.interviewer.util.LogUtil;
 
 /**
@@ -41,7 +40,7 @@ import com.interviewer.util.LogUtil;
 public class RegistController {
 
     /**日志 */
-    private static final Logger logger = Logger.getLogger(UserInfoServiceImpl.class);
+    private static final Logger logger = Logger.getLogger(RegistController.class);
 
     @Autowired
     private RegistService       registService;

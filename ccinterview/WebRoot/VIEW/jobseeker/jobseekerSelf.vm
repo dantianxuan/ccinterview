@@ -21,10 +21,6 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
 	                我的记录
-	                <span class="label label-warning"><a style="color:#fff" href="#">预约等待
-	                	<span  class="badge" style="color:#fff;margin-top:2px;">0</span></a></span>
-					<span class="label label-primary"><a style="color:#fff" href="#">进行中</a></span>
-					<span class="label label-success"><a style="color:#fff" href="#">等待评价</a></span>
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -52,19 +48,6 @@
                     		#end
                    		</div>
                     </div>
-					#if($result && $result.object)
-	                    <div class="row">
-	                        <ul class="pagination pagination-sm" style="float: right">
-	                            <li class="disabled"><a href="#">«</a></li>
-	                            <li class="active"><a href="#">1</a></li>
-	                            <li><a href="#">2</a></li>
-	                            <li><a href="#">3</a></li>
-	                            <li><a href="#">4</a></li>
-	                            <li><a href="#">5</a></li>
-	                            <li><a href="#">»</a></li>
-	                        </ul>
-	                    </div>
-                	#end
                 </div>
             </div>
         </div>

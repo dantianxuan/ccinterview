@@ -22,7 +22,7 @@ public interface ServiceTemplate {
      * @param action 业务操作回调的接口
      * @return       服务返回对象
      */
-    public <T> T executeWithoutTransaction(Class<? extends CcResult> clazz, ServiceCallBack action);
+    public <T> T executeWithTx(Class<? extends CcResult> clazz, ServiceCallBack action);
 
     /**
      * <pre> 支持本地事务模板执行业务处理

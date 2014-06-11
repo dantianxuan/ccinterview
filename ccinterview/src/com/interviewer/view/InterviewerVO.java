@@ -26,6 +26,11 @@ public class InterviewerVO extends ToString {
     /**公司信息*/
     private Company           company;
 
+    public InterviewerVO(Interviewer interviewer, Company company) {
+        this.interviewer = interviewer;
+        this.company = company;
+    }
+
     public Interviewer getInterviewer() {
         return interviewer;
     }

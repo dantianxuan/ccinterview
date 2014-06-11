@@ -3,10 +3,11 @@ package com.interviewer.dao;
 import java.util.List;
 
 import org.hibernate.Query;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import com.interviewer.pojo.Company;
 import com.interviewer.pojo.Interviewer;
+import com.interviewer.view.InterviewerVO;
 
 /**
  	* A data access object (DAO) providing persistence and search support for Interviewer entities.
@@ -18,26 +19,26 @@ import com.interviewer.pojo.Interviewer;
  */
 
 public class InterviewerDAO extends BaseHibernateDAO<Interviewer> {
-    private static final Logger log         = LoggerFactory.getLogger(InterviewerDAO.class);
-    //property constants
-    public static final String  NAME        = "name";
-    public static final String  EMAIL       = "email";
-    public static final String  MOBILE      = "mobile";
-    public static final String  DESCRIPTION = "description";
-    public static final String  COMPANY_ID  = "companyId";
-    public static final String  PHOTO       = "photo";
-    public static final String  PASSWD      = "passwd";
 
-    public Interviewer findById(java.lang.Integer id) {
-        log.debug("getting Interviewer instance with id: " + id);
-        try {
-            Interviewer instance = (Interviewer) getSession().get(
-                "com.interviewer.pojo.Interviewer", id);
-            return instance;
-        } catch (RuntimeException re) {
-            log.error("get failed", re);
-            throw re;
+    @Autowired
+    private CompanyDAO         companyDAO;
+    //property constants
+    public static final String NAME        = "name";
+    public static final String EMAIL       = "email";
+    public static final String MOBILE      = "mobile";
+    public static final String DESCRIPTION = "description";
+    public static final String COMPANY_ID  = "companyId";
+    public static final String PHOTO       = "photo";
+    public static final String PASSWD      = "passwd";
+
+    public InterviewerVO findById(java.lang.Integer id) {
+        Interviewer instance = (Interviewer) getSession().get("com.interviewer.pojo.Interviewer",
+            id);
+        if (instance == null) {
+            return null;
         }
+        Company company = companyDAO.findById(instance.getCompanyId());
+        return new InterviewerVO(instance, company);
     }
 
     @SuppressWarnings("unchecked")
