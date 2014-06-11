@@ -25,6 +25,7 @@
 
 	<bean id="regMailDAO" class="com.interviewer.dao.RegMailDAO" />
 	<bean id="interviewerDAO" class="com.interviewer.dao.InterviewerDAO" />
+	<bean id="interviewDAO" class="com.interviewer.dao.InterviewDAO" />
 	<bean id="companyDAO" class="com.interviewer.dao.CompanyDAO" />
 	<bean id="articeDAO" class="com.interviewer.dao.ArticleDAO" />
 	<bean id="jobseekerDAO" class="com.interviewer.dao.JobseekerDAO" />

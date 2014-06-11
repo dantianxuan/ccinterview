@@ -1,5 +1,7 @@
 package com.interviewer.dao;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,5 +25,20 @@ public class InterviewDAO extends BaseHibernateDAO<Interview> {
     public static final String  MEMO         = "memo";
     public static final String  ORDER_ID     = "orderId";
 
+    public Interview findById(java.lang.Integer id) {
+        log.debug("getting Interview instance with id: " + id);
+        try {
+            Interview instance = (Interview) getSession().get("com.interviewer.pojo.Interview", id);
+            return instance;
+        } catch (RuntimeException re) {
+            log.error("get failed", re);
+            throw re;
+        }
+    }
+
+    public List<Interview> findByJobseekerId(int id) {
+        String hql = "from Interview  where jobseekerId=" + id + " order by gmtCreate desc";
+        return findPageByQuery(0, Integer.MAX_VALUE, hql, null);
+    }
 
 }

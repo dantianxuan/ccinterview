@@ -12,8 +12,8 @@ public class Interview extends com.interviewer.base.ToString implements java.io.
 
     private Integer id;
     private Integer jobseekerId;
-    private Integer interviewId;
-    private String  state;
+    private Integer interviewerId;
+    private short   step;
     private String  memo;
     private String  orderId;
     private Date    gmtModified;
@@ -26,11 +26,11 @@ public class Interview extends com.interviewer.base.ToString implements java.io.
     }
 
     /** full constructor */
-    public Interview(Integer jobseekerId, Integer interviewId, String state, String memo,
+    public Interview(Integer jobseekerId, Integer interviewerId, short step, String memo,
                      String orderId, Date gmtModified, Date gmtCreate) {
         this.jobseekerId = jobseekerId;
-        this.interviewId = interviewId;
-        this.state = state;
+        this.interviewerId = interviewerId;
+        this.step = step;
         this.memo = memo;
         this.orderId = orderId;
         this.gmtModified = gmtModified;
@@ -55,20 +55,20 @@ public class Interview extends com.interviewer.base.ToString implements java.io.
         this.jobseekerId = jobseekerId;
     }
 
-    public Integer getInterviewId() {
-        return this.interviewId;
+    public Integer getInterviewerId() {
+        return this.interviewerId;
     }
 
-    public void setInterviewId(Integer interviewId) {
-        this.interviewId = interviewId;
+    public void setInterviewerId(Integer interviewerId) {
+        this.interviewerId = interviewerId;
     }
 
-    public String getState() {
-        return this.state;
+    public short getStep() {
+        return this.step;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setStep(short step) {
+        this.step = step;
     }
 
     public String getMemo() {

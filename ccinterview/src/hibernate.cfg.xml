@@ -27,7 +27,6 @@
 		<mapping resource="com/interviewer/pojo/Interview.hbm.xml" />
 		<mapping resource="com/interviewer/pojo/Message.hbm.xml" />
 		<mapping resource="com/interviewer/pojo/Category.hbm.xml" />
-		<mapping resource="com/interviewer/pojo/UserInfo.hbm.xml" />
 		<mapping resource="com/interviewer/pojo/Resume.hbm.xml" />
 		<mapping resource="com/interviewer/pojo/Prise.hbm.xml" />
 		<mapping resource="com/interviewer/pojo/Company.hbm.xml" />

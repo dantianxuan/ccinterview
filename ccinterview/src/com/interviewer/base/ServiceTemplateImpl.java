@@ -26,12 +26,9 @@ public class ServiceTemplateImpl implements ServiceTemplate {
     }
 
     @Override
-    public <T> T executeWithoutTransaction(Class<? extends CcResult> clazz, ServiceCallBack action) {
+    public <T> T execute(Class<? extends CcResult> clazz, ServiceCallBack action) {
         CcResult result = null;
-        Session session = getSession();
         try {
-            session = getSession();
-            session.beginTransaction();
             result = clazz.newInstance();
             // 执行校验
             action.check();
@@ -40,20 +37,15 @@ public class ServiceTemplateImpl implements ServiceTemplate {
             if (result == null || !(result instanceof CcResult)) {
                 throw new RuntimeException("逻辑错误");
             }
-            session.getTransaction().commit();
         } catch (CcException e) {
             // 业务异常捕获
             logger.warn("无事务服务模板-业务异常：[" + e.getCode() + "](" + e.getMessage() + ")", e);
             result.setCode(e.getCode());
             result.setMessage(e.getMessage());
-            session.getTransaction().rollback();
             return (T) result;
         } catch (Throwable e2) {
             logger.error("无事务服务模板-系统异常：", e2);
-            session.getTransaction().rollback();
             return (T) result;
-        } finally {
-            session.close();
         }
         if (logger.isInfoEnabled()) {
             logger.info("退出无事务服务模板");
@@ -63,7 +55,7 @@ public class ServiceTemplateImpl implements ServiceTemplate {
     }
 
     @Override
-    public <T> T execute(Class<? extends CcResult> clazz, ServiceCallBack action) {
+    public <T> T executeWithTx(Class<? extends CcResult> clazz, ServiceCallBack action) {
         CcResult result = null;
         Session session = getSession();
         try {

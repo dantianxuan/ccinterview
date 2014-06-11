@@ -4,8 +4,6 @@
  */
 package com.interviewer.enums;
 
-import org.apache.commons.lang.StringUtils;
-
 
 /**
  * 订单状态枚举
@@ -14,15 +12,15 @@ import org.apache.commons.lang.StringUtils;
  * @version $Id: InterviewStateEnum.java, v 0.1 2014-6-10 下午6:06:53 jingyu.dan Exp $
  */
 public enum InterviewStateEnum {
-    
+
     /** 创建状态 */
-    CREATE("1", "CREATE", "创建状态"),
+    CREATE(1, "CREATE", "创建状态"),
 
     /** 已经支付 */
-    DERIVED("2", "DERIVED", "衍生数据原子");
+    DERIVED(2, "DERIVED", "衍生数据原子");
 
     /** 枚举码 */
-    private String value;
+    private int    value;
 
     /** 编码 */
     private String code;
@@ -36,7 +34,7 @@ public enum InterviewStateEnum {
      * @param code          枚举code
      * @param description   枚举描述
      */
-    private InterviewStateEnum(String value, String code, String description) {
+    private InterviewStateEnum(int value, String code, String description) {
         this.value = value;
         this.code = code;
         this.description = description;
@@ -48,9 +46,9 @@ public enum InterviewStateEnum {
      * @param value 枚举值
      * @return      枚举对象
      */
-    public static InterviewStateEnum getByValue(String value) {
+    public static InterviewStateEnum getByValue(int value) {
         for (InterviewStateEnum type : values()) {
-            if (StringUtils.equals(type.getValue(), value)) {
+            if (type.getValue() == value) {
                 return type;
             }
         }
@@ -65,7 +63,7 @@ public enum InterviewStateEnum {
         return description;
     }
 
-    public String getValue() {
+    public int getValue() {
         return value;
     }
 }

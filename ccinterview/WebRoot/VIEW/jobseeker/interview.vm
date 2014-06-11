@@ -5,11 +5,6 @@
 <script type="text/javascript" src="$link.contextPath/STATIC/plugin/umeditor/umeditor.js"></script>
 <!-- 语言包文件(建议手动加载语言包，避免在ie下，因为加载语言失败导致编辑器加载失败) -->
 <script type="text/javascript" src="$link.contextPath/STATIC/plugin/umeditor/lang/zh-cn/zh-cn.js"></script>  
-
-<form action="$link.contextPath/jobseeker/createInterview.htm" method="POST">
-<input type="hidden" name="interviewerId" value="$!interviewer.id">
-<input type="hidden" name="jobseekerId" value="$jobseeker.id">
-
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -29,25 +24,43 @@
 	                    <p class="col-lg-12"><span class=" text-right col-lg-4">认证状态:</span>$!interviewer.name</p>		                    
                     </div>	
                 </div>
-                <div class="row"> 
+                <div class="row">
+				    <div class="col-lg-12" style="border-top:solid 1px #ddd">
+				    	<span style="margin-left:24px;"></span>$!interviewer.description
+				    </div>  
                     <div class="col-lg-12" >
 						<div class="alert alert-dismissable alert-info" style="margin:12px 0px 12px 0px">
 						  <p>
-							  <button type="submit" class="btn btn-primary">创建预约订单</button>
+							  <button type="button" class="btn   btn-success disabled ">创建预约订单</button>
 							  <span class="glyphicon glyphicon-arrow-right"></span>
-							  <button type="button" class="btn btn-default disabled">进行支付</button>
+							  <button type="button" class="btn 
+							  	#if($interview.step>1)  btn-success disabled  
+							  	#elseif($interview.step==1) btn-primary   
+							  	#else  btn-default disabled #end">进行支付</button>
 							  <span class="glyphicon glyphicon-arrow-right"></span>
-							  <button type="button" class="btn btn-default disabled">进行面试咨询</button>
+							  <button type="button" class="btn 
+							  	#if($interview.step>2)  btn-success disabled  
+							  	#elseif($interview.step==2) btn-primary   
+							  	#else  btn-default disabled #end">进行面试咨询</button>
 							  <span class="glyphicon glyphicon-arrow-right"></span>
-							  <button type="button" class="btn btn-default disabled">完成评价</button>
-							  <span class="glyphicon glyphicon-arrow-right "></span>
-							  <button type="button" class="btn btn-default disabled">
+							  <button type="button" class="btn 
+							  	#if($interview.step>3)  btn-success disabled  
+							  	#elseif($interview.step==3) btn-primary   
+							  	#else  btn-default disabled #end">完成评价</button>
+							  <span class="glyphicon glyphicon-arrow-right"></span>
+							  <button type="button" class="btn btn-default">
 							   <span class="glyphicon glyphicon-ok"></span>
 							  </button>
 						  </p>
 						  <p class="text-primary">您的预约会创建一笔担保交易，只有在完成咨询和确认后，才能最终完成交易.</p>
-						</div>
+						</div>					
                     </div>
+                	<div class="col-lg-12">
+						<div class="alert alert-dismissable alert-warning">
+						  <h4>咨询备注!</h4>
+						  <p>$interview.memo</p>
+						</div> 
+                    </div>	                    
                 </div>   
                 #if($result && !$result.success)
                 <div class="row">
@@ -63,9 +76,11 @@
         </div>
     </div>
 </div>   
-
-<div class="row">
-    <div class="col-lg-12">
+<form action="$link.contextPath/jobseeker/createInterview.htm" method="POST">
+<input type="hidden" name="interviewerId" value="$!interviewer.id">
+<input type="hidden" name="jobseekerId" value="$jobseeker.id">
+<div class="row" style="display:none;">
+    <div class="col-lg-12" >
                 <script type="text/plain" id="myEditor" name="memo" style="width:100%;height:260px;">$!article.content</script>
                 <script type="text/javascript">
 				    $(function(){
@@ -76,5 +91,42 @@
 				    });
                 </script>       
     </div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+		  <div class="panel-body">
+		  	<div class="col-lg-12">
+		  		<div class="col-lg-1">
+		  			<img src="$link.contextPath/UPLOAD/$!interviewerHolder.photo" class="img-rounded" style="width: 50px;height: 50px;">
+		  		</div>
+		  		<div class="col-lg-11">
+		  			<div class="col-lg-10  text-left" >
+			  			<span class=" col-lg-12 text-left">面试官：大阿飞猫 <span>2013-12-23 23:12:11</span></span>
+						<div class="well">
+							<p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+						</div>
+					</div>
+		  		</div>
+		  	</div>
+		  	
+			<div class="col-lg-12">
+		  		<div class="col-lg-11">
+		  			<div class="col-lg-10 col-lg-offset-2 text-right" >
+			  			<span class="  col-lg-12 text-right">面试官：大阿飞猫 <span>2013-12-23 23:12:11</span></span>
+						<div class="well">
+							<p class="text-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+						</div>
+					</div>
+		  		</div>
+		  		<div class="col-lg-1">
+		  			<img src="$link.contextPath/UPLOAD/$!interviewerHolder.photo" class="img-rounded" style="width: 50px;height: 50px;">
+		  		</div>		  		
+		  	</div>
+		  	
+		  	
+		  </div>
+		</div>
+	</div>
 </div>
 </form>

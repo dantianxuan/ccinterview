@@ -8,16 +8,16 @@
     <class name="com.interviewer.pojo.Interview" table="interview" catalog="ccinterviewer">
         <id name="id" type="integer">
             <column name="id" />
-            <generator class="identity" />
+            <generator class="native" />
         </id>
         <property name="jobseekerId" type="integer">
             <column name="jobseeker_Id" />
         </property>
-        <property name="interviewId" type="integer">
-            <column name="interview_id" />
+        <property name="interviewerId" type="integer">
+            <column name="interviewer_id" />
         </property>
-        <property name="state" type="string">
-            <column name="state" length="45" />
+        <property name="step" type="short">
+            <column name="step" />
         </property>
         <property name="memo" type="string">
             <column name="memo" length="2048" />
