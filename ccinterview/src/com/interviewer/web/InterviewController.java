@@ -18,10 +18,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.interviewer.base.AssertUtil;
 import com.interviewer.base.BlankServiceCallBack;
 import com.interviewer.base.CcResult;
+import com.interviewer.dao.CompanyDAO;
 import com.interviewer.dao.InterviewDAO;
 import com.interviewer.dao.InterviewerDAO;
 import com.interviewer.enums.InterviewStateEnum;
+import com.interviewer.pojo.Company;
 import com.interviewer.pojo.Interview;
+import com.interviewer.pojo.Interviewer;
 import com.interviewer.pojo.Jobseeker;
 import com.interviewer.view.InterviewerVO;
 
