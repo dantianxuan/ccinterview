@@ -1,11 +1,17 @@
 package com.interviewer.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 
+import com.interviewer.enums.DataStateEnum;
+import com.interviewer.enums.InterviewStepEnum;
 import com.interviewer.pojo.Interview;
+import com.interviewer.view.InterviewVO;
 
 /**
  	* A data access object (DAO) providing persistence and search support for Interview entities.
@@ -17,6 +23,12 @@ import com.interviewer.pojo.Interview;
  */
 
 public class InterviewDAO extends BaseHibernateDAO<Interview> {
+
+    @Autowired
+    private InterviewerDAO      interviewerDAO;
+    @Autowired
+    private JobseekerDAO        jobseekerDAO;
+
     private static final Logger log          = LoggerFactory.getLogger(InterviewDAO.class);
     //property constants
     public static final String  JOBSEEKER_ID = "jobseekerId";
@@ -39,6 +51,27 @@ public class InterviewDAO extends BaseHibernateDAO<Interview> {
     public List<Interview> findByJobseekerId(int id) {
         String hql = "from Interview  where jobseekerId=" + id + " order by gmtCreate desc";
         return findPageByQuery(0, Integer.MAX_VALUE, hql, null);
+    }
+
+    public List<InterviewVO> findInterviews(int jobseekerId, InterviewStepEnum stepEnum,
+                                            DataStateEnum state) {
+        String hql = "from Interview  where jobseekerId=" + jobseekerId + "and step="
+                     + stepEnum.getValue() + "and state=" + state.getValue()
+                     + " order by gmtCreate desc";
+        List<Interview> interviews = findPageByQuery(0, Integer.MAX_VALUE, hql, null);
+
+        List<InterviewVO> interviewVOs = new ArrayList<InterviewVO>();
+        if (CollectionUtils.isEmpty(interviews)) {
+            return interviewVOs;
+        }
+        for (Interview interview : interviews) {
+            InterviewVO interviewVO = new InterviewVO();
+            interviewVO.setInterview(interview);
+            interviewVO.setJobseeker(jobseekerDAO.findById(interview.getJobseekerId()));
+            interviewVO.setInterviewerVO(interviewerDAO.findById(interview.getInterviewerId()));
+            interviewVOs.add(interviewVO);
+        }
+        return interviewVOs;
     }
 
 }

@@ -29,6 +29,7 @@
 	<bean id="companyDAO" class="com.interviewer.dao.CompanyDAO" />
 	<bean id="articeDAO" class="com.interviewer.dao.ArticleDAO" />
 	<bean id="jobseekerDAO" class="com.interviewer.dao.JobseekerDAO" />
+	<bean id="messageDAO" class="com.interviewer.dao.MessageDAO" />
 
 	<bean id="serviceTemplate" class="com.interviewer.base.ServiceTemplateImpl" />
 	<bean id="registService" class="com.interviewer.service.RegistServiceImpl"></bean>

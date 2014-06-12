@@ -11,7 +11,7 @@ package com.interviewer.enums;
  * @author jingyu.dan
  * @version $Id: InterviewStateEnum.java, v 0.1 2014-6-10 下午6:06:53 jingyu.dan Exp $
  */
-public enum InterviewStateEnum {
+public enum InterviewStepEnum {
 
     /** 创建状态 */
     CREATE(1, "CREATE", "创建状态"),
@@ -34,7 +34,7 @@ public enum InterviewStateEnum {
      * @param code          枚举code
      * @param description   枚举描述
      */
-    private InterviewStateEnum(int value, String code, String description) {
+    private InterviewStepEnum(int value, String code, String description) {
         this.value = value;
         this.code = code;
         this.description = description;
@@ -46,8 +46,8 @@ public enum InterviewStateEnum {
      * @param value 枚举值
      * @return      枚举对象
      */
-    public static InterviewStateEnum getByValue(int value) {
-        for (InterviewStateEnum type : values()) {
+    public static InterviewStepEnum getByValue(int value) {
+        for (InterviewStepEnum type : values()) {
             if (type.getValue() == value) {
                 return type;
             }

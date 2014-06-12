@@ -6,17 +6,18 @@ import java.util.Date;
  * Message entity. @author MyEclipse Persistence Tools
  */
 
-public class Message extends com.interviewer.base.ToString implements java.io.Serializable {
+public class Message extends com.interviewer.base.ToString {
 
     // Fields    
-
-    private Integer id;
-    private String  message;
-    private short   creatorRole;
-    private Integer creator;
-    private short   relType;
-    private Integer relId;
-    private Date    gmtCreate;
+    /**  */
+    private static final long serialVersionUID = 1L;
+    private Integer           id;
+    private String            message;
+    private Integer           creatorRole;
+    private Integer           creator;
+    private Integer           relType;
+    private Integer           relId;
+    private Date              gmtCreate;
 
     // Constructors
 
@@ -25,7 +26,7 @@ public class Message extends com.interviewer.base.ToString implements java.io.Se
     }
 
     /** full constructor */
-    public Message(String message, short creatorRole, Integer creator, short relType,
+    public Message(String message, Integer creatorRole, Integer creator, Integer relType,
                    Integer relId, Date gmtCreate) {
         this.message = message;
         this.creatorRole = creatorRole;
@@ -53,11 +54,11 @@ public class Message extends com.interviewer.base.ToString implements java.io.Se
         this.message = message;
     }
 
-    public short getCreatorRole() {
+    public Integer getCreatorRole() {
         return this.creatorRole;
     }
 
-    public void setCreatorRole(short creatorRole) {
+    public void setCreatorRole(Integer creatorRole) {
         this.creatorRole = creatorRole;
     }
 
@@ -69,11 +70,11 @@ public class Message extends com.interviewer.base.ToString implements java.io.Se
         this.creator = creator;
     }
 
-    public short getRelType() {
+    public Integer getRelType() {
         return this.relType;
     }
 
-    public void setRelType(short relType) {
+    public void setRelType(Integer relType) {
         this.relType = relType;
     }
 

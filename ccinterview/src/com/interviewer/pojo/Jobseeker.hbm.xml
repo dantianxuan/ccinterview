@@ -10,8 +10,8 @@
             <column name="id" />
             <generator class="native" />
         </id>
-        <property name="nick" type="string">
-            <column name="nick" length="256" />
+        <property name="name" type="string">
+            <column name="name" length="256" />
         </property>
         <property name="passwd" type="string">
             <column name="passwd" length="45" />

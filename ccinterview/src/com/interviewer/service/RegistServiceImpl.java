@@ -73,7 +73,7 @@ public class RegistServiceImpl extends AbstractService implements RegistService 
             public CcResult executeService() {
                 AssertUtil.notNull(jobseeker, "非法的注册请求");
                 AssertUtil.notBlank(jobseeker.getEmail(), "用户邮箱不能为空");
-                AssertUtil.notBlank(jobseeker.getNick(), "用户昵称不能为空");
+                AssertUtil.notBlank(jobseeker.getName(), "用户名称不能为空");
                 AssertUtil.notBlank(jobseeker.getMobile(), "请输入手机号码");
 
                 Jobseeker localJobseeker = jobseekerDAO.findByEmail(jobseeker.getEmail());
@@ -101,7 +101,8 @@ public class RegistServiceImpl extends AbstractService implements RegistService 
                 AssertUtil.notNull(regMail, "非法的注册请求");
                 AssertUtil.state(StringUtils.equals(regMail.getMail(), interviewer.getEmail()),
                     "非法的账号，账号被篡改");
-                InterviewerVO innerInterviewerVO = interviewerDAO.findByEmail(interviewer.getEmail());
+                InterviewerVO innerInterviewerVO = interviewerDAO.findByEmail(interviewer
+                    .getEmail());
                 if (innerInterviewerVO != null) {
                     throw new CcException("您已经注册过该用户，请直接登录，如果忘记密码请点击忘记密码找回");
                 }

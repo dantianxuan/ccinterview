@@ -13,11 +13,12 @@ public class Interview extends com.interviewer.base.ToString implements java.io.
     private Integer id;
     private Integer jobseekerId;
     private Integer interviewerId;
-    private short   step;
+    private Integer step;
     private String  memo;
     private String  orderId;
     private Date    gmtModified;
     private Date    gmtCreate;
+    private Integer state;
 
     // Constructors
 
@@ -26,8 +27,8 @@ public class Interview extends com.interviewer.base.ToString implements java.io.
     }
 
     /** full constructor */
-    public Interview(Integer jobseekerId, Integer interviewerId, short step, String memo,
-                     String orderId, Date gmtModified, Date gmtCreate) {
+    public Interview(Integer jobseekerId, Integer interviewerId, Integer step, String memo,
+                     String orderId, Date gmtModified, Date gmtCreate, Integer state) {
         this.jobseekerId = jobseekerId;
         this.interviewerId = interviewerId;
         this.step = step;
@@ -35,6 +36,7 @@ public class Interview extends com.interviewer.base.ToString implements java.io.
         this.orderId = orderId;
         this.gmtModified = gmtModified;
         this.gmtCreate = gmtCreate;
+        this.state = state;
     }
 
     // Property accessors
@@ -63,11 +65,11 @@ public class Interview extends com.interviewer.base.ToString implements java.io.
         this.interviewerId = interviewerId;
     }
 
-    public short getStep() {
+    public Integer getStep() {
         return this.step;
     }
 
-    public void setStep(short step) {
+    public void setStep(Integer step) {
         this.step = step;
     }
 
@@ -101,6 +103,14 @@ public class Interview extends com.interviewer.base.ToString implements java.io.
 
     public void setGmtCreate(Date gmtCreate) {
         this.gmtCreate = gmtCreate;
+    }
+
+    public Integer getState() {
+        return this.state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 
 }

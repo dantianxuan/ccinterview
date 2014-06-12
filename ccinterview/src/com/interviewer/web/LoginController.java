@@ -17,7 +17,6 @@ import com.interviewer.base.CcConstrant;
 import com.interviewer.base.CcResult;
 import com.interviewer.dao.InterviewerDAO;
 import com.interviewer.dao.JobseekerDAO;
-import com.interviewer.pojo.Interviewer;
 import com.interviewer.pojo.Jobseeker;
 import com.interviewer.view.InterviewerVO;
 
@@ -65,13 +64,6 @@ public class LoginController {
         }
         request.getSession().setAttribute(CcConstrant.SESSION_JOBSEEKER_OBJECT, jobseeker);
         return new ModelAndView("redirect:/jobseeker/jobseekerSelf.htm");
-    }
-
-    @RequestMapping(value = "/login.htm", method = RequestMethod.POST)
-    public ModelAndView loginUser(HttpServletRequest request, String account, String password,
-                                  ModelMap modelMap) {
-
-        return new ModelAndView("content/login");
     }
 
     @RequestMapping(value = "/login.htm", method = RequestMethod.GET)

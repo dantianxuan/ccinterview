@@ -16,7 +16,7 @@
         <property name="interviewerId" type="integer">
             <column name="interviewer_id" />
         </property>
-        <property name="step" type="short">
+        <property name="step" type="integer">
             <column name="step" />
         </property>
         <property name="memo" type="string">
@@ -30,6 +30,9 @@
         </property>
         <property name="gmtCreate" type="timestamp">
             <column name="gmt_create" length="19" />
+        </property>
+        <property name="state" type="integer">
+            <column name="state" />
         </property>
     </class>
 </hibernate-mapping>

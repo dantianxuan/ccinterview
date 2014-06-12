@@ -8,18 +8,18 @@
     <class name="com.interviewer.pojo.Message" table="message" catalog="ccinterviewer">
         <id name="id" type="integer">
             <column name="id" />
-            <generator class="identity" />
+            <generator class="native" />
         </id>
         <property name="message" type="string">
             <column name="message" length="65535" />
         </property>
-        <property name="creatorRole" type="short">
+        <property name="creatorRole" type="integer">
             <column name="creator_role" />
         </property>
         <property name="creator" type="integer">
             <column name="creator" />
         </property>
-        <property name="relType" type="short">
+        <property name="relType" type="integer">
             <column name="rel_type" />
         </property>
         <property name="relId" type="integer">

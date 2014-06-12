@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.interviewer.base.CcConstrant;
 import com.interviewer.base.ServiceTemplate;
-import com.interviewer.pojo.Interviewer;
 import com.interviewer.pojo.Jobseeker;
+import com.interviewer.view.InterviewerVO;
 
 /**
  * 
@@ -33,10 +33,10 @@ public class BaseController {
         }
     }
 
-    public Interviewer getInterviewerInSession(HttpSession session) {
-        Object interivewer = session.getAttribute(CcConstrant.SESSION_INTERVIEWER_OBJECT);
-        if (interivewer != null) {
-            return (Interviewer) interivewer;
+    public InterviewerVO getInterviewerInSession(HttpSession session) {
+        Object interivewerVO = session.getAttribute(CcConstrant.SESSION_INTERVIEWER_OBJECT);
+        if (interivewerVO != null) {
+            return (InterviewerVO) interivewerVO;
         } else {
             return null;
         }

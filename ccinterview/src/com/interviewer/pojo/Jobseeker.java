@@ -6,12 +6,12 @@ import java.util.Date;
  * Jobseeker entity. @author MyEclipse Persistence Tools
  */
 
-public class Jobseeker implements java.io.Serializable {
+public class Jobseeker extends com.interviewer.base.ToString implements java.io.Serializable {
 
     // Fields    
 
     private Integer id;
-    private String  nick;
+    private String  name;
     private String  passwd;
     private String  mobile;
     private String  email;
@@ -26,9 +26,9 @@ public class Jobseeker implements java.io.Serializable {
     }
 
     /** full constructor */
-    public Jobseeker(String nick, String passwd, String mobile, String email, String photo,
+    public Jobseeker(String name, String passwd, String mobile, String email, String photo,
                      Date gmtCreate, Date gmtModified) {
-        this.nick = nick;
+        this.name = name;
         this.passwd = passwd;
         this.mobile = mobile;
         this.email = email;
@@ -47,12 +47,12 @@ public class Jobseeker implements java.io.Serializable {
         this.id = id;
     }
 
-    public String getNick() {
-        return this.nick;
+    public String getName() {
+        return this.name;
     }
 
-    public void setNick(String nick) {
-        this.nick = nick;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPasswd() {

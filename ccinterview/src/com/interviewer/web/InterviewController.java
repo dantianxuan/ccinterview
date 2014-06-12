@@ -13,18 +13,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.interviewer.base.AssertUtil;
 import com.interviewer.base.BlankServiceCallBack;
 import com.interviewer.base.CcResult;
-import com.interviewer.dao.CompanyDAO;
 import com.interviewer.dao.InterviewDAO;
 import com.interviewer.dao.InterviewerDAO;
-import com.interviewer.enums.InterviewStateEnum;
-import com.interviewer.pojo.Company;
+import com.interviewer.enums.DataStateEnum;
+import com.interviewer.enums.InterviewStepEnum;
 import com.interviewer.pojo.Interview;
-import com.interviewer.pojo.Interviewer;
 import com.interviewer.pojo.Jobseeker;
 import com.interviewer.view.InterviewerVO;
 
@@ -61,8 +60,9 @@ public class InterviewController extends BaseController {
                 InterviewerVO interviewerVO = interviewerDAO.findById(interview.getInterviewerId());
                 AssertUtil.notNull(interviewerVO, "咨询对象不存在，请检查");
                 interview.setGmtCreate(new Date());
-                interview.setStep((short) InterviewStateEnum.CREATE.getValue());
+                interview.setStep(InterviewStepEnum.CREATE.getValue());
                 interview.setGmtModified(new Date());
+                interview.setState(DataStateEnum.NORMAL.getValue());
                 interviewDAO.save(interview);
                 return new CcResult(interview);
             }
@@ -87,4 +87,21 @@ public class InterviewController extends BaseController {
         return new ModelAndView("jobseeker/interview");
     }
 
+    @RequestMapping(value = "jobseeker/deleteInterview.json")
+    public @ResponseBody
+    ModelMap deleteInterview(final HttpServletRequest request, final String interviewId,
+                             ModelMap modelMap) {
+
+        CcResult result = serviceTemplate.executeWithTx(CcResult.class, new BlankServiceCallBack() {
+            @Override
+            public CcResult executeService() {
+                Interview interview = interviewDAO.findById(NumberUtils.toInt(interviewId));
+                interview.setState(DataStateEnum.DELETE.getValue());
+                interviewDAO.update(interview);
+                return new CcResult(interview);
+            }
+        });
+        modelMap.put("result", result);
+        return modelMap;
+    }
 }
