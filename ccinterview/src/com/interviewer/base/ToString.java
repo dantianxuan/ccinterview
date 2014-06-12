@@ -18,17 +18,8 @@ import org.apache.commons.lang.builder.ToStringStyle;
  */
 public class ToString implements Serializable {
 
-    /** serialVersionUID */
-    private static final long     serialVersionUID  = -6332261948136436515L;
-
-    /** 左括号 */
-    protected static final String LEFT_PARENTHESIS  = "(";
-
-    /** 右括号 */
-    protected static final String RIGHT_PARENTHESIS = ")";
-
-    /** 分隔符-逗号 */
-    protected static final String COMMA_SEPARATOR   = ",";
+    /**  */
+    private static final long serialVersionUID = 1L;
 
     /** 
      * toString方法重写

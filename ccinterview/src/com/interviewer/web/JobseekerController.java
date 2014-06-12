@@ -39,8 +39,8 @@ public class JobseekerController extends BaseController {
         CcResult result = serviceTemplate.execute(CcResult.class, new BlankServiceCallBack() {
             @Override
             public CcResult executeService() {
-                List<InterviewVO> interviewVOs = interviewDAO.findInterviews(jobseeker.getId(),
-                    InterviewStepEnum.CREATE, DataStateEnum.NORMAL);
+                List<InterviewVO> interviewVOs = interviewDAO.findInterviewsJobseeker(
+                    jobseeker.getId(), InterviewStepEnum.CREATE, DataStateEnum.NORMAL);
                 return new CcResult(interviewVOs);
             }
         });

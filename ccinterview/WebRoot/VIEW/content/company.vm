@@ -25,22 +25,24 @@
             	#else
 	            	#foreach($interviwer in $interviewers)
 		            	 <div class="row">
-			                    <div class="col-lg-12">
-			                        <div class="well well-sm clearfix">
-			                            <div class="col-lg-2">
-			                                <img src="STATIC/image/alipay.jpg" style="width: 80px;" class="img-rounded"/><br/>
-			                            </div>
-			                            <div class="col-lg-10">
-			                                <p class="text-warning">
-			                                	<small><a href="$link.contextPath/interviewerInfo.htm?interviewerId=$interviwer.id">
-			                                	张小龙（支付宝-技术部）  2013-12-23 好评：<span class="badge">3</span></a></small></p>
-			                                <p >
-			                                    <small>$!interviwer.description
-			                                    </small>
-			                                </p>
-			                            </div>
-			                        </div>
-			                    </div>
+		                    <div class="col-lg-12">
+								<div class="panel panel-default">
+					            	<div class="panel-body">
+ 											<div class="col-lg-2">
+				                                <img src="STATIC/image/alipay.jpg" style="width: 80px;" class="img-rounded"/><br/>
+				                            </div>
+				                            <div class="col-lg-10">
+				                                <p class="text-warning" style="border-bottom:solid 1px #ddd">
+				                                	<small><a href="$link.contextPath/interviewerInfo.htm?interviewerId=$interviwer.id">
+				                                	张小龙（支付宝-技术部）  2013-12-23 好评：<span class="badge">3</span></a></small></p>
+				                                <p >
+				                                    <small>$!interviwer.description
+				                                    </small>
+				                                </p>
+				                            </div>
+									</div>
+								</div>
+	                        </div>
 		                </div>
 	            	#end
  					<div class="row">

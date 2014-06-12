@@ -42,6 +42,7 @@ public class MessageController extends BaseController {
     @RequestMapping(value = "/sendInterviewShotMessage.json", method = RequestMethod.POST)
     public @ResponseBody
     ModelMap sendMessage(final HttpServletRequest request, final Message message, ModelMap modelMap) {
+        modelMap.clear();
         CcResult result = serviceTemplate.executeWithTx(CcResult.class, new BlankServiceCallBack() {
             @Override
             public CcResult executeService() {

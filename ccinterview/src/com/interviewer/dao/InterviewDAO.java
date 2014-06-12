@@ -53,9 +53,31 @@ public class InterviewDAO extends BaseHibernateDAO<Interview> {
         return findPageByQuery(0, Integer.MAX_VALUE, hql, null);
     }
 
-    public List<InterviewVO> findInterviews(int jobseekerId, InterviewStepEnum stepEnum,
-                                            DataStateEnum state) {
+    public List<InterviewVO> findInterviewsJobseeker(int jobseekerId, InterviewStepEnum stepEnum,
+                                                     DataStateEnum state) {
         String hql = "from Interview  where jobseekerId=" + jobseekerId + "and step="
+                     + stepEnum.getValue() + "and state=" + state.getValue()
+                     + " order by gmtCreate desc";
+        List<Interview> interviews = findPageByQuery(0, Integer.MAX_VALUE, hql, null);
+
+        List<InterviewVO> interviewVOs = new ArrayList<InterviewVO>();
+        if (CollectionUtils.isEmpty(interviews)) {
+            return interviewVOs;
+        }
+        for (Interview interview : interviews) {
+            InterviewVO interviewVO = new InterviewVO();
+            interviewVO.setInterview(interview);
+            interviewVO.setJobseeker(jobseekerDAO.findById(interview.getJobseekerId()));
+            interviewVO.setInterviewerVO(interviewerDAO.findById(interview.getInterviewerId()));
+            interviewVOs.add(interviewVO);
+        }
+        return interviewVOs;
+    }
+
+    public List<InterviewVO> findInterviewsByInterviewer(int interviewerId,
+                                                         InterviewStepEnum stepEnum,
+                                                         DataStateEnum state) {
+        String hql = "from Interview  where interviewerId=" + interviewerId + "and step="
                      + stepEnum.getValue() + "and state=" + state.getValue()
                      + " order by gmtCreate desc";
         List<Interview> interviews = findPageByQuery(0, Integer.MAX_VALUE, hql, null);

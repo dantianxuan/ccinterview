@@ -4,6 +4,7 @@
 package com.interviewer.web;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,11 +22,15 @@ import com.interviewer.base.BlankServiceCallBack;
 import com.interviewer.base.CcResult;
 import com.interviewer.dao.InterviewDAO;
 import com.interviewer.dao.InterviewerDAO;
+import com.interviewer.dao.JobseekerDAO;
+import com.interviewer.dao.MessageDAO;
 import com.interviewer.enums.DataStateEnum;
 import com.interviewer.enums.InterviewStepEnum;
+import com.interviewer.enums.MessageRelTypeEnum;
 import com.interviewer.pojo.Interview;
 import com.interviewer.pojo.Jobseeker;
 import com.interviewer.view.InterviewerVO;
+import com.interviewer.view.MessageVO;
 
 /**
  * @author jingyu.dan
@@ -38,6 +43,10 @@ public class InterviewController extends BaseController {
     private InterviewerDAO interviewerDAO;
     @Autowired
     private InterviewDAO   interviewDAO;
+    @Autowired
+    private MessageDAO     messageDAO;
+    @Autowired
+    private JobseekerDAO   jobseekerDAO;
 
     @RequestMapping(value = "jobseeker/createInterview.htm", method = RequestMethod.GET)
     public ModelAndView toInterview(HttpServletRequest request, String interviewerId,
@@ -84,7 +93,23 @@ public class InterviewController extends BaseController {
         modelMap.put("interview", interview);
         InterviewerVO interviewerVO = interviewerDAO.findById(interview.getInterviewerId());
         modelMap.put("interviewerVO", interviewerVO);
+        List<MessageVO> messageVOs = messageDAO.queryByRelInfo(interview.getId(),
+            MessageRelTypeEnum.INTERVIEW.getValue());
+        modelMap.put("messageVOs", messageVOs);
         return new ModelAndView("jobseeker/interview");
+    }
+
+    @RequestMapping(value = "interviewer/interview.htm")
+    public ModelAndView interviewerInterview(final HttpServletRequest request,
+                                             final String interviewId, ModelMap modelMap) {
+        Interview interview = interviewDAO.findById(NumberUtils.toInt(interviewId));
+        modelMap.put("interview", interview);
+        Jobseeker jobseeker = jobseekerDAO.findById(interview.getJobseekerId());
+        modelMap.put("jobseeker", jobseeker);
+        List<MessageVO> messageVOs = messageDAO.queryByRelInfo(interview.getId(),
+            MessageRelTypeEnum.INTERVIEW.getValue());
+        modelMap.put("messageVOs", messageVOs);
+        return new ModelAndView("interviewer/interview");
     }
 
     @RequestMapping(value = "jobseeker/deleteInterview.json")
