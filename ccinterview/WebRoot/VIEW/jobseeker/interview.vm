@@ -14,7 +14,7 @@
 		  <div class="panel-heading"><span class="glyphicon glyphicon-pushpin"></span>面试官信息</div>
 		  <div class="panel-body">
                   <div class="col-lg-2">
-                        <img src="$link.contextPath/UPLOAD/$!interviewerHolder.photo" class="img-rounded" style="width: 82px;height: 82px;">
+                        <img src="$link.contextPath/STATIC/image/alipay.jpg" class="img-rounded" style="width: 82px;height: 82px;">
                     </div>
                     <div class="col-lg-5">
 	                    <p class="col-lg-12"><span class=" text-right col-lg-4">名称:</span>$!interviewerVO.interviewer.name</p>
@@ -42,19 +42,19 @@
 							  <button type="button" class="btn 
 							  	#if($interview.step>1)  btn-success disabled  
 							  	#elseif($interview.step==1) btn-primary   
-							  	#else  btn-success disabled #end">进行支付</button>
+							  	#else  btn-default disabled #end">进行支付</button>
 							  <span class="glyphicon glyphicon-arrow-right"></span>
 							  <button type="button" class="btn 
 							  	#if($interview.step>2)  btn-success disabled  
 							  	#elseif($interview.step==2) btn-primary   
-							  	#else  btn-success disabled #end">进行面试咨询</button>
+							  	#else  btn-default disabled #end">进行面试咨询</button>
 							  <span class="glyphicon glyphicon-arrow-right"></span>
 							  <button type="button" class="btn 
 							  	#if($interview.step>3)  btn-success disabled  
 							  	#elseif($interview.step==3) btn-primary   
-							  	#else  btn-success disabled #end">完成评价</button>
+							  	#else  btn-default disabled #end">完成评价</button>
 							  <span class="glyphicon glyphicon-arrow-right"></span>
-							  <button type="button" class="btn btn-success disabled">
+							  <button type="button" class="btn btn-default disabled">
 							   <span class="glyphicon glyphicon-ok"></span>
 							  </button>
 						  </p>
@@ -84,13 +84,14 @@
 		  		#if($messageVO.message.creatorRole==2)
 			  		<div class="col-lg-12">
 				  		<div class="col-lg-1">
-				  			<img src="$link.contextPath/UPLOAD/$!interviewerHolder.photo" class="img-rounded" style="width: 50px;height: 50px;">
+				  			<img src="$link.contextPath/STATIC/image/alipay.jpg" class="img-rounded" style="width: 60px;height: 60px;">
 				  		</div>
 				  		<div class="col-lg-11">
 				  			<div class="col-lg-10  text-left" >
 					  			<div class="panel panel-default">
 								  <div class="panel-body">
-								  		<p class="text-primary" style="border-bottom:solid 1px #ddd">我 ：<span>2013-12-23 23:12:11</span></p>
+								  		<p class="text-primary" style="border-bottom:solid 1px #ddd">我    <span style="float:right;">
+								  		创建时间 $date.format("yyyy-MM-dd HH:mm:ss", $messageVO.message.gmtCreate)</span></p>
 								  		$messageVO.message.message
 								  </div>
 								</div>
@@ -98,18 +99,21 @@
 				  		</div>
 				  	</div>
 		  		#elseif($messageVO.message.creatorRole==1)
-					<div class="col-lg-12">
+			  		<div class="col-lg-12">
 				  		<div class="col-lg-11">
-				  			<div class="col-lg-10 col-lg-offset-2 text-right" >
-					  			<span class="  col-lg-12 text-right">面试官：大阿飞猫 <span>2013-12-23 23:12:11</span></span>
-								<div class="well">
-									<p class="text-default">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+				  			<div class="col-lg-10  text-right col-lg-offset-2" >
+					  			<div class="panel panel-default">
+								  <div class="panel-body">
+								  		<p class="text-primary" style="border-bottom:solid 1px #ddd">面试官:$messageVO.interviewerVO.interviewer.name <span style="float:left;">
+								  		创建时间 $date.format("yyyy-MM-dd HH:mm:ss", $messageVO.message.gmtCreate)</span></p>
+								  		$messageVO.message.message
+								  </div>
 								</div>
 							</div>
 				  		</div>
 				  		<div class="col-lg-1">
-				  			<img src="$link.contextPath/UPLOAD/$!interviewerHolder.photo" class="img-rounded" style="width: 50px;height: 50px;">
-				  		</div>		  		
+				  			<img src="$link.contextPath/STATIC/image/alipay.jpg" class="img-rounded" style="width: 60px;height: 60px;">
+				  		</div>				  		
 				  	</div>
 		  		#end
 		  	#end
@@ -149,7 +153,7 @@
              	if(data.result.success==true){
              		window.location.href=window.location.href;
              	}else{
-             		alert(data.result.messsage);
+             		alert("发送失败"+data.result.message);
              	}
               }
          });

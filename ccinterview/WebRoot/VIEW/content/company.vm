@@ -17,7 +17,12 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-               	面试人
+				  	<ol class="breadcrumb" style="margin:2px;padding:0px;">
+					  <li class="active"><a href="#">预约中</a></li>
+					  <li><a href="#">已经创建记录</a></li>
+					  <li><a href="#">等待评价</a></li>
+					  <li><a href="#">已完成记录</a></li>
+					</ol>
             </div>
             <div class="panel-body">
               	#if(!$interviewers)
@@ -34,10 +39,9 @@
 				                            <div class="col-lg-10">
 				                                <p class="text-warning" style="border-bottom:solid 1px #ddd">
 				                                	<small><a href="$link.contextPath/interviewerInfo.htm?interviewerId=$interviwer.id">
-				                                	张小龙（支付宝-技术部）  2013-12-23 好评：<span class="badge">3</span></a></small></p>
+				                                	张小龙（支付宝-技术部）<span style="float:right">好评：<span class="badge">3</span></span></a></small></p>
 				                                <p >
-				                                    <small>$!interviwer.description
-				                                    </small>
+				                                    <small>$!interviwer.description</small>
 				                                </p>
 				                            </div>
 									</div>

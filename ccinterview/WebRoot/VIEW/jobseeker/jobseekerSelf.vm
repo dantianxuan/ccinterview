@@ -27,8 +27,7 @@
             	欢迎您：大大猫 
             </div>
             <div class="panel-body">
-					<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-star"></span>  我的预约</button>
-					<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-send"></span>  我的咨询</button>
+					<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-star"></span>  我的预约</button>
 					<button type="button" class="btn btn-warning"> <span class="glyphicon glyphicon-paperclip"></span>个人简历</button>
 					<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-user"></span>  个人信息</button>
 					<button type="button" class="btn btn-warning"> <span class="glyphicon glyphicon-envelope"></span>  站内信箱</button>
@@ -40,7 +39,11 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                我的记录
+				  	<ol class="breadcrumb" style="margin:2px;padding:0px;">
+					  <li class="active"><a href="#">进行中<span class="badge">$result.object.size()</span></a></li>
+					  <li><a href="#">待评价</a></li>
+					  <li><a href="#">已完成</a></li>
+					</ol>
             </div>
             <div class="panel-body">
         		#if($result && $result.object)
